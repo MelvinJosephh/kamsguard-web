@@ -1,0 +1,24 @@
+
+   <!-- toolbar.component.html -->
+<mat-toolbar class="custom-toolbar">
+  <button
+   mat-icon-button
+   class="neumorphic-button"
+   class="example-icon"
+   aria-label="Toggle Sidebar"
+   (click)="toggleSidebar()"
+ >
+   <mat-icon>menu</mat-icon>
+ </button>
+   &nbsp;
+   <span class="brand-logo" routerLink = '/home'>KamsGuard Solutions</span>
+   <span class="example-spacer"></span>
+  <button mat-icon-button class="notification-icon" routerLink = '/notifications' aria-label="Notification icon button">
+   <mat-icon>notifications</mat-icon>
+ </button>
+   &nbsp;
+ 
+ <button mat-button routerLink="/user-management" routerLinkActive="active" class="neumorphic-button">Profile</button>
+ 
+ </mat-toolbar>
+ 

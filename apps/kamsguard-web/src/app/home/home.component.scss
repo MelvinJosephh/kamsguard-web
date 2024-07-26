@@ -1,0 +1,124 @@
+$primary-color: #21325D;
+$secondary-color: #627792;
+$card-color: #FFFFFF;
+$text-color: #21325D;
+$header-color: #627792;
+$highlight-color: #FC5546;
+$background-color: #FFFFFF;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+.home-container {
+  font-family: 'Arial, sans-serif';
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+
+  .header {
+    text-align: center;
+    background-color: $card-color;
+    color: $primary-color;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px $shadow-color;
+    margin-bottom: 40px;
+
+    h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    p {
+      margin: 10px 0 0;
+      font-size: 1.1em;
+      color: lighten($header-color, 10%);
+    }
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 40px 0;
+
+    .feature-card {
+      background-color: $card-color;
+      color: $text-color;
+      width: 280px;
+      padding: 25px 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px $shadow-color;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px $shadow-color;
+      }
+
+      .material-icons {
+        font-size: 48px;
+        color: $highlight-color;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.4em;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 1em;
+        color: darken($text-color, 10%);
+      }
+    }
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px;
+    // background-color: $primary-color;
+    color: $primary-color;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 -4px 8px $shadow-color;
+    margin-top: auto;
+
+    p {
+      margin: 0;
+      font-size: 1em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px 10px;
+
+    .header {
+      padding: 20px 10px;
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+
+    .features {
+      flex-direction: column;
+      align-items: center;
+
+      .feature-card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+}

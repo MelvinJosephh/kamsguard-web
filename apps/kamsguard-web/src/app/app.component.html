@@ -1,1 +1,14 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+
+<div class="app-header" >
+  <app-header></app-header>
+</div>
+<div class="container">
+  <app-sidenav></app-sidenav>
+</div>
+
+ <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
+  <!-- Main content goes here -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <app-footer></app-footer>  -->

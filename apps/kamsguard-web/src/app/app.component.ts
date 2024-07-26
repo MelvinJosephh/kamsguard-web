@@ -1,14 +1,34 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { HeaderComponent } from "./layout/header/header.component";
+import { FooterComponent } from "./layout/footer/footer.component";
+import { SharedModule } from './shared/shared.module';
+import { SidebarComponent } from "./layout/sidenav/sidenav.component";
+import { SidebarService } from './services/sidebar/sidebar.service';
+import { HomeComponent } from "./home/home.component";
+
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule, HeaderComponent, FooterComponent, SharedModule, SidebarComponent, HomeComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'kamsguard-web';
+  
+  isSidebarVisible = true;
+  constructor(private sidebarService: SidebarService) {}
+
+
+  ngOnInit() {
+    this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
+      console.log(isVisible)
+      this.isSidebarVisible = isVisible;
+    });
+  }
+
+
+
 }

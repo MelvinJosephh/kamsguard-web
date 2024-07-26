@@ -1,0 +1,15 @@
+.live-viewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #EDF4F2;
+  
+    video {
+      width: 100%;
+      max-width: 800px;
+      border: 2px solid #31473A;
+      border-radius: 10px;
+    }
+  }
+  
