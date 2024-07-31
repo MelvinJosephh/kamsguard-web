@@ -1,0 +1,67 @@
+.system-status-container {
+  padding: 16px;
+
+  h2 {
+    margin-bottom: 16px;
+    color: #21325D;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .status-card {
+    border: 1px solid #627792;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px #b9b9b9, -3px -3px 8px #FFFFFF;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 4px 4px 10px #b9b9b9, -4px -4px 10px #FFFFFF;
+    }
+
+    .mat-card-header {
+      background-color: #F0F0F0;
+      border-bottom: 1px solid #627792;
+
+      .mat-card-title {
+        font-weight: bold;
+        color: #21325D;
+      }
+    }
+
+    .mat-card-content {
+      padding: 16px;
+      color: #627792;
+    }
+  }
+
+  .actions {
+    margin-top: 16px;
+    text-align: right;
+
+    button {
+      background-color: #FFFFFF;
+      border: 1px solid #627792;
+      border-radius: 8px;
+      transition: all 0.3s;
+      margin-left: 8px;
+
+      &:hover {
+        background-color: #627792;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .online {
+    color: #4CAF50; // Green
+  }
+
+  .offline {
+    color: #F44336; // Red
+  }
+}

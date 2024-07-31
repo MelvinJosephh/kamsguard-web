@@ -1,0 +1,46 @@
+.clients-container {
+    padding: 16px;
+  
+    .client-overview {
+      margin-bottom: 24px;
+  
+      .client-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+  
+        .client-card {
+          width: calc(33.333% - 16px);
+          margin-bottom: 16px;
+  
+          @media (max-width: 768px) {
+            width: calc(50% - 16px);
+          }
+          @media (max-width: 480px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+    .client-details {
+      margin-top: 24px;
+  
+      mat-tab-group {
+        margin-top: 16px;
+  
+        .mat-tab-body-wrapper {
+          padding: 16px;
+        }
+      }
+    }
+  
+    .site-item, .site-config {
+      border: 1px solid #627792;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background-color: #f5f5f5;
+    }
+  }
+  

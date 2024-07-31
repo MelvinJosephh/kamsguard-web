@@ -1,1 +1,59 @@
-<p>clients works!</p>
+<div class="clients-container">
+    <h2>Clients</h2>
+    
+    <!-- Client Overview -->
+    <div class="client-overview">
+      <h3>Client Overview</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Search Clients</mat-label>
+        <input matInput (input)="onSearch($event)" placeholder="Search by name, location, etc.">
+      </mat-form-field>
+      <div class="client-list">
+        <mat-card *ngFor="let client of clients" class="client-card">
+          <mat-card-header>
+            <mat-card-title>{{ client.name }}</mat-card-title>
+            <mat-card-subtitle>{{ client.location }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Sites: {{ client.sites.length }}</p>
+            <p>Status: {{ client.status }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="viewDetails(client)">View Details</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+    <!-- Client Details -->
+    <div class="client-details" *ngIf="selectedClient">
+      <h3>{{ selectedClient.name }} - Details</h3>
+      <mat-tab-group>
+        <mat-tab label="Overview">
+          <p>Location: {{ selectedClient.location }}</p>
+          <p>Contact: {{ selectedClient.contact }}</p>
+          <p>Sites: {{ selectedClient.sites.length }}</p>
+        </mat-tab>
+        <mat-tab label="Sites">
+          <div *ngFor="let site of selectedClient.sites" class="site-item">
+            <h4>{{ site.name }}</h4>
+            <p>Status: {{ site.status }}</p>
+            <button mat-button (click)="viewSiteDetails(site)">View Site Details</button>
+          </div>
+        </mat-tab>
+        <mat-tab label="Configuration">
+          <h4>Client Settings</h4>
+          <p>Notification Preferences: {{ selectedClient.settings.notifications }}</p>
+          <p>Alert Thresholds: {{ selectedClient.settings.alertThresholds }}</p>
+        </mat-tab>
+        <mat-tab label="Site Configuration">
+          <div *ngFor="let site of selectedClient.sites" class="site-config">
+            <h4>{{ site.name }}</h4>
+            <p>Network Settings: {{ site.networkSettings }}</p>
+            <p>Detector Configuration: {{ site.detectorConfiguration }}</p>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  

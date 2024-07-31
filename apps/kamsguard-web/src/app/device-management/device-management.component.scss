@@ -1,0 +1,81 @@
+.device-management-container {
+  padding: 16px;
+
+  .no-devices {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+  }
+
+  .device-card {
+    margin-bottom: 16px;
+    border: 1px solid #627792;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px #b9b9b9, -3px -3px 8px #FFFFFF;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 4px 4px 10px #b9b9b9, -4px -4px 10px #FFFFFF;
+    }
+
+    .mat-card-header {
+      background-color: #F0F0F0;
+      border-bottom: 1px solid #627792;
+
+      .mat-card-title {
+        font-weight: bold;
+        color: #21325D;
+      }
+
+      .mat-card-subtitle {
+        font-style: italic;
+        &.online {
+          color: #4CAF50; // Green
+        }
+        &.offline {
+          color: #F44336; // Red
+        }
+      }
+    }
+
+    .mat-card-content {
+      padding: 16px;
+      color: #627792;
+    }
+
+    .mat-card-actions {
+      padding: 16px;
+      text-align: right;
+
+      button {
+        background-color: #FFFFFF;
+        border: 1px solid #627792;
+        border-radius: 8px;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #627792;
+          color: #FFFFFF;
+        }
+      }
+    }
+    .view-details-button {
+      color: #2196f3; // Blue color for text
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-weight: bold;
+      text-transform: none;
+
+      &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+      }
+
+      &:focus {
+        outline: none; // Remove outline for focus state
+      }
+    }
+  }
+}

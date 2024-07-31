@@ -1,1 +1,25 @@
-<p>device-management works!</p>
+<div class="device-management-container">
+  <h2 class="h2">Device Management</h2>
+  
+  <!-- Display a message when no devices are available -->
+  <div *ngIf="devices.length === 0" class="no-devices">
+    No devices to display.
+  </div>
+  
+  <!-- Display device cards -->
+  <mat-card class="device-card" *ngFor="let device of devices">
+    <mat-card-header class="card-header">
+      <mat-card-title>{{ device.name }}</mat-card-title>
+      <mat-card-subtitle [ngClass]="{'online': device.status === 'online', 'offline': device.status === 'offline'}">
+        {{ device.status }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Location:</strong> {{ device.location }}</p>
+      <p><strong>Last Activity:</strong> {{ device.lastActivity | date: 'short' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="view-details-button" mat-button (click)="viewDetails(device)">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

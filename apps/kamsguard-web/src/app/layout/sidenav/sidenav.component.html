@@ -4,6 +4,46 @@
   [@fadeInOut]
 >
   <ul>
+       <li>
+      <a
+        routerLinkActive="active"
+        (click)="toggleDeviceManagementSubmenu()"
+      >
+        <span class="menu-icon material-icons">devices</span>
+        <span class="menu-text">Device Management</span>
+        <span
+          class="sub-menu-icon"
+          [ngClass]="{ 'sub-menu-open': isDeviceManagementSubmenuOpen }"
+        >
+          <mat-icon>{{
+            isDeviceManagementSubmenuOpen
+              ? 'keyboard_arrow_down'
+              : 'keyboard_arrow_right'
+          }}</mat-icon>
+        </span>
+      </a>
+      <!-- Sub-menu for Device management with left padding -->
+      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu">
+        <li>
+          <a
+            routerLink="/device-management"
+            routerLinkActive="active"
+            (click)="handleLinkClick()"
+            ><span class="menu-icon material-icons">cast_connected</span
+            ><span class="menu-text">Connected Devices</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/real-time"
+            routerLinkActive="active"
+            (click)="handleLinkClick()"
+            ><span class="menu-icon material-icons">settings</span
+            ><span class="menu-text">System Status</span></a
+          >
+        </li>
+      </ul>
+    </li>
     <li>
       <a (click)="toggleDashboardSubmenu()">
         <span class="menu-icon material-icons">dashboard</span>
@@ -53,46 +93,7 @@
         </li>
       </ul>
     </li>
-    <li>
-      <a
-        routerLinkActive="active"
-        (click)="toggleDeviceManagementSubmenu()"
-      >
-        <span class="menu-icon material-icons">devices</span>
-        <span class="menu-text">Device Management</span>
-        <span
-          class="sub-menu-icon"
-          [ngClass]="{ 'sub-menu-open': isDeviceManagementSubmenuOpen }"
-        >
-          <mat-icon>{{
-            isDeviceManagementSubmenuOpen
-              ? 'keyboard_arrow_down'
-              : 'keyboard_arrow_right'
-          }}</mat-icon>
-        </span>
-      </a>
-      <!-- Sub-menu for Device management with left padding -->
-      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu">
-        <li>
-          <a
-            routerLink="/device-management"
-            routerLinkActive="active"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">cast_connected</span
-            ><span class="menu-text">Connected Devices</span></a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/real-time"
-            routerLinkActive="active"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">settings</span
-            ><span class="menu-text">System Status</span></a
-          >
-        </li>
-      </ul>
-    </li>
+ 
 
     <li>
       <a

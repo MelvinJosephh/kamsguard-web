@@ -1,110 +1,105 @@
 import { Component, OnInit } from '@angular/core';
-import { IMqttMessage, IMqttServiceOptions, IPublishOptions, MqttService } from 'ngx-mqtt';
-// import { MqttService } from '../services/mqtt/mqtt.service';
+import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { CommonModule } from '@angular/common';
-import { IClientSubscribeOptions } from 'mqtt/*';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { IClientSubscribeOptions } from 'mqtt';
 
 @Component({
   standalone: true,
   selector: 'app-events',
-  imports: [CommonModule],
+  imports: [CommonModule, MatExpansionModule],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit {
-  messages: string[] = [];
-  private topic = 'NetVu/#'; // Ensure this matches the topic in your service
-  client:MqttService;
-  subscription = {
-    topic: 'topic/mqttx',
-    qos: 0,
- };
- publish = {
-  topic: 'topic/browser',
-  qos: 0,
-  payload: '{ "msg": "Hello, I am browser." }',
-};
+  events: any[] = [];
+  private topic = '#'; // Change to the topic you want to subscribe to
+  client: MqttService;
 
-
-  constructor(private mqttService: MqttService) { 
-    this.client = this.mqttService
+  constructor(private mqttService: MqttService) {
+    this.client = this.mqttService;
   }
 
   ngOnInit(): void {
-    // this.mqttService.getMessages(this.topic).subscribe((message: IMqttMessage) => {
-    //   console.log(message);
-    //   this.messages.push(message.payload.toString());
-    // });
-    // this.mqttService.observe('my/topic').subscribe((message: IMqttMessage) => {
-    //   // this.message = message.payload.toString();
-    //   console.log(message);
-    // });
-   
-    this.createConnection()
+    this.createConnection();
   }
 
-  createConnection(){
-    
+  createConnection() {
     try {
-     
-      console.log('connecting');
-      // this.client?.connect(
-      //     {
-      //   hostname: 'whale.rmq.cloudamqp.com',
-      //   port: 443, // Use 8883 for TLS
-      //   path: '/ws/mqtt', // Typically empty for non-TLS
-      //   username: 'rdctgbmb:rdctgbmb',
-      //   password: 'Q38RMeaEo3vuHEY5-swfp8O_qwSJ5n5N',
-      //   protocol: 'wss',
-      // }as IMqttServiceOptions
-    // )
-   } catch (error) {
-      console.log('mqtt.connect error>>>>>>>>>>>>>>', error);
-   }
-    this.client?.onConnect.subscribe(() => {
-      // this.isConnection = true
-      // this.doSubscribe()
+      console.log('Connecting to MQTT broker...');
+      this.client.connect();
+    } catch (error) {
+      console.log('MQTT connect error:', error);
+    }
+    this.client.onConnect.subscribe(() => {
       console.log('Connection succeeded!');
-   });
-    this.client?.onError.subscribe((error: any) => {
-      // this.isConnection = false
+      this.doSubscribe();
+    });
+    this.client.onError.subscribe((error: any) => {
       console.log('Connection failed', error);
-   });
-    this.client?.onMessage.subscribe((packet: any) => {
-      // this.receiveNews = this.receiveNews.concat(packet.payload.toString())
-      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`)
-   })
+    });
+    this.client.onMessage.subscribe((packet: IMqttMessage) => {
+      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
+      this.processMessage(packet.payload.toString());
+    });
   }
-
-  // publishTestMessage() {
-  //   this.mqttService.publishMessage(this.topic, 'Test message');
-  // }
 
   doSubscribe() {
-    const { topic, qos } = this.subscription
-    this.client?.observe(topic, { qos } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      // this.subscribeSuccess = true
-      console.log('Subscribe to topics res', message.payload.toString())
-   })
-   }
+    const { topic } = this;
+    this.client.observe(topic, { qos: 0 } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
+      console.log('Received message:', message.payload.toString());
+      this.processMessage(message.payload.toString());
+    });
+  }
 
-   doPublish() {
-    const { topic, qos, payload } = this.publish
-    console.log(this.publish)
-    this.client?.unsafePublish(topic, payload, { qos } as IPublishOptions)
-   }
-
-   destroyConnection() {
+  processMessage(message: string) {
     try {
-      this.client?.disconnect(true)
-      // this.isConnection = false
-      console.log('Successfully disconnected!')
-   } catch (error: any) {
-      console.log('Disconnect failed', error.toString())
-   }
-   }
+      const data = JSON.parse(message);
+      const { expression, value, extended } = data;
+  
+      if (value === 1 && extended && extended.length) {
+        extended.forEach((event: any) => {
+          // Extract common properties
+          const { event: eventName, site_id, time } = event;
+  
+          // Create a unique identifier for this event
+          const eventId = `${eventName}-${site_id}-${time}`;
+  
+          // Check if this event already exists in the array
+          if (!this.events.some(e => `${e.event}-${e.siteId}-${e.time}` === eventId)) {
+            // Check for specific alarms and handle them
+            const alarmTypes = ['HIGH_MOVEMENT_ALARM', 'FLAME_ALARM', 'SMOKE_ALARM', 'THERMAL1_ALARM'];
+            const alarmDetails: any = {};
+  
+            alarmTypes.forEach((type) => {
+              if (event[type]) {
+                alarmDetails[type] = event[type];
+              }
+            });
+  
+            // Add to events array
+            this.events.push({
+              expression,
+              event: eventName,
+              siteId: site_id,
+              time,
+              details: alarmDetails
+            });
+          }
+        });
+      }
+    } catch (e) {
+      console.error('Error processing message', e);
+    }
+  }
+  
 
-
-
+  destroyConnection() {
+    try {
+      this.client.disconnect(true);
+      console.log('Successfully disconnected!');
+    } catch (error: any) {
+      console.log('Disconnect failed', error.toString());
+    }
+  }
 }

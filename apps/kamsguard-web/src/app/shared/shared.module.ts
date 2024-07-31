@@ -27,6 +27,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -60,6 +61,7 @@ const material = [
   MatButtonToggleModule,
   MatAutocompleteModule,
   MatRadioModule,
+  MatTableModule,
   FormsModule,
   HttpClientModule,
 ];

@@ -1,1 +1,117 @@
-<p>system-config works!</p>
+<!-- system-configuration.component.html -->
+<div class="system-configuration-container">
+    <h2>System Configuration</h2>
+  
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <h3>Quick Actions</h3>
+      <button mat-button color="primary" (click)="runDiagnostics()">Run Diagnostics</button>
+      <button mat-button color="warn" (click)="restartServices()">Restart Services</button>
+      <button mat-button color="accent" (click)="updateFirmware()">Update Firmware</button>
+    </div>
+  
+    <!-- Connection Status -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Connection Status</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Status: <span [ngClass]="{'online': isConnected, 'offline': !isConnected}">{{ isConnected ? 'Connected' : 'Disconnected' }}</span></p>
+        <p>Last Checked: {{ lastChecked }}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Logs and Diagnostics -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Logs and Diagnostics</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let log of logs">{{ log }}</mat-list-item>
+        </mat-list>
+        <button mat-button (click)="clearLogs()">Clear Logs</button>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Network Configuration -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Network Configuration</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <mat-label>IP Address</mat-label>
+            <input matInput [(ngModel)]="networkConfig.ipAddress" name="ipAddress">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Subnet Mask</mat-label>
+            <input matInput [(ngModel)]="networkConfig.subnetMask" name="subnetMask">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Gateway</mat-label>
+            <input matInput [(ngModel)]="networkConfig.gateway" name="gateway">
+          </mat-form-field>
+          <button mat-button type="submit" (click)="saveNetworkConfig()">Save</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Configure Detectors -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Configure Detectors</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-table [dataSource]="detectors">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let detector">{{ detector.name }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *matCellDef="let detector">{{ detector.status }}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="['name', 'status']"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['name', 'status'];"></mat-row>
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Configuration Settings -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Configuration Settings</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <mat-label>Setting 1</mat-label>
+            <input matInput [(ngModel)]="config.setting1" name="setting1">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Setting 2</mat-label>
+            <input matInput [(ngModel)]="config.setting2" name="setting2">
+          </mat-form-field>
+          <button mat-button type="submit" (click)="saveConfig()">Save</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Maintenance and Updates -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>Maintenance and Updates</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let task of maintenanceTasks">
+            {{ task.description }} - {{ task.schedule }}
+          </mat-list-item>
+        </mat-list>
+        <button mat-button (click)="scheduleMaintenance()">Schedule Maintenance</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

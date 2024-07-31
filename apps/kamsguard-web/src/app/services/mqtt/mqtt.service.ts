@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MqttService {
-  private topic = 'NetVu/#'; 
+  // private topic = 'NetVu/#'; 
 
   constructor(private mqttService: NgxMqttService) {
     // Optionally initialize any connections or subscriptions here

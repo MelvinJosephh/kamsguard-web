@@ -1,1 +1,82 @@
-<p>real-time works!</p>
+<div class="system-status-container">
+    <h2>System Status</h2>
+  
+    <!-- Card Grid Container -->
+    <div class="card-grid">
+      <!-- Overall System Status -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>Overall Status</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-chip-listbox>
+            <mat-chip color="primary" *ngIf="systemStatus === 'Operational'">Operational</mat-chip>
+            <mat-chip color="warn" *ngIf="systemStatus === 'Degraded'">Degraded</mat-chip>
+            <mat-chip color="accent" *ngIf="systemStatus === 'Critical'">Critical</mat-chip>
+          </mat-chip-listbox>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- Connectivity Status -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>Connectivity</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Status: <span [ngClass]="{'online': connectivityStatus === 'Online', 'offline': connectivityStatus === 'Offline'}">{{ connectivityStatus }}</span></p>
+          <p>Last Checked: {{ lastChecked }}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- System Health -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>System Health</mat-card-title>
+        </mat-card-header>
+        <!-- Optional content for system health -->
+      </mat-card>
+  
+      <!-- Alerts and Notifications -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>Alerts</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let alert of alerts">{{ alert.message }} <span>{{ alert.timestamp }}</span></mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- Maintenance Schedule -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>Maintenance Schedule</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let maintenance of maintenances">
+              {{ maintenance.task }} - <span>{{ maintenance.date }}</span>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- Connected Cameras -->
+      <mat-card class="status-card">
+        <mat-card-header>
+          <mat-card-title>Connected Cameras</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Number of Connected Cameras: {{ connectedCameras }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- User Interaction -->
+    <div class="actions">
+      <button mat-button (click)="runDiagnostics()">Run Diagnostics</button>
+      <button mat-button (click)="restartServices()">Restart Services</button>
+    </div>
+  </div>
+  
