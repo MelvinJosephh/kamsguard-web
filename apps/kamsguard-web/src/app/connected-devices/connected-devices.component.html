@@ -1,0 +1,16 @@
+<div class="camera-cards">
+    <mat-card *ngFor="let camera of cameras" class="camera-card">
+      <mat-card-header>
+        <mat-card-title>{{ camera.title }}</mat-card-title>
+        <mat-card-subtitle>Physical Camera Number: {{ camera.phys_camera_num }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Resolution:</strong> {{ camera.config.hres }} x {{ camera.config.vres }}</p>
+        <p><strong>Telemetry:</strong> {{ camera.telemetry }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="viewDetails(camera)">View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

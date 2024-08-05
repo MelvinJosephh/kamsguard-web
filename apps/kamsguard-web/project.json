@@ -96,6 +96,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "kamsguard-web:build",
+        "proxyConfig": "src/proxy.conf.json",
         "port": 4200,
         "staticFilePath": "dist/apps/kamsguard-web/browser",
         "spa": true

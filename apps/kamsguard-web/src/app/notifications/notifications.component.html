@@ -1,53 +1,52 @@
 <div class="notifications-container">
-    <mat-toolbar>
-      <span>Notifications</span>
-      <span class="spacer"></span>
-      <mat-form-field appearance="fill">
-        <mat-label>Search</mat-label>
-        <input matInput (input)="onSearch($event)" placeholder="Search by type or date">
-      </mat-form-field>
-    </mat-toolbar>
-  
-    <mat-card class="notifications-card">
-      <mat-card-header>
-        <mat-card-title>Notifications List</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="timestamp">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.timestamp }}</mat-cell>
-          </ng-container>
-  
-          <ng-container matColumnDef="eventType">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Event Type</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{ element.eventType }}</mat-cell>
-          </ng-container>
-  
-          <ng-container matColumnDef="notificationType">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Notification Type</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-chip [color]="getStatusColor(element.notificationType)">
-                {{ element.notificationType }}
-              </mat-chip>
-            </mat-cell>
-          </ng-container>
-  
-          <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <mat-chip [color]="getStatusColor(element.status)">
-                {{ element.status }}
-              </mat-chip>
-            </mat-cell>
-          </ng-container>
-  
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-  
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+  <mat-toolbar>
+    <span>Notifications</span>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput (input)="onSearch($event)" placeholder="Search by type or date">
+    </mat-form-field>
+  </mat-toolbar>
+
+  <mat-card class="notifications-card">
+    <mat-card-header>
+      <mat-card-title>Notifications List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="timestamp">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.timestamp }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="eventType">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Event Type</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.eventType }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="notificationType">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Notification Type</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-chip [color]="getStatusColor(element.notificationType)">
+              {{ element.notificationType }}
+            </mat-chip>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-chip [color]="getStatusColor(element.status)">
+              {{ element.status }}
+            </mat-chip>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>

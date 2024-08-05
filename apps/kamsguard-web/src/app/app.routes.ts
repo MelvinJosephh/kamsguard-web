@@ -11,6 +11,7 @@ import { SystemConfigComponent } from './system-config/system-config.component';
 import { LiveStreamComponent } from './live-stream/live-stream.component';
 import { EventsComponent } from './events/events.component';
 import { ClientsComponent } from './clients/clients.component';
+import { ConnectedDevicesComponent } from './connected-devices/connected-devices.component';
 
 export const appRoutes: Route[] = [
     { path: 'dashboard', component: DashboardComponent },
@@ -24,5 +25,6 @@ export const appRoutes: Route[] = [
     { path: 'system-config', component: SystemConfigComponent },
     { path: 'live-stream', component: LiveStreamComponent },
     { path: 'events', component: EventsComponent },
+    { path: 'connected-devices', component: ConnectedDevicesComponent },
     { path: 'clients', component: ClientsComponent },
 ];
