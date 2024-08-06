@@ -16,7 +16,7 @@
       <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="timestamp">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.timestamp }}</mat-cell>
+          <mat-cell *matCellDef="let element">{{ element.timestamp | date: 'short' }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="eventType">
@@ -36,11 +36,12 @@
         <ng-container matColumnDef="status">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <mat-chip [color]="getStatusColor(element.status)">
+            <mat-chip [ngClass]="getStatusColor(element.status)">
               {{ element.status }}
             </mat-chip>
           </mat-cell>
         </ng-container>
+        
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

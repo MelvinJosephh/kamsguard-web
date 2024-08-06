@@ -7,6 +7,7 @@ import { IClientSubscribeOptions } from 'mqtt';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClient } from '@angular/common/http';
+import { eventMapping } from '../events.mapping';
 
 interface Notification {
   timestamp: string;
@@ -41,6 +42,15 @@ export class NotificationsComponent implements OnInit {
     this.createConnection();
   }
 
+  ngAfterViewInit() {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+  }
+
   createConnection() {
     try {
       console.log('Connecting to MQTT broker...');
@@ -61,10 +71,10 @@ export class NotificationsComponent implements OnInit {
     });
   }
 
+  // Subscribe to the specified mqtt topic and process incoming messages
   doSubscribe() {
     const { topic } = this;
     this.client.observe(topic, { qos: 0 } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      console.log('Received message:', message.payload.toString());
       this.processMessage(message.payload.toString());
     });
   }
@@ -73,31 +83,33 @@ export class NotificationsComponent implements OnInit {
     try {
       const data = JSON.parse(message);
       const { value, extended } = data;
-
+  
       if (value === 1 && extended && extended.length) {
         extended.forEach((event: any) => {
-          // Extract properties
           const { event: eventName, site_id, time } = event;
-
-          // Create a unique identifier for this event
           const eventId = `${eventName}-${site_id}-${time}`;
-
-          // Check if this event already exists in the array
-          if (!this.notifications.some(e => `${e.eventType}-${e.siteId}-${e.timestamp}` === eventId)) {
-            // Add to notifications array
+          const mappedEventName = eventMapping[eventName] || eventName;
+  
+          // Check if notification already exists based on unique combination
+          const existingNotification = this.notifications.find(
+            e => e.eventType === mappedEventName && e.siteId === site_id && e.timestamp === time
+          );
+  
+          if (!existingNotification) {
             const newNotification: Notification = {
               timestamp: time,
-              eventType: eventName,
+              eventType: mappedEventName,
               siteId: site_id,
-              notificationType: 'Email', 
-              status: 'Pending', // Or determine based on logic
+              notificationType: 'Email',
+              status: 'Pending', // Set to 'Pending' initially
             };
-
+  
             this.notifications.push(newNotification);
-            this.dataSource.data = this.notifications;
-
-            // Send email notification
+            this.updateDataSource();
+  
             this.sendEmailNotification(newNotification);
+          } else {
+            console.log(`Notification already exists for event: ${eventId}`);
           }
         });
       }
@@ -105,32 +117,43 @@ export class NotificationsComponent implements OnInit {
       console.error('Error processing message', e);
     }
   }
+  
 
   sendEmailNotification(notification: Notification) {
     const emailData = {
-      subject: `Notification: ${notification.eventType}`,
-      text: `Event Type: ${notification.eventType}\nTimestamp: ${notification.timestamp}\nSite ID: ${notification.siteId}`,
+      subject: `Pre-Alarm Notification: ${notification.eventType}`,
+      eventType: `${notification.eventType}`,
+      timestamp: `${notification.timestamp}`,
+      siteId: `${notification.siteId}`
     };
   
-    this.http.post('http://localhost:3000/send-email', emailData)
+    this.http.post('http://localhost:3000/send-email', emailData, { responseType: 'text' }) // Expecting text response
       .subscribe({
         next: (response: any) => {
           console.log('Email sent successfully:', response);
-          notification.status = 'Sent'; // Set status to 'Sent' on success
-          this.updateDataSource(); // Update the data source to reflect changes
+          this.updateNotificationStatus(notification, 'Sent');
         },
         error: (error) => {
           console.error('Error sending email:', error);
-          notification.status = 'Failed'; // Set status to 'Failed' on error
-          this.updateDataSource(); // Update the data source to reflect changes
+          this.updateNotificationStatus(notification, 'Failed');
         }
       });
   }
   
-  updateDataSource() {
-    this.dataSource.data = [...this.notifications]; // Update the data source with the latest data
+
+  updateNotificationStatus(notification: Notification, status: string) {
+    const index = this.notifications.findIndex(
+      n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
+    );
+    if (index !== -1) {
+      this.notifications[index].status = status;
+      this.updateDataSource();
+    }
   }
-  
+
+  updateDataSource() {
+    this.dataSource.data = [...this.notifications];
+  }
 
   onSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -142,15 +165,16 @@ export class NotificationsComponent implements OnInit {
   getStatusColor(status: string): string {
     switch (status) {
       case 'Sent':
-        return 'primary';
+        return 'status-sent';
       case 'Pending':
-        return 'warn';
+        return 'status-pending';
       case 'Failed':
-        return 'accent'; // Using 'accent' color for failed status
+        return 'status-failed';
       default:
-        return 'basic';
+        return 'status-default';
     }
   }
+  
 
   destroyConnection() {
     try {

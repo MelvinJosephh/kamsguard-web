@@ -31,5 +31,6 @@ export const environment: any = {
     mqttUser: 'guest',
     mqttPass: 'guest',
     protocol: 'ws',
-  }
+  },
+  
 };
