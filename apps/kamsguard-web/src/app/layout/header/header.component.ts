@@ -1,17 +1,3 @@
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { SharedModule } from '../../shared/shared.module';
-// import { RouterModule } from '@angular/router';
-// import { DashboardComponent } from "../../dashboard/dashboard.component";
-
-// @Component({
-//   selector: 'app-header',
-//   standalone: true,
-//   imports: [CommonModule, SharedModule, RouterModule, DashboardComponent],
-//   templateUrl: './header.component.html',
-//   styleUrl: './header.component.css',
-// })
-// export class HeaderComponent {}
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';

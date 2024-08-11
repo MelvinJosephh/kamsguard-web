@@ -12,19 +12,21 @@ import { LiveStreamComponent } from './live-stream/live-stream.component';
 import { EventsComponent } from './events/events.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ConnectedDevicesComponent } from './connected-devices/connected-devices.component';
+import { AuthComponent } from './authentication/authentication.component';
 
 export const appRoutes: Route[] = [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'notifications', component: NotificationsComponent },
-    { path: 'device-management', component: DeviceManagementComponent },
-    { path: 'real-time', component: RealTimeComponent },
-    { path: 'user-management', component: UserManagementComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'support', component: SupportComponent },
+    { path: 'dashboard', component: DashboardComponent, data: { showSidebar: true } },
+    { path: 'notifications', component: NotificationsComponent, data: { showSidebar: true } },
+    { path: 'device-management', component: DeviceManagementComponent, data: { showSidebar: true } },
+    { path: 'real-time', component: RealTimeComponent, data: { showSidebar: true } },
+    { path: 'user-management', component: UserManagementComponent, data: { showSidebar: true } },
+    { path: 'home', component: HomeComponent, data: { showSidebar: true } },
+    { path: 'support', component: SupportComponent, data: { showSidebar: true } },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'system-config', component: SystemConfigComponent },
-    { path: 'live-stream', component: LiveStreamComponent },
-    { path: 'events', component: EventsComponent },
-    { path: 'connected-devices', component: ConnectedDevicesComponent },
+    { path: 'live-stream', component: LiveStreamComponent, data: { showSidebar: true } },
+    { path: 'events', component: EventsComponent, data: { showSidebar: true } },
+    { path: 'connected-devices', component: ConnectedDevicesComponent, data: { showSidebar: true } },
     { path: 'clients', component: ClientsComponent },
+    { path: 'auth', component: AuthComponent },
 ];

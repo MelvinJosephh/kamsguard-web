@@ -1,27 +1,37 @@
 <div class="home-container">
-    <header class="header">
-      <h1>Welcome to KamsGuard</h1>
-      <p>Ensuring Safety Through Advanced Fire Detection</p>
-    </header>
-    <section class="features">
-      <div class="feature-card">
-        <span class="material-icons">notifications</span>
-        <h2>Real-time Alerts</h2>
-        <p>Get immediate notifications for any fire-related incidents.</p>
-      </div>
-      <div class="feature-card">
-        <span class="material-icons">sensors</span>
-        <h2>Detector Status</h2>
-        <p>Monitor the status of all connected fire detectors.</p>
-      </div>
-      <div class="feature-card">
-        <span class="material-icons">alarm</span>
-        <h2>Recent Activity</h2>
-        <p>Review the recent activity of your fire detection system.</p>
-      </div>
-    </section>
-    <footer class="footer">
-      <p>&copy; 2024 KamsGuard. All rights reserved.</p>
-    </footer>
-  </div>
-  
+  <mat-toolbar color="primary" class="header">
+    <span>Welcome to KamsGuard</span>
+    <span class="toolbar-spacer"></span>
+    <span>Ensuring Safety Through Advanced Fire Detection</span>
+  </mat-toolbar>
+
+  <section class="features">
+    <mat-card class="feature-card">
+      <mat-icon>notifications</mat-icon>
+      <mat-card-title>Real-time Alerts</mat-card-title>
+      <mat-card-content>
+        Get immediate notifications for any fire-related incidents.
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="feature-card">
+      <mat-icon>sensors</mat-icon>
+      <mat-card-title>Detector Status</mat-card-title>
+      <mat-card-content>
+        Monitor the status of all connected fire detectors.
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="feature-card">
+      <mat-icon>alarm</mat-icon>
+      <mat-card-title>Recent Activity</mat-card-title>
+      <mat-card-content>
+        Review the recent activity of your fire detection system.
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 KamsGuard. All rights reserved.</p>
+  </footer>
+</div>

@@ -1,14 +1,31 @@
 .live-viewer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #edf4f2;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0; // Light background for better visibility
+}
 
-  video {
-    width: 100%;
-    max-width: 800px;
-    border: 2px solid #31473a;
-    border-radius: 10px;
-  }
+#liveVideo {
+  width: 100%;
+  max-width: 800px; 
+  height: auto;
+  border: 2px solid #21325D; // Border color to match your theme
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #FC5546; // Button color from your theme
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e03e39; // Slightly darker shade for hover effect
 }

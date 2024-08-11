@@ -1,0 +1,67 @@
+<div class="auth-container">
+  <mat-card>
+    <mat-card-title>
+      {{ isLoginMode ? 'Login' : 'Sign Up' }}
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <!-- Name Field -->
+        <mat-form-field appearance="fill" *ngIf="!isLoginMode">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter your name" />
+          <mat-error *ngIf="authForm.controls['name'].hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email Field -->
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Enter your email" required />
+          <mat-error *ngIf="authForm.controls['email'].hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="authForm.controls['email'].hasError('email')">
+            Enter a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Phone Number Field -->
+        <mat-form-field appearance="fill" *ngIf="!isLoginMode">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" placeholder="Enter your phone number" />
+          <mat-error *ngIf="authForm.controls['phoneNumber'].hasError('required')">
+            Phone number is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password Field -->
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Enter your password" required />
+          <mat-error *ngIf="authForm.controls['password'].hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="authForm.controls['password'].hasError('minlength')">
+            Password must be at least 6 characters long
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Subscription Checkbox -->
+        <mat-checkbox formControlName="subscribe" *ngIf="!isLoginMode">
+          Subscribe to notifications
+        </mat-checkbox>
+
+        <!-- Form Actions -->
+        <div class="auth-actions">
+          <button mat-raised-button color="primary" type="submit">
+            {{ isLoginMode ? 'Login' : 'Sign Up' }}
+          </button>
+          <button mat-button type="button" (click)="onSwitchMode()">
+            {{ isLoginMode ? 'Switch to Sign Up' : 'Switch to Login' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

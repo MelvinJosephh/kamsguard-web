@@ -17,12 +17,12 @@ export const environment: any = {
   //   protocol: 'wss',
   // }
   // mqtt: {
-  //   hostname: 'broker.hivemq.com',
-  //   port: 8000, // Use 8883 for TLS
-  //   path: '/mqtt', // Typically empty for non-TLS
-  //   // mqttUser: 'rdctgbmb:rdctgbmb',
-  //   // mqttPass: 'Q38RMeaEo3vuHEY5-swfp8O_qwSJ5n5N',
-  //   protocol: 'ws',
+  //   hostname: 'brisk-charcoal-dog.rmq2.cloudamqp.com',
+  //   port: 443, // Use 5671 for TLS
+  //   path: '/ws/mqtt', // Typically empty for non-TLS
+  //   mqttUser: 'mwoesrer',
+  //   mqttPass: 'v4I0WDWadZTvB6RVbVWWS7WGNKH63nJK',
+  //   protocol: 'wss',
   // }
   mqtt: {
     hostname: '192.168.1.91',

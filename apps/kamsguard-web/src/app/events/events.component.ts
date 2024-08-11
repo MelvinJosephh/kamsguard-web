@@ -68,7 +68,7 @@ export class EventsComponent implements OnInit {
           // Check if this event already exists in the array
           if (!this.events.some(e => `${e.event}-${e.siteId}-${e.time}` === eventId)) {
             // Check for specific alarms and handle them
-            const alarmTypes = ['HIGH_MOVEMENT_ALARM', 'FLAME_ALARM', 'SMOKE_ALARM', 'THERMAL1_ALARM'];
+            const alarmTypes = ['HIGH_MOVEMENT_ALARM', 'FLAME_ALARM', 'SMOKE_ALARM', 'THERMAL1_ALARM', 'THERMAL2_ALARM', 'LOW_LIGHT_ALARM', 'HIGH_LIGHT_ALARM', 'LOW_CONTRAST_ALARM'];
             const alarmDetails: any = {};
   
             alarmTypes.forEach((type) => {
