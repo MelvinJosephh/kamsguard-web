@@ -1,9 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const handlebars = require('handlebars');
-const fs = require('fs');
+const axios = require('axios');
 const moment = require('moment');
-const axios = require('axios');  // Add axios for fetching the image
 const app = express();
 app.use(express.json());
 const cors = require('cors');
@@ -26,29 +24,42 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Endpoint to receive events
+// Helper function to get HTTP client
+function getHttpClient(ipAddress, userName, password) {
+  return axios.create({
+    baseURL: `http://${ipAddress}`,
+    auth: {
+      username: userName,
+      password: password,
+    },
+    responseType: 'arraybuffer', // for binary data
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
+      'Authorization': 'Basic ' + Buffer.from(`${userName}:${password}`).toString('base64')
+    }
+  });
+}
+
+// Endpoint to receive events and send email
 app.post('/send-email', async (req, res) => {
+  const { subject, eventType, siteId, timestamp } = req.body;
 
-  // declared replacement ID
-  const newId = "Kamsware";
-
-  // Extract the values from the request body
-  let { subject, eventType, siteId, timestamp } = req.body;
-
-  // Replace the siteId with the newId
-  siteId = newId;
-
-  // Format the timestamp using moment
-  const formattedTimestamp = moment(timestamp).format("lll");
-
-  console.log('Received event:', { subject, eventType, siteId, timestamp: formattedTimestamp });
+  // Map event types to camera IDs or URLs if needed
+  const cameraId = 1; // Example mapping
+  const ipAddress = '192.168.1.70'; // This can be to your actual IP
+  const userName = process.env.CAMERA_USER; // Adjust with environment variable
+  const password = process.env.CAMERA_PASS; // Adjust with environment variable
 
   try {
-    // Fetch the image from the camera URL
-    const response = await axios.get('http://192.168.1.70/display_pic.cgi?cam=1&res=hi&format=h264', { responseType: 'arraybuffer' });
+    const client = getHttpClient(ipAddress, userName, password);
+    const url = `/cgi-bin/display_pic.cgi?cam=${cameraId}&fields=1&res=hi`;
+    
+    // Fetch image stream and convert to base64
+    const response = await client.get(url);
     const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
-    // Embed the image in the email
+    // Prepare and send email with embedded image
+    const formattedTimestamp = moment(timestamp).format("lll");
     const mailOptions = {
       from: `Kamsguard Support: ${process.env.EMAIL_USER}`,
       to: 'melvin.njuguna@kamsware.com',
@@ -97,7 +108,7 @@ This is an automated email, and responses to this message are not monitored. For
 </table>`,
     };
 
-    // Send the email notification
+    // Send email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
@@ -107,7 +118,6 @@ This is an automated email, and responses to this message are not monitored. For
         res.status(200).json({ status: 'success', message: 'Notification sent' });
       }
     });
-
   } catch (error) {
     console.error('Error fetching the image:', error);
     res.status(500).json({ status: 'error', message: 'Error fetching image' });

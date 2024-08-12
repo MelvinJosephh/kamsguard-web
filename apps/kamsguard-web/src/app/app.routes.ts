@@ -15,12 +15,12 @@ import { ConnectedDevicesComponent } from './connected-devices/connected-devices
 import { AuthComponent } from './authentication/authentication.component';
 
 export const appRoutes: Route[] = [
+    { path: '', component: HomeComponent },
     { path: 'dashboard', component: DashboardComponent, data: { showSidebar: true } },
     { path: 'notifications', component: NotificationsComponent, data: { showSidebar: true } },
     { path: 'device-management', component: DeviceManagementComponent, data: { showSidebar: true } },
     { path: 'real-time', component: RealTimeComponent, data: { showSidebar: true } },
     { path: 'user-management', component: UserManagementComponent, data: { showSidebar: true } },
-    { path: 'home', component: HomeComponent, data: { showSidebar: true } },
     { path: 'support', component: SupportComponent, data: { showSidebar: true } },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'system-config', component: SystemConfigComponent },

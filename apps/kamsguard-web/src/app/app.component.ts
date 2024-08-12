@@ -6,11 +6,12 @@ import { SharedModule } from './shared/shared.module';
 import { SidebarComponent } from "./layout/sidenav/sidenav.component";
 import { SidebarService } from './services/sidebar/sidebar.service';
 import { HomeComponent } from "./home/home.component";
+import { AuthComponent } from "./authentication/authentication.component";
 
 
 @Component({
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, SharedModule, SidebarComponent, HomeComponent],
+  imports: [RouterModule, HeaderComponent, FooterComponent, SharedModule, SidebarComponent, HomeComponent, AuthComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
