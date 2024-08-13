@@ -121,7 +121,7 @@ export class NotificationsComponent implements OnInit {
 
   sendEmailNotification(notification: Notification) {
     const emailData = {
-      subject: `${notification.eventType}`,
+      subject: `Alarm Alert!`,
       eventType: `${notification.eventType}`,
       timestamp: `${notification.timestamp}`,
       siteId: `${notification.siteId}`
@@ -185,3 +185,5 @@ export class NotificationsComponent implements OnInit {
     }
   }
 }
+
+

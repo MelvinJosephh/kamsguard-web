@@ -1,15 +1,16 @@
+<div class="app-container">
+  <div class="app-header">
+    <app-header></app-header>
+  </div>
 
-<div class="app-header" >
-  <app-header></app-header>
-</div>
-<div class="container">
-  <app-sidenav></app-sidenav>
-</div>
+  <div class="main-content">
+    <app-sidenav *ngIf="isSidebarVisible"></app-sidenav>
+    <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 
- <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
-  <!-- Main content goes here -->
-   
-  <router-outlet></router-outlet>
+  <div class="app-footer">
+    <!-- <app-footer></app-footer> -->
+  </div>
 </div>
-
-<app-footer></app-footer> 

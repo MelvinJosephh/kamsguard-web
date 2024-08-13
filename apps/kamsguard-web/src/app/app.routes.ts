@@ -15,7 +15,7 @@ import { ConnectedDevicesComponent } from './connected-devices/connected-devices
 import { AuthComponent } from './authentication/authentication.component';
 
 export const appRoutes: Route[] = [
-    { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'dashboard', component: DashboardComponent, data: { showSidebar: true } },
     { path: 'notifications', component: NotificationsComponent, data: { showSidebar: true } },
     { path: 'device-management', component: DeviceManagementComponent, data: { showSidebar: true } },

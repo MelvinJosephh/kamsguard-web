@@ -17,7 +17,7 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
 
   // Start streaming from camera using ffmpeg
-  const ffmpeg = exec('ffmpeg -f mjpeg -analyzeduration 1000000 -probesize 5000000 -i http://192.168.1.70/display_pic.cgi?cam=1&format=mjpeg -f mpegts -codec:v libx264 -preset ultrafast -tune zerolatency pipe:1');
+  const ffmpeg = exec('ffmpeg -f mjpeg -i http://username:password@192.168.1.70/display_pic.cgi?cam=1 -f mpegts -codec:v libx264 -preset ultrafast -tune zerolatency pipe:1');
   ffmpeg.stdout.on('data', (data) => {
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(data, { binary: true });

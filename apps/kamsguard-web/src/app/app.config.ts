@@ -14,17 +14,12 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     importProvidersFrom(CommonModule, SharedModule,
       MqttModule.forRoot({
-        // hostname:'broker.emqx.io',
-        // port: 8083, // Use 8883 for TLS
-        // path: '/mqtt', // Typically empty for non-TLS
-        // protocol: 'ws',
-
         hostname: environment.mqtt.hostname,
         port: environment.mqtt.port,
         path: environment.mqtt.path,
         protocol: environment.mqtt.protocol as 'ws' | 'wss',
-        // username: 'rdctgbmb:rdctgbmb',
-        // password: 'Q38RMeaEo3vuHEY5-swfp8O_qwSJ5n5N',
+        username: environment.mqtt.mqttUser,
+        password: environment.mqtt.mqttPass,
       } as IMqttServiceOptions),
     ),
   ],

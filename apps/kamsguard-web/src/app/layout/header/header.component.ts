@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserManagementComponent } from '../../user-management/user-management.component';
-import { HomeComponent } from '../../home/home.component';
+// import { HomeComponent } from '../../home/home.component';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { HomeComponent } from '../../home/home.component';
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [CommonModule, SharedModule, RouterModule, DashboardComponent, UserManagementComponent, HomeComponent],
+  imports: [CommonModule, SharedModule, RouterModule, DashboardComponent, UserManagementComponent],
 })
 export class HeaderComponent  {
 

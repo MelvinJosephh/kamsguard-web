@@ -44,6 +44,9 @@ function getHttpClient(ipAddress, userName, password) {
 app.post('/send-email', async (req, res) => {
   const { subject, eventType, siteId, timestamp } = req.body;
 
+  // Map siteId to a more readable value if needed
+  const mappedSiteId = siteId.replace('Kamsware-FV3', 'Kamsware'); // Replace 'Kamsware-FV3' with 'Kamsware'
+
   // Map event types to camera IDs or URLs if needed
   const cameraId = 1; // Example mapping
   const ipAddress = '192.168.1.70'; // This can be to your actual IP
@@ -69,7 +72,7 @@ app.post('/send-email', async (req, res) => {
    <td>
       <table style="border:0" cellpadding="10px" cellspacing="0px" width="800px">
          <tr>
-         <p>${eventType} from ${siteId} on ${formattedTimestamp}.</p>
+         <p>${eventType} from ${mappedSiteId} on ${formattedTimestamp}.</p>
          <p>Please take appropriate action if necessary.</p>
          </tr>
          <tr>
