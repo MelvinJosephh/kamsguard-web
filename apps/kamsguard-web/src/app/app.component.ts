@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from "./layout/header/header.component";
-import { FooterComponent } from "./layout/footer/footer.component";
+import { HeaderComponent } from './core/layout/header/header.component';
+import { FooterComponent } from './core/layout/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
-import { SidebarComponent } from "./layout/sidenav/sidenav.component";
-import { SidebarService } from './services/sidebar/sidebar.service';
-import { HomeComponent } from "./home/home.component";
-import { AuthComponent } from "./authentication/authentication.component";
+import { SidebarComponent } from './core/layout/sidenav/sidenav.component';
+import { HomeComponent } from './core/home/home.component';
+import { AuthComponent } from './core/authentication/authentication.component';
+import { SidebarService } from './features/services/sidebar/sidebar.service';
+
 
 
 @Component({

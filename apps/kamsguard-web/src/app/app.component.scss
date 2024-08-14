@@ -34,11 +34,11 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Sidebar setup */
-.app-sidenav {
-  flex: 0 0 250px; /* Fixed width for the sidebar */
-  background-color: #333;
-  color: white;
-  padding: 20px;
+app-sidenav {
+  width: 300px;
+  position: relative;
+  z-index: 2; /* Ensure it's on top of the content */
+  transition: all 0.3s ease-in-out;
 }
 
 /* Content area */

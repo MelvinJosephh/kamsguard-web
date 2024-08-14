@@ -1,0 +1,34 @@
+<mat-accordion class="event-accordion">
+  <mat-expansion-panel *ngFor="let event of events" [ngClass]="{'critical': event.isCritical}">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="event-title">📧 New Event: {{ event.event }}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="event-details">
+      <table>
+        <tr>
+          <td><strong>Site ID:</strong></td>
+          <td>{{ event.siteId }}</td>
+        </tr>
+        <tr>
+          <td><strong>Event Time:</strong></td>
+          <td>{{ event.time | date: 'short' }}</td>
+        </tr>
+        <tr>
+          <td><strong>Event Type:</strong></td>
+          <td>{{ event.event }}</td>
+        </tr>
+        <!-- Add more rows here if needed -->
+      </table>
+      <div class="event-details-json">
+        <strong>Details:</strong>
+        <pre>{{ event.details | json }}</pre>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div *ngIf="events.length === 0" class="no-events">
+  No events to display.
+</div>
