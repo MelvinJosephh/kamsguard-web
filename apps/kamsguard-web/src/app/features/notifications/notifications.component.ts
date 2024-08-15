@@ -1,23 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { IClientSubscribeOptions } from 'mqtt';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MqttService } from '../services/mqtt/mqtt.service';
 
 interface Notification {
   timestamp: string;
   eventType: string;
   siteId?: string;
-  notificationType: string; // e.g., email, SMS
-  status: string; // e.g., sent, pending, failed
+  notificationType: string;
+  status: string;
 }
 
 @Component({
@@ -31,18 +29,20 @@ export class NotificationsComponent implements OnInit {
   notifications: Notification[] = [];
   displayedColumns: string[] = ['timestamp', 'eventType', 'notificationType', 'status'];
   dataSource = new MatTableDataSource<Notification>(this.notifications);
-  private topic = '#'; // Change to the specific topic for notifications
-  client: MqttService;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | null = null;
   @ViewChild(MatSort, { static: false }) sort: MatSort | null = null;
 
-  constructor(private mqttService: MqttService, private http: HttpClient) {
-    this.client = this.mqttService;
+  constructor(private mqttService: MqttService) {
+    this.mqttService.eventProcessed.subscribe(event => {
+      this.processEventInComponent(event.eventType, event.siteId, event.timestamp, event.status);
+    });
   }
+  
 
   ngOnInit(): void {
-    this.createConnection();
+    this.mqttService.createConnection();
+    console.log('NotificationsComponent initialized');
   }
 
   ngAfterViewInit() {
@@ -54,166 +54,19 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
-  createConnection() {
-    try {
-      console.log('Connecting to MQTT broker...');
-      this.client.connect();
-    } catch (error) {
-      console.log('MQTT connect error:', error);
-    }
-    this.client.onConnect.subscribe(() => {
-      console.log('Connection succeeded!');
-      this.doSubscribe();
-    });
-    this.client.onError.subscribe((error: any) => {
-      console.log('Connection failed', error);
-    });
-    this.client.onMessage.subscribe((packet: IMqttMessage) => {
-      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
-      this.processMessage(packet.payload.toString());
-    });
-  }
-
-  // Subscribe to the specified mqtt topic and process incoming messages
-  doSubscribe() {
-    const { topic } = this;
-    this.client.observe(topic, { qos: 0 } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      this.processMessage(message.payload.toString());
-    });
-  }
-
-  // processMessage(message: string) {
-  //   try {
-  //     const data = JSON.parse(message);
-  //     const { value, extended } = data;
-  
-  //     if (value === 1 && extended && extended.length) {
-  //       extended.forEach((event: any) => {
-  //         const { event: eventName, site_id, time } = event;
-  //         const eventId = `${eventName}-${site_id}-${time}`;
-  //         const mappedEventName = eventMapping[eventName] || eventName;
-  
-  //         // Check if notification already exists based on unique combination
-  //         const existingNotification = this.notifications.find(
-  //           e => e.eventType === mappedEventName && e.siteId === site_id && e.timestamp === time
-  //         );
-  
-  //         if (!existingNotification) {
-  //           const newNotification: Notification = {
-  //             timestamp: time,
-  //             eventType: mappedEventName,
-  //             siteId: site_id,
-  //             notificationType: 'Email',
-  //             status: 'Pending', // Set to 'Pending' initially
-  //           };
-  
-  //           this.notifications.push(newNotification);
-  //           this.updateDataSource();
-  
-  //           this.sendEmailNotification(newNotification);
-  //         } else {
-  //           console.log(`Notification already exists for event: ${eventId}`);
-  //         }
-  //       });
-  //     }
-  //   } catch (e) {
-  //     console.error('Error processing message', e);
-  //   }
-  // }
-
-  processMessage(message: string) {
-    try {
-      // Parse the incoming message
-      const data = JSON.parse(message);
-      const { value, extended } = data;
-  
-      // Only process the message if value is 1
-      if (value === 1 && extended && extended.length) {
-        extended.forEach((event: any) => {
-          // Extract event details
-          const { event: eventName, site_id, time, ...details } = event;
-  
-          // Check for and process nested `extended` events
-          for (const key in details) {
-            if (details[key]?.extended) {
-              details[key].extended.forEach((nestedEvent: any) => {
-                const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-                // Process only nested events
-                this.processEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
-              });
-            }
-          }
-        });
-      } else {
-        console.log('Ignoring message with value other than 1');
-      }
-    } catch (e) {
-      console.error('Error processing message', e);
-    }
-  }
-  
-  
-  
-  // Helper function to process individual events
-  processEvent(eventName: string, siteId: string, time: string, details: any) {
-    const eventId = `${eventName}-${siteId}-${time}`;
-  
-    // Check if notification already exists based on unique combination
-    const existingNotification = this.notifications.find(
-      e => e.eventType === eventName && e.siteId === siteId && e.timestamp === time
-    );
-  
-    if (!existingNotification) {
-      const newNotification: Notification = {
-        timestamp: time,
-        eventType: eventName,
-        siteId: siteId,
-        notificationType: 'Email',
-        status: 'Pending', // Set to 'Pending' initially
-      };
-  
-      this.notifications.push(newNotification);
-      this.updateDataSource();
-  
-      this.sendEmailNotification(newNotification);
-    } else {
-      console.log(`Notification already exists for event: ${eventId}`);
-    }
-  }
-  
-  
-
-  sendEmailNotification(notification: Notification) {
-    const emailData = {
-      subject: `Alarm Alert!`,
-      eventType: `${notification.eventType}`,
-      timestamp: `${notification.timestamp}`,
-      siteId: `${notification.siteId}`
+  processEventInComponent(eventName: string, siteId: string, time: string, status: string) {
+    const newNotification: Notification = {
+      timestamp: time,
+      eventType: eventName,
+      siteId: siteId,
+      notificationType: 'Email',
+      status: status, // set the initial status to pending
     };
-  
-    this.http.post('http://localhost:3000/send-email', emailData, { responseType: 'text' }) // Expecting text response
-      .subscribe({
-        next: (response: any) => {
-          console.log('Email sent successfully:', response);
-          this.updateNotificationStatus(notification, 'Sent');
-        },
-        error: (error) => {
-          console.error('Error sending email:', error);
-          this.updateNotificationStatus(notification, 'Failed');
-        }
-      });
+    
+    this.notifications.push(newNotification);
+    this.updateDataSource();
   }
   
-
-  updateNotificationStatus(notification: Notification, status: string) {
-    const index = this.notifications.findIndex(
-      n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
-    );
-    if (index !== -1) {
-      this.notifications[index].status = status;
-      this.updateDataSource();
-    }
-  }
 
   updateDataSource() {
     this.dataSource.data = [...this.notifications];
@@ -238,16 +91,4 @@ export class NotificationsComponent implements OnInit {
         return 'status-default';
     }
   }
-  
-
-  destroyConnection() {
-    try {
-      this.client.disconnect(true);
-      console.log('Successfully disconnected!');
-    } catch (error: any) {
-      console.log('Disconnect failed', error.toString());
-    }
-  }
 }
-
-
