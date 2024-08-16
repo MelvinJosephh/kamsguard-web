@@ -74,10 +74,10 @@ export class MqttService {
           // this.processEvent(eventName, site_id, time, details);
         });
       } else {
-        console.log('Ignoring message with value other than 1');
+        // console.log('Ignoring message with value other than 1');
       }
     } catch (e) {
-      console.error('Error processing message', e);
+      // console.error('Error processing message', e);
     }
   }
 
@@ -85,7 +85,7 @@ export class MqttService {
     const eventIdentifier = `${eventName}-${siteId}-${time}`;
 
     if (this.processedEvents.has(eventIdentifier)) {
-      console.log(`Event already processed: ${eventIdentifier}`);
+      // console.log(`Event already processed: ${eventIdentifier}`);
       return;
     }
 
@@ -108,7 +108,7 @@ export class MqttService {
       // this.eventProcessed.emit(newNotification);
       this.sendEmailNotification(newNotification, details);
     } else {
-      console.log(`Notification already exists for event: ${eventName}`);
+      // console.log(`Notification already exists for event: ${eventName}`);
     }
   }
 
@@ -124,7 +124,7 @@ export class MqttService {
     this.http.post('http://localhost:3000/send-email', emailData, { responseType: 'text' })
       .subscribe({
         next: (response: any) => {
-          console.log('Email sent successfully:', response);
+          // console.log('Email sent successfully:', response);
           this.updateNotificationStatus(notification, 'Sent');
           // this.eventProcessed.emit(notification);
         },

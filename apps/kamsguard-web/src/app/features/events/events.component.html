@@ -2,7 +2,7 @@
   <mat-expansion-panel *ngFor="let event of events" [ngClass]="{'critical': event.isCritical}">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <span class="event-title">📧 New Event: {{ event.event }}</span>
+        <span class="event-title">📧 New Event: {{ event.eventType }}</span>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="event-details">
@@ -13,11 +13,11 @@
         </tr>
         <tr>
           <td><strong>Event Time:</strong></td>
-          <td>{{ event.time | date: 'short' }}</td>
+          <td>{{ event.timestamp | date: 'short' }}</td>
         </tr>
         <tr>
           <td><strong>Event Type:</strong></td>
-          <td>{{ event.event }}</td>
+          <td>{{ event.eventType }}</td>
         </tr>
         <!-- Add more rows here if needed -->
       </table>

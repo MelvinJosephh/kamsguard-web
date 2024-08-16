@@ -49,4 +49,17 @@ export interface CameraConfig {
     map_hotspots2: string[];
     cameras: Camera[];
   }
-  
+
+export interface ConnectedDevice {
+  siteId: string;
+  localIp: string;
+  responseArea: string;
+  systemCamera: string;
+}
+
+export interface CamFailEvent {
+  site_id: string;
+  event: string;
+  channel: number;
+  time: string;
+}
