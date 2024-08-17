@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
   selector: 'app-clients',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, MatCardModule, MatFormFieldModule],
+  imports: [CommonModule, MatTabsModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule],
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css',
 })

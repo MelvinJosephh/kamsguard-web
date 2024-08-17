@@ -1,11 +1,54 @@
 $primary-color: #21325D;
 $secondary-color: #627792;
-$card-color: #FFFFFF;
+$card-color:  #f5f5f5;
 $text-color: #21325D;
 $header-color: #627792;
 $highlight-color: #FC5546;
 $background-color: #FFFFFF;
 $shadow-color: rgba(0, 0, 0, 0.1);
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+
+  &.visible {
+    animation: slideInLeft 0.5s forwards;
+  }
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+
+  &.visible {
+    animation: slideInRight 0.5s forwards;
+  }
+}
+
 
 .home-container {
   font-family: 'Arial, sans-serif';
@@ -15,6 +58,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   .hero {
     position: relative;
@@ -28,6 +72,22 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       object-fit: cover;
       opacity: 0.9;
     }
+
+    .hero-text h1 {
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
 
     .hero-text {
       position: absolute;
@@ -55,11 +115,24 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     }
   }
 
+  .hero-text button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hero-text button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+
+
   .information {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
+    width: 68%;
+    // justify-content: space-between;
 
     .info-content {
       flex: 1;
@@ -79,38 +152,41 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 80px;
     margin: 40px 0;
 
     .feature-card {
       background-color: $card-color;
       color: $text-color;
-      width: 200px;
-      padding: 25px 15px;
-      border-radius: 15px;
+      width: 250px; 
+      padding: 20px;
+      border-radius: 12px; 
       text-align: center;
       box-shadow: 0 4px 8px $shadow-color;
-      transition: transform 0.3s, box-shadow 0.3s;
-
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      border: 1px solid #e0e0e0; 
+    
       &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 6px 12px $shadow-color;
+        transform: translateY(-5px); 
+        box-shadow: 0 8px 16px $shadow-color; 
+        background-color: lighten($card-color, 5%); 
       }
-
-      .material-icons {
-        font-size: 24px;
+    
+      mat-icon {
+        font-size: 24px; 
         color: $highlight-color;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
-
-      h2 {
-        font-size: 1.4em;
+    
+      mat-card-title {
+        font-size: 1.2em;
         margin: 10px 0;
+        font-weight: bold;
       }
-
-      p {
-        font-size: 1em;
-        color: darken($text-color, 10%);
+    
+      mat-card-content {
+        font-size: 1.0em;
+        color: darken($text-color, 15%);
       }
     }
   }
@@ -141,55 +217,9 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       }
     }
   }
-
-  // .footer {
-  //   text-align: center;
-  //   padding: 20px;
-  //   background-color: $card-color;
-  //   color: $primary-color;
-  //   width: 100%;
-  //   border-radius: 15px;
-  //   box-shadow: 0 -4px 8px $shadow-color;
-  //   margin-top: auto;
-
-  //   .footer-links {
-  //     list-style: none;
-  //     padding: 0;
-  //     margin: 0;
-
-  //     li {
-  //       display: inline;
-  //       margin: 0 10px;
-
-  //       a {
-  //         color: $primary-color;
-  //         text-decoration: none;
-  //         font-size: 1em;
-
-  //         &:hover {
-  //           text-decoration: underline;
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   p {
-  //     margin: 10px 0 0;
-  //     font-size: 1em;
-  //   }
-  // }
+  
 }
-/* Footer setup */
-.app-footer {
-  margin-top: auto; /* Pushes the footer to the bottom */
-  background-color: $card-color;
-  color: $primary-color;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 -4px 8px $shadow-color;
-  border-radius: 15px;
-  width: 100%;
-}
+
 
 
 

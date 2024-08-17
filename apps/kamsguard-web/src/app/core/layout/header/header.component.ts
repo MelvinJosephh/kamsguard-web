@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SidebarService } from '../../../features/services/sidebar/sidebar.service';
 import { CommonModule } from '@angular/common';
@@ -15,13 +15,25 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['./header.component.scss'],
   imports: [CommonModule, RouterModule, UserManagementComponent, MatIconModule, MatToolbarModule],
 })
-export class HeaderComponent  {
+export class HeaderComponent {
+
+  private lastScrollTop = 0;
+  public isHeaderVisible = true;
 
   constructor(private sidebarService: SidebarService) {}
 
   toggleSidebar() {
-  // Check if the button click event is registered
     this.sidebarService.toggleSidebar();
-    // Check if the visibility state is changing
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > this.lastScrollTop && scrollTop > 100) {
+      this.isHeaderVisible = false;
+    } else {
+      this.isHeaderVisible = true;
+    }
+    this.lastScrollTop = scrollTop;
   }
 }

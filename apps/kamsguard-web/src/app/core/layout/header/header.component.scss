@@ -26,39 +26,7 @@
   margin-left: 10px;
 }
 
-.custom-toolbar button {
-  @include menu-item;
-  background-color: #FFFFFF;
-  border: 1px solid #627792;
-  margin-right: 10px;
-
-  &:hover {
-    background-color: #627792;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-
-  &.active {
-    color: #FFFFFF;
-    background-color: #FC5546;
-    border: 1px solid #21325D;
-  }
-
-  &.active:hover {
-    color: #FFFFFF;
-    background-color: #FC5546;
-    border: 1px solid #21325D;
-    box-shadow: 4px 4px 6px #b9b9b9, -4px -4px 6px #ffffff;
-  }
-}
-
-span {
-  font-size: 18px;
-  text-decoration: none !important;
-  color: #21325D;
-}
-
-mat-toolbar {
+.custom-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,32 +34,51 @@ mat-toolbar {
   background-color: #FFFFFF;
   border-bottom: 2px solid #627792;
   padding: 0 16px;
+  transition: top 0.3s ease-in-out;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  &.hidden {
+    top: -56px; /* Hide the toolbar */
+  }
 
   .example-spacer {
     flex: 1 1 auto;
   }
 
-  .neumorphic-button {
-    background: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 3px 3px 8px #b9b9b9, -3px -3px 8px #FFFFFF;
-    transition: all 0.3s;
+  button {
+    @include menu-item;
+    background-color: #FFFFFF;
+    border: 1px solid #627792;
+    margin-right: 10px;
 
     &:hover {
-      box-shadow: 4px 4px 10px #b9b9b9, -4px -4px 10px #FFFFFF;
+      background-color: #627792;
+      color: #FFFFFF;
+      cursor: pointer;
     }
 
     &.active {
-      box-shadow: inset 2px 2px 5px #b9b9b9, inset -2px -2px 5px #FFFFFF;
+      color: #FFFFFF;
+      background-color: #FC5546;
+      border: 1px solid #21325D;
     }
-  }
 
-  .notification-icon {
-    color: #627792;
-    &:hover {
-      color: #21325D;
+    &.active:hover {
+      color: #FFFFFF;
+      background-color: #FC5546;
+      border: 1px solid #21325D;
+      box-shadow: 4px 4px 6px #b9b9b9, -4px -4px 6px #ffffff;
     }
   }
+}
+
+.nav-link {
+  cursor: pointer;
+  color: #21325D;
+  font-size: 0.8em;
+  margin-left: 10px;
 }
 
 .content {

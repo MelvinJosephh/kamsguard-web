@@ -14,7 +14,7 @@ import { UserManagementComponent } from './features/user-management/user-managem
 
 
 export const appRoutes: Route[] = [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     // { path: 'dashboard', component: DashboardComponent, data: { showSidebar: true } },
     { path: 'notifications', component: NotificationsComponent, data: { showSidebar: true } },
     { path: 'device-management', component: DeviceManagementComponent, data: { showSidebar: true } },

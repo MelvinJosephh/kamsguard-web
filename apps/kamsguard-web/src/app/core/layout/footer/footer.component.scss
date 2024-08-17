@@ -1,6 +1,6 @@
 $primary-color: #21325D;
 $secondary-color: #627792;
-$card-color: #FFFFFF;
+$card-color: #f5f5f5;
 $text-color: #21325D;
 $header-color: #627792;
 $highlight-color: #FC5546;
@@ -14,8 +14,9 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     background-color: $card-color;
     color: $primary-color;
     width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 -4px 8px $shadow-color;
+    position: relative;
+    // border-radius: 15px;
+    // box-shadow: 0 -4px 8px $shadow-color;
     margin-top: auto;
 
     .footer-links {

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDividerModule],
+  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule],
   templateUrl: './user-management.component.html',
-  styleUrl: './user-management.component.css',
+  styleUrl: './user-management.component.scss',
 })
 export class UserManagementComponent {
   profile = {

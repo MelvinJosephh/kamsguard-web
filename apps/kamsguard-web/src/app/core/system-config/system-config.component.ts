@@ -5,12 +5,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
   selector: 'app-system-config',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatFormFieldModule, MatListModule, FormsModule, MatTableModule],
+  imports: [CommonModule, MatCardModule, MatFormFieldModule, MatListModule, FormsModule, MatTableModule, MatButtonModule, MatInputModule],
   templateUrl: './system-config.component.html',
   styleUrl: './system-config.component.scss',
 })
