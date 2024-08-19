@@ -39,7 +39,7 @@ export class DeviceManagementComponent implements OnInit {
       console.log('Connection failed', error);
     });
     this.client.onMessage.subscribe((packet: IMqttMessage) => {
-      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
+      // console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
       this.processMessage(packet.payload.toString());
     });
   }
@@ -47,7 +47,7 @@ export class DeviceManagementComponent implements OnInit {
   doSubscribe() {
     const { topic } = this;
     this.client.observe(topic, { qos: 0 } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      console.log('Received message:', message.payload.toString());
+      // console.log('Received message:', message.payload.toString());
       this.processMessage(message.payload.toString());
     });
   }

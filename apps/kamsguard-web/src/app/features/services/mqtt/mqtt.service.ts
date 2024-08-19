@@ -112,6 +112,20 @@ export class MqttService {
     }
   }
 
+
+  
+  updateNotificationStatus(notification: Notification, status: string) {
+    
+    const index = this.notifications.findIndex(
+      n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
+    );
+
+    if (index !== -1) {
+      this.notifications[index].status = status;
+      this.eventProcessed.emit(this.notifications[index]);
+    }
+  }
+
   sendEmailNotification(notification: Notification, details: any) {
     const emailData = {
       subject: `Alarm Alert!`,
@@ -135,26 +149,6 @@ export class MqttService {
       });
   }
 
-  updateNotificationStatus(notification: Notification, status: string) {
-    
-    const index = this.notifications.findIndex(
-      n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
-    );
-
-    if (index !== -1) {
-      this.notifications[index].status = status;
-      this.eventProcessed.emit(this.notifications[index]);
-    }
-  }
-
-  // updateNotificationStatus(notification: Notification, status: string) {
-  //   const index = this.notifications.findIndex(
-  //     n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
-  //   );
-  //   if (index !== -1) {
-  //     this.notifications[index].status = status;
-  //   }
-  // }
 
   destroyConnection() {
     try {

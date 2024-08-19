@@ -1,0 +1,566 @@
+[
+  {
+    "eventType": "LOW_LIGHT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-19T12:32:31.030Z",
+    "details": {
+      "event": "LOW_LIGHT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x7fff",
+      "subchannel_changed_mask": "0x7fff",
+      "time": "2024-08-19T12:32:31.030Z",
+      "unixtime": 1724070751030,
+      "LOWLIGHT": true,
+      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+    },
+    "event": "LOW_LIGHT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x7fff",
+    "subchannel_changed_mask": "0x7fff",
+    "time": "2024-08-19T12:32:31.030Z",
+    "unixtime": 1724070751030,
+    "LOWLIGHT": true,
+    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-19T12:32:31.030Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-19T12:32:31.030Z",
+      "unixtime": 1724070751030,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-19T12:32:31.030Z",
+    "unixtime": 1724070751030,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "eventType": "THERMAL2",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-19T12:36:32.824Z",
+    "details": {
+      "event": "THERMAL2",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0xf720",
+      "subchannel_changed_mask": "0xf720",
+      "time": "2024-08-19T12:36:32.824Z",
+      "unixtime": 1724070992824,
+      "system_camera": 301,
+      "paramset": 1,
+      "THERMAL2": true,
+      "regions": [
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 27,
+          "mean": 22,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 26,
+          "mean": 20,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 26,
+          "mean": 20,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 25,
+          "mean": 19,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 28,
+          "mean": 22,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 29,
+          "peak": 29,
+          "mean": 23,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 29,
+          "mean": 24,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 29,
+          "peak": 27,
+          "mean": 23,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 28,
+          "mean": 24,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 28,
+          "mean": 25,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 28,
+          "mean": 24,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 28,
+          "peak": 27,
+          "mean": 24,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 29,
+          "mean": 22,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 30,
+          "mean": 23,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 29,
+          "mean": 24,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 28,
+          "peak": 28,
+          "mean": 23,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_THERMAL2_ALARM"
+    },
+    "event": "THERMAL2",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 2,
+    "type": "multi",
+    "subchannel_state_mask": "0xf720",
+    "subchannel_changed_mask": "0xf720",
+    "time": "2024-08-19T12:36:32.824Z",
+    "unixtime": 1724070992824,
+    "system_camera": 301,
+    "paramset": 1,
+    "THERMAL2": true,
+    "regions": [
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 27,
+        "mean": 22,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 26,
+        "mean": 20,
+        "topleft": {
+          "x": 25,
+          "y": 0
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 24.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 26,
+        "mean": 20,
+        "topleft": {
+          "x": 50,
+          "y": 0
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 24.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 25,
+        "mean": 19,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 28,
+        "mean": 22,
+        "topleft": {
+          "x": 0,
+          "y": 25
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 29,
+        "peak": 29,
+        "mean": 23,
+        "topleft": {
+          "x": 25,
+          "y": 25
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 49.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 29,
+        "mean": 24,
+        "topleft": {
+          "x": 50,
+          "y": 25
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 49.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 29,
+        "peak": 27,
+        "mean": 23,
+        "topleft": {
+          "x": 75,
+          "y": 25
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 49.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 28,
+        "mean": 24,
+        "topleft": {
+          "x": 0,
+          "y": 50
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 74.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 28,
+        "mean": 25,
+        "topleft": {
+          "x": 25,
+          "y": 50
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 74.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 28,
+        "mean": 24,
+        "topleft": {
+          "x": 50,
+          "y": 50
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 74.58
+        }
+      },
+      {
+        "trigger": false,
+        "threshold": 28,
+        "peak": 27,
+        "mean": 24,
+        "topleft": {
+          "x": 75,
+          "y": 50
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 29,
+        "mean": 22,
+        "topleft": {
+          "x": 0,
+          "y": 75
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 99.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 30,
+        "mean": 23,
+        "topleft": {
+          "x": 25,
+          "y": 75
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 99.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 29,
+        "mean": 24,
+        "topleft": {
+          "x": 50,
+          "y": 75
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 99.58
+        }
+      },
+      {
+        "trigger": true,
+        "threshold": 28,
+        "peak": 28,
+        "mean": 23,
+        "topleft": {
+          "x": 75,
+          "y": 75
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 99.58
+        }
+      }
+    ],
+    "parentEvent": "GLOBAL_THERMAL2_ALARM"
+  },
+  {
+    "eventType": "LOW_LIGHT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-19T12:36:32.908Z",
+    "details": {
+      "event": "LOW_LIGHT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xf77",
+      "subchannel_changed_mask": "0xf77",
+      "time": "2024-08-19T12:36:32.908Z",
+      "unixtime": 1724070992908,
+      "LOWLIGHT": true,
+      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+    },
+    "event": "LOW_LIGHT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xf77",
+    "subchannel_changed_mask": "0xf77",
+    "time": "2024-08-19T12:36:32.908Z",
+    "unixtime": 1724070992908,
+    "LOWLIGHT": true,
+    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+  }
+]

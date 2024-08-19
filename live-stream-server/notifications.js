@@ -8,9 +8,11 @@ const cors = require('cors');
 
 require('dotenv-mono').load();
 
-app.use(cors({
-  origin: 'http://localhost:4200', // Your Angular app's origin
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:4200', // Your Angular app's origin
+  })
+);
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -34,18 +36,33 @@ function getHttpClient(ipAddress, userName, password) {
     },
     responseType: 'arraybuffer', // for binary data
     headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
-      'Authorization': 'Basic ' + Buffer.from(`${userName}:${password}`).toString('base64')
-    }
+      'User-Agent':
+        'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
+      Authorization:
+        'Basic ' + Buffer.from(`${userName}:${password}`).toString('base64'),
+    },
   });
 }
 
 // Endpoint to receive events and send email
 app.post('/send-email', async (req, res) => {
+
+  console.log('Received request body:', req.body);
   const { subject, eventType, siteId, timestamp } = req.body;
 
   // Map siteId to a more readable value if needed
-  const mappedSiteId = siteId.replace('Kamsware-FV3', 'Kamsware'); // Replaced 'Kamsware-FV3' with 'Kamsware'
+  const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
+  const eventMapping = {
+    HIGH_MOVEMENT: 'High Movement Detected',
+    SMOKE: 'Smoke Detected',
+    FLAME: 'Flame Detected',
+    THERMAL1: 'Thermal Warning',
+    THERMAL2: 'Thermal Anomaly Detected',
+    LOW_LIGHT: 'Low contrast alert',
+    HIGH_LIGHT: 'High contrast alert',
+  };
+
+  const mappedEventType = eventMapping[eventType] || eventType;
 
   // Map event types to camera IDs or URLs if needed
   const cameraId = 1; // Example mapping
@@ -56,13 +73,13 @@ app.post('/send-email', async (req, res) => {
   try {
     const client = getHttpClient(ipAddress, userName, password);
     const url = `/cgi-bin/display_pic.cgi?cam=${cameraId}&fields=1&res=hi`;
-    
+
     // Fetch image stream and convert to base64
     const response = await client.get(url);
     const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
     // Prepare and send email with embedded image
-    const formattedTimestamp = moment(timestamp).format("lll");
+    const formattedTimestamp = moment(timestamp).format('lll');
     const mailOptions = {
       from: `Kamsguard Support: ${process.env.EMAIL_USER}`,
       to: 'melvin.njuguna@kamsware.com',
@@ -72,7 +89,7 @@ app.post('/send-email', async (req, res) => {
    <td>
       <table style="border:0" cellpadding="10px" cellspacing="0px" width="800px">
          <tr>
-         <p>${eventType} from ${mappedSiteId} on ${formattedTimestamp}.</p>
+         <p>${mappedEventType} from Camera ${cameraId} at ${mappedSiteId} on ${formattedTimestamp}.</p>
          <p>Please take appropriate action if necessary.</p>
          </tr>
          <tr>
@@ -83,23 +100,12 @@ app.post('/send-email', async (req, res) => {
 </tr>
 <tr>
 <td>
-This is an automated email, and responses to this message are not monitored. For further assistance, please contact our support team at kamsguard.
+<p>This is an automated email, and responses to this message are not monitored. For further assistance, please contact our support team at kamsguard.</p>
+<p>Contact our support: <a href="https://devkamsware.atlassian.net/servicedesk/customer/portal/2">Kamsware Service Desk</a></p>
+<p>Write us an E-Mail: <a href="mailto:servicedesk@kamsware.com">servicedesk@kamsware.com</a></p>
+ <p>Contact us (Mo-Th 07:00 to 17:30, Fr 07:00 to 14:30): +254 88-99-909090</p>
+
 </td>
-</tr>
-<tr>
-      <td colspan="2">
-         <p>Contact our support: <a href="https://devkamsware.atlassian.net/servicedesk/customer/portal/2">Kamsware Service Desk</a></p>
-      </td>
-</tr>
-<tr>
-      <td colspan="2">
-         <p>Write us an E-Mail: <a href="mailto:servicedesk@kamsware.com">servicedesk@kamsware.com</a></p>
-      </td>
-</tr>
-<tr>
-   <td colspan="2">
-      <p>Contact us (Mo-Th 07:00 to 17:30, Fr 07:00 to 14:30): +254 88-99-909090</p>
-   </td>
 </tr>
 <tr>
    <td> Kamsware Consult UG<br>  Brandenburger Weg 12 <br>  33102 Paderborn, Germany <br>
@@ -115,10 +121,14 @@ This is an automated email, and responses to this message are not monitored. For
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ status: 'error', message: 'Error sending notification' });
+        res
+          .status(500)
+          .json({ status: 'error', message: 'Error sending notification' });
       } else {
         console.log('Email sent:', info.response);
-        res.status(200).json({ status: 'success', message: 'Notification sent' });
+        res
+          .status(200)
+          .json({ status: 'success', message: 'Notification sent' });
       }
     });
   } catch (error) {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
 import { IClientSubscribeOptions } from 'mqtt/*';
 import { MqttService as NgxMqttService, IMqttMessage, MqttService } from 'ngx-mqtt';
 
@@ -19,6 +20,7 @@ export class EventsService {
   eventProcessed = new EventEmitter<EventData>(); // Use this name consistently
 
   client: MqttService;
+  private apiUrl = 'http://localhost:3001/events'; // URL to the API
 
   constructor(private mqttService: NgxMqttService, private http: HttpClient) {
     this.client = this.mqttService;
@@ -28,20 +30,18 @@ export class EventsService {
 
   public createConnection() {
     try {
-      console.log('Connecting to MQTT broker...');
       this.client.connect();
     } catch (error) {
       console.log('MQTT connect error:', error);
     }
     this.client.onConnect.subscribe(() => {
-      console.log('Connection succeeded!');
+      console.log('Mqtt connection succeeded!');
       this.doSubscribe();
     });
     this.client.onError.subscribe((error: any) => {
       console.log('Connection failed', error);
     });
     this.client.onMessage.subscribe((packet: IMqttMessage) => {
-      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
       this.processMessage(packet.payload.toString());
     });
   }
@@ -51,7 +51,6 @@ export class EventsService {
     this.client
       .observe(topic, { qos: 0 } as IClientSubscribeOptions)
       .subscribe((message: IMqttMessage) => {
-        console.log('Received message:', message.payload.toString());
         this.processMessage(message.payload.toString());
       });
   }
@@ -63,8 +62,7 @@ export class EventsService {
 
       if (value === 1 && extended && extended.length) {
         extended.forEach((event: any) => {
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const { event: eventName, site_id, time,  isCritical, ...alarmDetails } = event;
+          const { event: eventName, site_id, time, isCritical, ...alarmDetails } = event;
 
           // Check and process nested extended events
           for (const key in alarmDetails) {
@@ -96,4 +94,20 @@ export class EventsService {
       console.log('Disconnect failed', error.toString());
     }
   }
+
+  // Method to fetch existing events from the backend
+  getEvents(): Observable<EventData[]> {
+    return this.http.get<EventData[]>(this.apiUrl);
+  }
+
+  // Method to save an event to the backend
+saveEvent(event: EventData): Observable<any> {
+  return this.http.post(this.apiUrl, event).pipe(
+    catchError((error: any) => {
+      console.error('Error saving event:', error);
+      return throwError(() => new Error(error));
+    })
+  );
+}
+
 }

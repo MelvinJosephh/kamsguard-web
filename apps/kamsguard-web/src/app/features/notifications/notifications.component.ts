@@ -64,9 +64,34 @@ export class NotificationsComponent implements OnInit {
     };
     
     this.notifications.push(newNotification);
+    console.log(this.notifications)
     this.updateDataSource();
   }
   
+  // processEventInComponent(eventName: string, siteId: string, time: string, status: string) {
+  //   const existingNotification = this.notifications.find(
+  //     n => n.eventType === eventName && n.siteId === siteId && n.timestamp === time
+  //   );
+  
+  //   if (!existingNotification) {
+  //     const newNotification: Notification = {
+  //       timestamp: time,
+  //       eventType: eventName,
+  //       siteId: siteId,
+  //       notificationType: 'Email',
+  //       status: 'Pending', // Initially set to 'Pending'
+  //     };
+      
+  //     this.notifications.push(newNotification);
+  //     this.updateDataSource();
+  //   } else {
+  //     // Update existing notification status if needed
+  //     existingNotification.status = status;
+  //     this.updateDataSource();
+  //   }
+  // }
+  
+
 
   updateDataSource() {
     this.dataSource.data = [...this.notifications];
