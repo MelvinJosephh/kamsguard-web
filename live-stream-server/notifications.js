@@ -47,7 +47,7 @@ function getHttpClient(ipAddress, userName, password) {
 // Endpoint to receive events and send email
 app.post('/send-email', async (req, res) => {
 
-  console.log('Received request body:', req.body);
+  // console.log('Received request body:', req.body);
   const { subject, eventType, siteId, timestamp } = req.body;
 
   // Map siteId to a more readable value if needed

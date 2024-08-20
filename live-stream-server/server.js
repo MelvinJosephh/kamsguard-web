@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 // Serve static files if needed
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // In-memory storage for events
-// let events = [];
+// In-memory storage for events
+let events = [];
 
 // Load existing events from events.json if it exists
 const dbPath = path.join(__dirname, 'events.json');
@@ -40,10 +40,10 @@ app.post('/events', (req, res) => {
       return res.status(400).json({ error: 'Invalid event data' });
     }
 
-    // // Add the new event to the in-memory array
-    // events.push(event);
+    // Add the new event to the array
+    events.push(event);
 
-    // Save to db.json file
+    // Save to events.json file
     fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
 
     res.status(201).json({ message: 'Event saved successfully' });
@@ -52,6 +52,7 @@ app.post('/events', (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

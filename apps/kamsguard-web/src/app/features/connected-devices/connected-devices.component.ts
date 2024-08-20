@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DetectorService } from '../services/detector/detector.service';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { CamFailEvent, ConnectedDevice } from '../models/detector.model';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,9 +14,10 @@ import { CamFailEvent, ConnectedDevice } from '../models/detector.model';
   templateUrl: './connected-devices.component.html',
   styleUrls: ['./connected-devices.component.scss']
 })
-export class ConnectedDevicesComponent implements OnInit {
+export class ConnectedDevicesComponent implements OnInit, OnDestroy {
   connectedDevices: MatTableDataSource<ConnectedDevice> = new MatTableDataSource<ConnectedDevice>([]);
   camFailEvents: MatTableDataSource<CamFailEvent> = new MatTableDataSource<CamFailEvent>([]);
+  private subscriptions: Subscription = new Subscription();
 
   constructor(private detectorService: DetectorService) {}
 
@@ -43,4 +45,10 @@ export class ConnectedDevicesComponent implements OnInit {
   private updateCamFailEvents(event: CamFailEvent): void {
     this.camFailEvents.data = [...this.camFailEvents.data, event];
   }
+
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
 }
