@@ -42,7 +42,18 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.mqttService.createConnection();
-    console.log('NotificationsComponent initialized');
+    this.loadNotifications();
+  }
+  
+  
+  loadNotifications(): void {
+    this.mqttService.getNotifications().subscribe({
+      next: (notifications) => {
+        this.notifications = notifications;
+        this.updateDataSource();
+      },
+      error: (error) => console.error('Error loading notifications:', error)
+    });
   }
 
   ngAfterViewInit() {
@@ -53,6 +64,7 @@ export class NotificationsComponent implements OnInit {
       this.dataSource.sort = this.sort;
     }
   }
+
 
   processEventInComponent(eventName: string, siteId: string, time: string, status: string) {
     const newNotification: Notification = {

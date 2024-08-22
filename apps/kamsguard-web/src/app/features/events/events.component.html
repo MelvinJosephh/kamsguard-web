@@ -1,5 +1,8 @@
 <mat-accordion class="event-accordion">
-  <mat-expansion-panel *ngFor="let event of events" [ngClass]="{'critical': event.isCritical}">
+  <mat-expansion-panel
+    *ngFor="let event of events"
+    [ngClass]="{ critical: event.isCritical }"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         <span class="event-title">📧 New Event: {{ event.eventType }}</span>
@@ -13,13 +16,49 @@
         </tr>
         <tr>
           <td><strong>Event Time:</strong></td>
-          <td>{{ event.timestamp | date: 'short' }}</td>
+          <td>{{ event.timestamp | date : 'short' }}</td>
         </tr>
         <tr>
           <td><strong>Event Type:</strong></td>
           <td>{{ event.eventType }}</td>
         </tr>
         <!-- Add more rows here if needed -->
+
+        <!-- Display threshold value for Thermal1 and Thermal2 events if trigger is true -->
+        <!-- <tr
+        *ngIf="
+          (event.eventType === 'THERMAL1' ||
+            event.eventType === 'THERMAL2') &&
+          event.details.thresholds?.length
+        "
+      >
+        <td><strong>Threshold:</strong></td>
+        <td>{{ event.details.thresholds }}</td>
+      </tr> -->
+
+      <tr
+      *ngIf="
+        (event.eventType === 'THERMAL1' ||
+          event.eventType === 'THERMAL2') &&
+        event.details.thresholds?.length
+      "
+    >
+      <td><strong>Thresholds:</strong></td>
+      <td>
+        <ul>
+          <li *ngFor="let threshold of event.details.thresholds">
+            <strong>Threshold:</strong> {{ threshold.threshold }} |
+            <strong>Peak:</strong> {{ threshold.peak }} |
+            <strong>Mean:</strong> {{ threshold.mean }} |
+            <strong>Top-left:</strong> X:{{ threshold.topleft.x }}, Y:{{ threshold.topleft.y }} |
+            <strong>Bottom-right:</strong> X:{{ threshold.botright.x }}, Y:{{ threshold.botright.y }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+    
+
+      
       </table>
       <!-- <div class="event-details-json">
         <strong>Details:</strong>
@@ -29,6 +68,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<div *ngIf="events.length === 0" class="no-events">
-  No events to display.
-</div>
+<div *ngIf="events.length === 0" class="no-events">No events to display.</div>

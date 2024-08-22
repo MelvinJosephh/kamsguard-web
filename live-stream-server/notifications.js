@@ -3,8 +3,12 @@ const nodemailer = require('nodemailer');
 const axios = require('axios');
 const moment = require('moment');
 const app = express();
+const fs = require('fs');
+const path = require('path');
 app.use(express.json());
 const cors = require('cors');
+
+const notificationsFilePath = path.join(__dirname, 'db.json');
 
 require('dotenv-mono').load();
 
@@ -13,6 +17,37 @@ app.use(
     origin: 'http://localhost:4200', // Your Angular app's origin
   })
 );
+
+// Endpoint to get notifications
+app.get('/notifications', (req, res) => {
+  try {
+    const notifications = readNotificationsFromFile();
+    res.status(200).json(notifications);
+  } catch (error) {
+    console.error('Error retrieving notifications:', error);
+    res
+      .status(500)
+      .json({ status: 'error', message: 'Error retrieving notifications' });
+  }
+});
+
+// Helper function to read notifications from the JSON file
+function readNotificationsFromFile() {
+  if (fs.existsSync(notificationsFilePath)) {
+    const data = fs.readFileSync(notificationsFilePath, 'utf8');
+    return JSON.parse(data);
+  }
+  return [];
+}
+
+// Helper function to write notifications to the JSON file
+function writeNotificationsToFile(notifications) {
+  fs.writeFileSync(
+    notificationsFilePath,
+    JSON.stringify(notifications, null, 2),
+    'utf8'
+  );
+}
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -46,7 +81,6 @@ function getHttpClient(ipAddress, userName, password) {
 
 // Endpoint to receive events and send email
 app.post('/send-email', async (req, res) => {
-
   // console.log('Received request body:', req.body);
   const { subject, eventType, siteId, timestamp } = req.body;
 
@@ -65,10 +99,10 @@ app.post('/send-email', async (req, res) => {
   const mappedEventType = eventMapping[eventType] || eventType;
 
   // Map event types to camera IDs or URLs if needed
-  const cameraId = 1; // Example mapping
-  const ipAddress = '192.168.1.70'; // This can be to your actual IP
-  const userName = process.env.CAMERA_USER; // Adjust with environment variable
-  const password = process.env.CAMERA_PASS; // Adjust with environment variable
+  const cameraId = 1;
+  const ipAddress = '192.168.1.70';
+  const userName = process.env.CAMERA_USER;
+  const password = process.env.CAMERA_PASS;
 
   try {
     const client = getHttpClient(ipAddress, userName, password);
@@ -126,6 +160,19 @@ app.post('/send-email', async (req, res) => {
           .json({ status: 'error', message: 'Error sending notification' });
       } else {
         console.log('Email sent:', info.response);
+
+        // Save notification to the JSON file
+        const notifications = readNotificationsFromFile();
+        notifications.push({
+          subject,
+          eventType: eventType,
+          siteId: mappedSiteId,
+          timestamp: formattedTimestamp,
+          notificationType: 'Email',
+          status: 'Sent',
+        });
+        writeNotificationsToFile(notifications);
+
         res
           .status(200)
           .json({ status: 'success', message: 'Notification sent' });

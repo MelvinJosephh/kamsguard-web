@@ -22,6 +22,10 @@ export class MqttService {
   notifications: Notification[] = [];
   private processedEvents: Set<string> = new Set();
 
+  getNotifications(): Observable<Notification[]> {
+    return this.http.get<Notification[]>('http://localhost:3000/notifications');
+  }
+
   constructor(private mqttService: NgxMqttService, private http: HttpClient) {
     this.client = this;
   }
@@ -113,9 +117,9 @@ export class MqttService {
   }
 
 
-  
+
   updateNotificationStatus(notification: Notification, status: string) {
-    
+
     const index = this.notifications.findIndex(
       n => n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
     );

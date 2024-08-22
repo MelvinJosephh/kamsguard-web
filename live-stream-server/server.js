@@ -6,9 +6,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3001; // Correct port
 
-app.use(cors({
-  origin: 'http://localhost:4200', // Your Angular app's origin
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:4200', // Your Angular app's origin
+  })
+);
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
@@ -52,7 +54,6 @@ app.post('/events', (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
