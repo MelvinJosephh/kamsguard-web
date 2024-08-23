@@ -137,7 +137,7 @@ app.post('/send-email', async (req, res) => {
 <p>This is an automated email, and responses to this message are not monitored. For further assistance, please contact our support team at kamsguard.</p>
 <p>Contact our support: <a href="https://devkamsware.atlassian.net/servicedesk/customer/portal/2">Kamsware Service Desk</a></p>
 <p>Write us an E-Mail: <a href="mailto:servicedesk@kamsware.com">servicedesk@kamsware.com</a></p>
- <p>Contact us (Mo-Th 07:00 to 17:30, Fr 07:00 to 14:30): +254 88-99-909090</p>
+ <p>Contact us (Mo-Th 07:00 to 17:30, Fr 07:00 to 14:30): +49 5251 6868 372 </p>
 
 </td>
 </tr>

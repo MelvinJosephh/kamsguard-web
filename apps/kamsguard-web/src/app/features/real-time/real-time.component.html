@@ -1,82 +1,62 @@
-<div class="system-status-container">
-    <h2>System Status</h2>
-  
-    <!-- Card Grid Container -->
-    <div class="card-grid">
-      <!-- Overall System Status -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>Overall Status</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-chip-listbox>
-            <mat-chip color="primary" *ngIf="systemStatus === 'Operational'">Operational</mat-chip>
-            <mat-chip color="warn" *ngIf="systemStatus === 'Degraded'">Degraded</mat-chip>
-            <mat-chip color="accent" *ngIf="systemStatus === 'Critical'">Critical</mat-chip>
-          </mat-chip-listbox>
-        </mat-card-content>
-      </mat-card>
-  
-      <!-- Connectivity Status -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>Connectivity</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Status: <span [ngClass]="{'online': connectivityStatus === 'Online', 'offline': connectivityStatus === 'Offline'}">{{ connectivityStatus }}</span></p>
-          <p>Last Checked: {{ lastChecked }}</p>
-        </mat-card-content>
-      </mat-card>
-  
-      <!-- System Health -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>System Health</mat-card-title>
-        </mat-card-header>
-        <!-- Optional content for system health -->
-      </mat-card>
-  
-      <!-- Alerts and Notifications -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>Alerts</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list>
-            <mat-list-item *ngFor="let alert of alerts">{{ alert.message }} <span>{{ alert.timestamp }}</span></mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-  
-      <!-- Maintenance Schedule -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>Maintenance Schedule</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list>
-            <mat-list-item *ngFor="let maintenance of maintenances">
-              {{ maintenance.task }} - <span>{{ maintenance.date }}</span>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-  
-      <!-- Connected Cameras -->
-      <mat-card class="status-card">
-        <mat-card-header>
-          <mat-card-title>Connected Cameras</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Number of Connected Cameras: {{ connectedCameras }}</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  
-    <!-- User Interaction -->
-    <div class="actions">
-      <button mat-button (click)="runDiagnostics()">Run Diagnostics</button>
-      <button mat-button (click)="restartServices()">Restart Services</button>
-    </div>
-  </div>
-  
+<div class="events-container">
+  <h2>Recent Events</h2>
+  <table mat-table [dataSource]="events" class="mat-elevation-z8">
+
+    <!-- Camera Column -->
+    <ng-container matColumnDef="cam">
+      <th mat-header-cell *matHeaderCellDef> Camera </th>
+      <td mat-cell *matCellDef="let event"> {{event.cam}} </td>
+    </ng-container>
+
+    <!-- Alarm Column -->
+    <ng-container matColumnDef="alm">
+      <th mat-header-cell *matHeaderCellDef> Alarm </th>
+      <td mat-cell *matCellDef="let event"> {{event.alm}} </td>
+    </ng-container>
+
+    <!-- Index Column -->
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> Index </th>
+      <td mat-cell *matCellDef="let event"> {{event.index}} </td>
+    </ng-container>
+
+    <!-- On Disk Column -->
+    <ng-container matColumnDef="ondisk">
+      <th mat-header-cell *matHeaderCellDef> On Disk </th>
+      <td mat-cell *matCellDef="let event"> {{event.ondisk ? 'Yes' : 'No'}} </td>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let event"> {{event.duration}} </td>
+    </ng-container>
+
+    <!-- Pre Alarm Column -->
+    <ng-container matColumnDef="pre_alarm">
+      <th mat-header-cell *matHeaderCellDef> Pre Alarm </th>
+      <td mat-cell *matCellDef="let event"> {{event.pre_alarm}} </td>
+    </ng-container>
+
+    <!-- Archive Column -->
+    <ng-container matColumnDef="archive">
+      <th mat-header-cell *matHeaderCellDef> Archive </th>
+      <td mat-cell *matCellDef="let event"> {{event.archive}} </td>
+    </ng-container>
+
+    <!-- Entry Status Column -->
+    <ng-container matColumnDef="entry_status">
+      <th mat-header-cell *matHeaderCellDef> Entry Status </th>
+      <td mat-cell *matCellDef="let event"> {{event.entry_status}} </td>
+    </ng-container>
+
+    <!-- Alarm Type Column -->
+    <ng-container matColumnDef="alm_type">
+      <th mat-header-cell *matHeaderCellDef> Alarm Type </th>
+      <td mat-cell *matCellDef="let event"> {{event.alm_type}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['cam', 'alm', 'index', 'ondisk', 'duration', 'pre_alarm', 'archive', 'entry_status', 'alm_type']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['cam', 'alm', 'index', 'ondisk', 'duration', 'pre_alarm', 'archive', 'entry_status', 'alm_type'];"></tr>
+  </table>
+</div>
