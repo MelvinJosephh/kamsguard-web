@@ -1,0 +1,44 @@
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+@include mat.core();
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+
+// Define the theme object.
+$kamsguard-web-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+:root {
+  @include mat.all-component-themes($kamsguard-web-theme);
+}
+
+*{
+    font-family: "Rubik", sans-serif;
+}
+
+html, body {
+   
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #f2f1f1;
+}
+
+.h2 {
+  margin-bottom: 14px;
+  font-size: 30px;
+  color: #0E2B5C;
+}
+.card-header {
+  color: #0E2B5C;
+  font-size: 12px !important;
+}

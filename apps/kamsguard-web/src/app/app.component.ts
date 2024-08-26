@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { SidebarComponent } from './core/layout/sidenav/sidenav.component';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, HeaderComponent, FooterComponent, SidebarComponent, HomeComponent, AuthComponent, CommonModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, SidebarComponent, HomeComponent, AuthComponent, CommonModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

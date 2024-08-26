@@ -26,7 +26,6 @@
           }
         ],
         "styles": [
-          "apps/kamsguard-web/src/custom-theme.scss",
           "apps/kamsguard-web/src/styles.scss"
         ],
         "scripts": [

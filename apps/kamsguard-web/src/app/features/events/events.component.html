@@ -22,19 +22,6 @@
           <td><strong>Event Type:</strong></td>
           <td>{{ event.eventType }}</td>
         </tr>
-        <!-- Add more rows here if needed -->
-
-        <!-- Display threshold value for Thermal1 and Thermal2 events if trigger is true -->
-        <!-- <tr
-        *ngIf="
-          (event.eventType === 'THERMAL1' ||
-            event.eventType === 'THERMAL2') &&
-          event.details.thresholds?.length
-        "
-      >
-        <td><strong>Threshold:</strong></td>
-        <td>{{ event.details.thresholds }}</td>
-      </tr> -->
 
       <tr
       *ngIf="
@@ -60,10 +47,6 @@
 
       
       </table>
-      <!-- <div class="event-details-json">
-        <strong>Details:</strong>
-        <pre>{{ event.details | json }}</pre>
-      </div> -->
     </div>
   </mat-expansion-panel>
 </mat-accordion>

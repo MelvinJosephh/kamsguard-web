@@ -1,5 +1,5 @@
 @mixin menu-item {
-  color: #21325D;
+  color: #0E2b5c;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .brand-logo {
   cursor: pointer;
-  color: #21325D;
+  color: #0E2B5C;
   font-weight: bold;
   font-size: 0.8em;
   margin-left: 10px;
@@ -74,13 +74,24 @@
   }
 }
 
-.nav-link {
-  cursor: pointer;
-  color: #21325D;
-  font-size: 0.8em;
-  margin-left: 10px;
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  padding-right: 80px;
+  
+  .nav-link {
+    cursor: pointer;
+    color: #0E2B5C;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
 }
+
+
+
 
 .content {
   padding: 16px;
 }
+
