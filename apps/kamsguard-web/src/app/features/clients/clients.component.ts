@@ -12,20 +12,20 @@ import { MatInputModule } from '@angular/material/input';
   standalone: true,
   imports: [CommonModule, MatTabsModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule],
   templateUrl: './clients.component.html',
-  styleUrl: './clients.component.css',
+  styleUrl: './clients.component.scss',
 })
 export class ClientsComponent {
   clients = [
     // Sample client data
     {
-      name: 'Client 1',
+      name: 'Kamsware',
       location: 'Location 1',
       sites: [
         { name: 'Site 1', status: 'Online', networkSettings: 'WiFi', detectorConfiguration: 'Default' },
         { name: 'Site 2', status: 'Offline', networkSettings: 'Ethernet', detectorConfiguration: 'Custom' },
       ],
       status: 'Operational',
-      contact: 'contact1@example.com',
+      contact: 'customer@kamsware.com',
       settings: { notifications: 'Email', alertThresholds: 'High' }
     },
     // Add more clients as needed

@@ -1,10 +1,10 @@
 <!-- system-configuration.component.html -->
 <div class="system-configuration-container">
-    <h2>System Configuration</h2>
+    <h2 class="h2">System Configuration</h2>
   
     <!-- Quick Actions -->
     <div class="quick-actions">
-      <h3>Quick Actions</h3>
+      <h3 class="h3">Quick Actions</h3>
       <button mat-button color="primary" (click)="runDiagnostics()">Run Diagnostics</button>
       <button mat-button color="warn" (click)="restartServices()">Restart Services</button>
       <button mat-button color="accent" (click)="updateFirmware()">Update Firmware</button>
@@ -13,7 +13,7 @@
     <!-- Connection Status -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Connection Status</mat-card-title>
+        <mat-card-title class="h3">Connection Status</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <p>Status: <span [ngClass]="{'online': isConnected, 'offline': !isConnected}">{{ isConnected ? 'Connected' : 'Disconnected' }}</span></p>
@@ -24,7 +24,7 @@
     <!-- Logs and Diagnostics -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Logs and Diagnostics</mat-card-title>
+        <mat-card-title class="h3">Logs and Diagnostics</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-list>
@@ -37,7 +37,7 @@
     <!-- Network Configuration -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Network Configuration</mat-card-title>
+        <mat-card-title class="h3">Network Configuration</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form>
@@ -61,7 +61,7 @@
     <!-- Configure Detectors -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Configure Detectors</mat-card-title>
+        <mat-card-title class="h3">Configure Detectors</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-table [dataSource]="detectors">
@@ -82,7 +82,7 @@
     <!-- Configuration Settings -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Configuration Settings</mat-card-title>
+        <mat-card-title class="h3">Configuration Settings</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form>
@@ -102,7 +102,7 @@
     <!-- Maintenance and Updates -->
     <mat-card class="status-card">
       <mat-card-header>
-        <mat-card-title>Maintenance and Updates</mat-card-title>
+        <mat-card-title class="h3">Maintenance and Updates</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-list>

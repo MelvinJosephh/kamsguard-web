@@ -28,11 +28,6 @@ export class SystemConfigComponent  {
   config = { setting1: '', setting2: '' };
   maintenanceTasks = [{ description: 'Clean sensors', schedule: '2024-08-01' }];
 
-  // constructor() {}
-
-  // ngOnInit(): void {
-  //   // Initialization logic here
-  // }
 
   runDiagnostics() {
     console.log('Running diagnostics...');

@@ -23508,5 +23508,2385 @@
     "unixtime": 1724668437780,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T07:53:19.749Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-27T07:53:19.749Z",
+      "unixtime": 1724745199749,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-27T07:53:19.749Z",
+    "unixtime": 1724745199749,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T07:55:21.590Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-27T07:55:21.590Z",
+      "unixtime": 1724745321590,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-27T07:55:21.590Z",
+    "unixtime": 1724745321590,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T12:30:22.564Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-27T12:30:22.564Z",
+      "unixtime": 1724761822564,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-27T12:30:22.564Z",
+    "unixtime": 1724761822564,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "SMOKE",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T12:40:00.351Z",
+    "details": {
+      "event": "SMOKE",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "single",
+      "state": "active",
+      "time": "2024-08-27T12:40:00.351Z",
+      "unixtime": 1724762400351,
+      "system_camera": 1,
+      "paramset": 1,
+      "SMOKE": true,
+      "detection_mode": 1,
+      "alarm_type": 1053184,
+      "alarm_update_counter": 34002,
+      "regions": [
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 0
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_S_ALARM"
+    },
+    "event": "SMOKE",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "single",
+    "state": "active",
+    "time": "2024-08-27T12:40:00.351Z",
+    "unixtime": 1724762400351,
+    "system_camera": 1,
+    "paramset": 1,
+    "SMOKE": true,
+    "detection_mode": 1,
+    "alarm_type": 1053184,
+    "alarm_update_counter": 34002,
+    "regions": [
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 0
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 0
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 0
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 25
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 25
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 25
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 25
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 50
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 50
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 50
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 50
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 75
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 75
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 75
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 75
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 99.58
+        }
+      }
+    ],
+    "parentEvent": "GLOBAL_S_ALARM"
+  },
+  {
+    "eventType": "SMOKE",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T12:49:09.412Z",
+    "details": {
+      "event": "SMOKE",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "single",
+      "state": "active",
+      "time": "2024-08-27T12:49:09.412Z",
+      "unixtime": 1724762949412,
+      "system_camera": 1,
+      "paramset": 1,
+      "SMOKE": true,
+      "detection_mode": 1,
+      "alarm_type": 1053184,
+      "alarm_update_counter": 36761,
+      "regions": [
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 0
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_S_ALARM"
+    },
+    "event": "SMOKE",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "single",
+    "state": "active",
+    "time": "2024-08-27T12:49:09.412Z",
+    "unixtime": 1724762949412,
+    "system_camera": 1,
+    "paramset": 1,
+    "SMOKE": true,
+    "detection_mode": 1,
+    "alarm_type": 1053184,
+    "alarm_update_counter": 36761,
+    "regions": [
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 0
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 0
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 0
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 25
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 25
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 25
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 25
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 50
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 50
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 50
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 50
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 75
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 75
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 75
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 75
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 99.58
+        }
+      }
+    ],
+    "parentEvent": "GLOBAL_S_ALARM"
+  },
+  {
+    "eventType": "SMOKE",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T12:50:02.465Z",
+    "details": {
+      "event": "SMOKE",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "single",
+      "state": "active",
+      "time": "2024-08-27T12:50:02.465Z",
+      "unixtime": 1724763002465,
+      "system_camera": 1,
+      "paramset": 1,
+      "SMOKE": true,
+      "detection_mode": 1,
+      "alarm_type": 1053184,
+      "alarm_update_counter": 37042,
+      "regions": [
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 0
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_S_ALARM"
+    },
+    "event": "SMOKE",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "single",
+    "state": "active",
+    "time": "2024-08-27T12:50:02.465Z",
+    "unixtime": 1724763002465,
+    "system_camera": 1,
+    "paramset": 1,
+    "SMOKE": true,
+    "detection_mode": 1,
+    "alarm_type": 1053184,
+    "alarm_update_counter": 37042,
+    "regions": [
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 0
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 0
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 0
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 25
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 25
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 25
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 25
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 50
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 50
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 50
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 50
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 75
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 75
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 75
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 75
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 99.58
+        }
+      }
+    ],
+    "parentEvent": "GLOBAL_S_ALARM"
+  },
+  {
+    "eventType": "SMOKE",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T12:51:10.590Z",
+    "details": {
+      "event": "SMOKE",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "single",
+      "state": "active",
+      "time": "2024-08-27T12:51:10.590Z",
+      "unixtime": 1724763070590,
+      "system_camera": 1,
+      "paramset": 1,
+      "SMOKE": true,
+      "detection_mode": 1,
+      "alarm_type": 1053184,
+      "alarm_update_counter": 37398,
+      "regions": [
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 0
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "wait_timing_state": 2,
+          "wait_target_time": 0,
+          "trigger_state": 2,
+          "trigger_flags": 4096,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_S_ALARM"
+    },
+    "event": "SMOKE",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "single",
+    "state": "active",
+    "time": "2024-08-27T12:51:10.590Z",
+    "unixtime": 1724763070590,
+    "system_camera": 1,
+    "paramset": 1,
+    "SMOKE": true,
+    "detection_mode": 1,
+    "alarm_type": 1053184,
+    "alarm_update_counter": 37398,
+    "regions": [
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 0
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 0
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 0
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 25
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 25
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 25
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 25
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 49.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 50
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 50
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 50
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 50
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 0,
+          "y": 75
+        },
+        "botright": {
+          "x": 24.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 25,
+          "y": 75
+        },
+        "botright": {
+          "x": 49.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 50,
+          "y": 75
+        },
+        "botright": {
+          "x": 74.69,
+          "y": 99.58
+        }
+      },
+      {
+        "wait_timing_state": 2,
+        "wait_target_time": 0,
+        "trigger_state": 2,
+        "trigger_flags": 4096,
+        "topleft": {
+          "x": 75,
+          "y": 75
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 99.58
+        }
+      }
+    ],
+    "parentEvent": "GLOBAL_S_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T13:03:42.168Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-27T13:03:42.168Z",
+      "unixtime": 1724763822168,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-27T13:03:42.168Z",
+    "unixtime": 1724763822168,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "FLAME",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T13:11:53.811Z",
+    "details": {
+      "event": "FLAME",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-27T13:11:53.811Z",
+      "unixtime": 1724764313811,
+      "FLAME": true,
+      "parentEvent": "GLOBAL_F_ALARM"
+    },
+    "event": "FLAME",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 2,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-27T13:11:53.811Z",
+    "unixtime": 1724764313811,
+    "FLAME": true,
+    "parentEvent": "GLOBAL_F_ALARM"
+  },
+  {
+    "eventType": "FLAME",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T13:13:58.570Z",
+    "details": {
+      "event": "FLAME",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0x1",
+      "subchannel_changed_mask": "0x1",
+      "time": "2024-08-27T13:13:58.570Z",
+      "unixtime": 1724764438570,
+      "FLAME": true,
+      "parentEvent": "GLOBAL_F_ALARM"
+    },
+    "event": "FLAME",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 2,
+    "type": "multi",
+    "subchannel_state_mask": "0x1",
+    "subchannel_changed_mask": "0x1",
+    "time": "2024-08-27T13:13:58.570Z",
+    "unixtime": 1724764438570,
+    "FLAME": true,
+    "parentEvent": "GLOBAL_F_ALARM"
+  },
+  {
+    "eventType": "FLAME",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T13:15:03.015Z",
+    "details": {
+      "event": "FLAME",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0x1",
+      "subchannel_changed_mask": "0x1",
+      "time": "2024-08-27T13:15:03.015Z",
+      "unixtime": 1724764503015,
+      "FLAME": true,
+      "parentEvent": "GLOBAL_F_ALARM"
+    },
+    "event": "FLAME",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 2,
+    "type": "multi",
+    "subchannel_state_mask": "0x1",
+    "subchannel_changed_mask": "0x1",
+    "time": "2024-08-27T13:15:03.015Z",
+    "unixtime": 1724764503015,
+    "FLAME": true,
+    "parentEvent": "GLOBAL_F_ALARM"
+  },
+  {
+    "eventType": "FLAME",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-27T13:15:52.676Z",
+    "details": {
+      "event": "FLAME",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0x1",
+      "subchannel_changed_mask": "0x1",
+      "time": "2024-08-27T13:15:52.676Z",
+      "unixtime": 1724764552676,
+      "FLAME": true,
+      "parentEvent": "GLOBAL_F_ALARM"
+    },
+    "event": "FLAME",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 2,
+    "type": "multi",
+    "subchannel_state_mask": "0x1",
+    "subchannel_changed_mask": "0x1",
+    "time": "2024-08-27T13:15:52.676Z",
+    "unixtime": 1724764552676,
+    "FLAME": true,
+    "parentEvent": "GLOBAL_F_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T07:45:35.017Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x80",
+      "subchannel_changed_mask": "0x80",
+      "time": "2024-08-31T07:45:35.017Z",
+      "unixtime": 1725090335017,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x80",
+    "subchannel_changed_mask": "0x80",
+    "time": "2024-08-31T07:45:35.017Z",
+    "unixtime": 1725090335017,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T07:47:36.619Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x8888",
+      "subchannel_changed_mask": "0x8888",
+      "time": "2024-08-31T07:47:36.619Z",
+      "unixtime": 1725090456619,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x8888",
+    "subchannel_changed_mask": "0x8888",
+    "time": "2024-08-31T07:47:36.619Z",
+    "unixtime": 1725090456619,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T07:49:09.864Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x88",
+      "subchannel_changed_mask": "0x88",
+      "time": "2024-08-31T07:49:09.864Z",
+      "unixtime": 1725090549864,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x88",
+    "subchannel_changed_mask": "0x88",
+    "time": "2024-08-31T07:49:09.864Z",
+    "unixtime": 1725090549864,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T07:56:02.197Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-08-31T07:56:02.197Z",
+      "unixtime": 1725090962197,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-08-31T07:56:02.197Z",
+    "unixtime": 1725090962197,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T08:12:25.374Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x4000",
+      "subchannel_changed_mask": "0x4000",
+      "time": "2024-08-31T08:12:25.374Z",
+      "unixtime": 1725091945374,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x4000",
+    "subchannel_changed_mask": "0x4000",
+    "time": "2024-08-31T08:12:25.374Z",
+    "unixtime": 1725091945374,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T08:28:24.126Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xc888",
+      "subchannel_changed_mask": "0xc888",
+      "time": "2024-08-31T08:28:24.126Z",
+      "unixtime": 1725092904126,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xc888",
+    "subchannel_changed_mask": "0xc888",
+    "time": "2024-08-31T08:28:24.126Z",
+    "unixtime": 1725092904126,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T08:32:08.807Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x4000",
+      "subchannel_changed_mask": "0x4000",
+      "time": "2024-08-31T08:32:08.807Z",
+      "unixtime": 1725093128807,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x4000",
+    "subchannel_changed_mask": "0x4000",
+    "time": "2024-08-31T08:32:08.807Z",
+    "unixtime": 1725093128807,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-08-31T08:54:15.958Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x4000",
+      "subchannel_changed_mask": "0x4000",
+      "time": "2024-08-31T08:54:15.958Z",
+      "unixtime": 1725094455958,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x4000",
+    "subchannel_changed_mask": "0x4000",
+    "time": "2024-08-31T08:54:15.958Z",
+    "unixtime": 1725094455958,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
   }
 ]

@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+
+
+
   isSidebarVisible = false;
 
   constructor(private sidebarService: SidebarService, private el: ElementRef) {}
@@ -34,6 +37,12 @@ onWindowScroll() {
       element.classList.add('visible');
     } 
   });
+}
+scrollToIndustrialSolutions(): void {
+  const element = document.getElementById('industrial-solutions');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 }

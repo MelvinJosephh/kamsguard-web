@@ -33,10 +33,12 @@ export class ConnectedDevicesComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToReportData(): void {
-    this.detectorService.report$.subscribe(data => {
-      this.updateConnectedDevices(data);
-    });
-  }
+    this.subscriptions.add(
+      this.detectorService.report$.subscribe(data => {
+        this.updateConnectedDevices(data);
+      })
+    );
+  }  
 
   private updateConnectedDevices(device: ConnectedDevice): void {
     this.connectedDevices.data = [...this.connectedDevices.data, device];

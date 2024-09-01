@@ -33,18 +33,10 @@
             ><span class="menu-text">Connected Detectors</span></a
           >
         </li>
-        <li>
-          <a
-            routerLink="/notifications"
-            routerLinkActive="active"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">forward_to_inbox</span
-            ><span class="menu-text">Notifications</span></a
-          >
-        </li>
+    
       </ul>
     </li>
-    <li>
+    <!-- <li>
       <a (click)="toggleDashboardSubmenu()">
         <span class="menu-icon material-icons">dashboard</span>
         <span class="menu-text">Dashboard</span>
@@ -59,7 +51,7 @@
           }}</mat-icon>
         </span>
       </a>
-      <!-- Sub-menu for Dashboard with left padding -->
+      Sub-menu for Dashboard with left padding
       <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu">
         <li>
           <a
@@ -92,8 +84,53 @@
           >
         </li>
       </ul>
-    </li>
+    </li> -->
  
+    <li>
+      <a
+        routerLink="/notifications"
+        routerLinkActive="active"
+        (click)="handleLinkClick()"
+        ><span class="menu-icon material-icons">forward_to_inbox</span
+        ><span class="menu-text">Notifications</span></a
+      >
+    </li>
+
+    <li>
+      <a
+        routerLink="/events"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="handleLinkClick()"
+        ><span class="menu-icon material-icons">notifications</span
+        ><span class="menu-text">Events</span></a
+      >
+    </li>
+    <!-- <li>
+      <a
+        routerLink="/device-management"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="handleLinkClick()"
+        ><span class="menu-icon material-icons">sensors</span
+        ><span class="menu-text">Detector Status</span></a
+      >
+    </li> -->
+    <li>
+      <a
+        routerLink="/real-time"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="handleLinkClick()"
+        ><span class="menu-icon material-icons">alarm</span
+        ><span class="menu-text">Recent Activity</span></a
+      >
+    </li>
+
+
+
+
+<!-- 
 
     <li>
       <a
@@ -104,8 +141,8 @@
         <span class="menu-icon material-icons">live_tv</span>
         <span class="menu-text">Live Viewer</span>
       </a>
-    </li>
-    <li>
+    </li> -->
+    <!-- <li>
       <a
         routerLink="/system-config"
         routerLinkActive="active"
@@ -114,7 +151,7 @@
         <span class="menu-icon material-icons">dns</span>
         <span class="menu-text">System Configuration</span>
       </a>
-    </li>
+    </li> -->
     <li>
       <a
         routerLink="/clients"
@@ -122,7 +159,7 @@
         (click)="handleLinkClick()"
       >
         <span class="menu-icon material-icons">manage_accounts</span>
-        <span class="menu-text">Clients</span>
+        <span class="menu-text">Companies</span>
       </a>
     </li>
     <li>
