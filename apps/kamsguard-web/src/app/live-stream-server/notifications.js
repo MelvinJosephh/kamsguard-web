@@ -31,7 +31,6 @@ app.get('/notifications', (req, res) => {
   }
 });
 
-// Helper function to read notifications from the JSON file
 function readNotificationsFromFile() {
   if (fs.existsSync(notificationsFilePath)) {
     const data = fs.readFileSync(notificationsFilePath, 'utf8');
@@ -40,7 +39,6 @@ function readNotificationsFromFile() {
   return [];
 }
 
-// Helper function to write notifications to the JSON file
 function writeNotificationsToFile(notifications) {
   fs.writeFileSync(
     notificationsFilePath,
@@ -49,7 +47,6 @@ function writeNotificationsToFile(notifications) {
   );
 }
 
-// Email configuration
 const transporter = nodemailer.createTransport({
   service: 'kamsware',
   host: 'mail.kamsware.com',
@@ -79,12 +76,12 @@ function getHttpClient(ipAddress, userName, password) {
   });
 }
 
-// Endpoint to receive events and send email
+
 app.post('/send-email', async (req, res) => {
-  // console.log('Received request body:', req.body);
+  
   const { subject, eventType, siteId, timestamp } = req.body;
 
-  // Map siteId to a more readable value if needed
+ 
   const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
   const eventMapping = {
     HIGH_MOVEMENT: 'High Movement Detected',
@@ -98,7 +95,7 @@ app.post('/send-email', async (req, res) => {
 
   const mappedEventType = eventMapping[eventType] || eventType;
 
-  // Map event types to camera IDs or URLs if needed
+ 
   const cameraId = 1;
   const ipAddress = '192.168.1.70';
   const userName = process.env.CAMERA_USER;
@@ -108,11 +105,11 @@ app.post('/send-email', async (req, res) => {
     const client = getHttpClient(ipAddress, userName, password);
     const url = `/cgi-bin/display_pic.cgi?cam=${cameraId}&fields=1&res=hi`;
 
-    // Fetch image stream and convert to base64
+
     const response = await client.get(url);
     const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
-    // Prepare and send email with embedded image
+    
     const formattedTimestamp = moment(timestamp).format('lll');
     const mailOptions = {
       from: `Kamsguard Support: ${process.env.EMAIL_USER}`,

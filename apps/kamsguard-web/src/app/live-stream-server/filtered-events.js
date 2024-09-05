@@ -10,7 +10,7 @@ const port = 3300;
 
 app.use(
     cors({
-        origin: 'http://localhost:4200', // Your Angular app's origin
+        origin: 'http://localhost:4200', 
     })
 );
 

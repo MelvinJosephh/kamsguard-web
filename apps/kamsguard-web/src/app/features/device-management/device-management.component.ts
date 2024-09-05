@@ -12,8 +12,8 @@ import { IClientSubscribeOptions } from 'mqtt';
   styleUrls: ['./device-management.component.scss'],
 })
 export class DeviceManagementComponent implements OnInit {
-  devices: any[] = []; // Initialize as empty, to be populated by MQTT messages
-  private topic = 'NetVu/#'; // Change to the topic you want to subscribe to
+  devices: any[] = []; 
+  private topic = 'NetVu/#'; 
   client: MqttService;
 
   constructor(private mqttService: MqttService) {
@@ -39,7 +39,6 @@ export class DeviceManagementComponent implements OnInit {
       console.log('Connection failed', error);
     });
     this.client.onMessage.subscribe((packet: IMqttMessage) => {
-      // console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
       this.processMessage(packet.payload.toString());
     });
   }
@@ -47,7 +46,6 @@ export class DeviceManagementComponent implements OnInit {
   doSubscribe() {
     const { topic } = this;
     this.client.observe(topic, { qos: 0 } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      // console.log('Received message:', message.payload.toString());
       this.processMessage(message.payload.toString());
     });
   }
@@ -56,26 +54,19 @@ export class DeviceManagementComponent implements OnInit {
     try {
       const data = JSON.parse(message);
   
-      // Check if 'extended' is present and has items
       if (data.extended && data.extended.length > 0) {
         data.extended.forEach((event: any) => {
           const { event: eventType, site_id, time, state } = event;
-  
-          // Determine if the status is online or offline based on the state
           const isOnline = state === 'active';
-  
-          // Update devices array based on the site_id
           const deviceIndex = this.devices.findIndex(device => device.location === site_id);
   
           if (deviceIndex !== -1) {
-            // Device exists, update its status and last activity
             this.devices[deviceIndex] = {
               ...this.devices[deviceIndex],
               status: isOnline ? 'online' : 'offline',
-              lastActivity: time // Update last activity timestamp
+              lastActivity: time 
             };
           } else {
-            // If device doesn't exist, add it
             this.devices.push({
               name: `Device for ${site_id}`,
               status: isOnline ? 'online' : 'offline',

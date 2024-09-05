@@ -3,54 +3,60 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DetectorService } from '../services/detector/detector.service';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { CamFailEvent, ConnectedDevice } from '../models/detector.model';
 import { Subscription } from 'rxjs';
-
+import { Company, Site, Device } from '../models/detector.model';
 
 @Component({
   standalone: true,
-  selector: 'app-connected-devices',
+  selector: 'app-company-overview',
   imports: [MatCardModule, CommonModule, MatTableModule],
   templateUrl: './connected-devices.component.html',
   styleUrls: ['./connected-devices.component.scss']
 })
 export class ConnectedDevicesComponent implements OnInit, OnDestroy {
-  connectedDevices: MatTableDataSource<ConnectedDevice> = new MatTableDataSource<ConnectedDevice>([]);
-  camFailEvents: MatTableDataSource<CamFailEvent> = new MatTableDataSource<CamFailEvent>([]);
+  companies: Company[] = [];
+  displayedColumns: string[] = ['device', 'lastActivity'];
   private subscriptions: Subscription = new Subscription();
 
   constructor(private detectorService: DetectorService) {}
 
   ngOnInit(): void {
-    this.subscribeToCamFail();
-    this.subscribeToReportData();
+    this.subscribeToConnectedDevices();
   }
 
-  private subscribeToCamFail(): void {
-    this.detectorService.camFail$.subscribe(data => {
-      this.updateCamFailEvents(data);
-    });
-  }
-
-  private subscribeToReportData(): void {
+  private subscribeToConnectedDevices(): void {
     this.subscriptions.add(
-      this.detectorService.report$.subscribe(data => {
-        this.updateConnectedDevices(data);
+      this.detectorService.connectedDevices$.subscribe(devices => {
+        this.processDevices(devices);
       })
     );
-  }  
-
-  private updateConnectedDevices(device: ConnectedDevice): void {
-    this.connectedDevices.data = [...this.connectedDevices.data, device];
   }
 
-  private updateCamFailEvents(event: CamFailEvent): void {
-    this.camFailEvents.data = [...this.camFailEvents.data, event];
-  }
+  private processDevices(devices: Device[]): void {
+    const companyMap = new Map<string, Company>();
 
+    devices.forEach(({ site, device, lastActivity }) => {
+      // Assuming site has format like "CompanyName-SiteName"
+      const [companyName, siteName] = site.split('-');
+
+      if (!companyMap.has(companyName)) {
+        companyMap.set(companyName, { companyName, sites: [] });
+      }
+      const company = companyMap.get(companyName)!;
+
+      let siteObj = company.sites.find(s => s.siteName === siteName);
+      if (!siteObj) {
+        siteObj = { siteName, devices: [] };
+        company.sites.push(siteObj);
+      }
+
+      siteObj.devices.push({ site: siteName, device, lastActivity });
+    });
+
+    this.companies = Array.from(companyMap.values());
+  }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
-
 }

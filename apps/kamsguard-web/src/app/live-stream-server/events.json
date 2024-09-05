@@ -25888,5 +25888,715 @@
     "unixtime": 1725094455958,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2012-01-01T15:18:30.400Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x1",
+      "subchannel_changed_mask": "0x1",
+      "time": "2012-01-01T15:18:30.400Z",
+      "unixtime": 1325431110400,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x1",
+    "subchannel_changed_mask": "0x1",
+    "time": "2012-01-01T15:18:30.400Z",
+    "unixtime": 1325431110400,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-03T05:42:30.774Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x88",
+      "subchannel_changed_mask": "0x88",
+      "time": "2024-09-03T05:42:30.774Z",
+      "unixtime": 1725342150774,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x88",
+    "subchannel_changed_mask": "0x88",
+    "time": "2024-09-03T05:42:30.774Z",
+    "unixtime": 1725342150774,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "THERMAL1",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-03T06:05:01.132Z",
+    "details": {
+      "event": "THERMAL1",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0x9",
+      "subchannel_changed_mask": "0x9",
+      "time": "2024-09-03T06:05:01.132Z",
+      "unixtime": 1725343501132,
+      "system_camera": 301,
+      "paramset": 1,
+      "THERMAL1": true,
+      "regions": [
+        {
+          "trigger": true,
+          "threshold": 36,
+          "peak": 41,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 36,
+          "peak": 41,
+          "mean": 19,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 27,
+          "mean": 20,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 24,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 33,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 20,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 21,
+          "mean": 17,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 21,
+          "mean": 17,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_T1_ALARM",
+      "thresholds": [
+        {
+          "threshold": 36,
+          "peak": 41,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "threshold": 36,
+          "peak": 41,
+          "mean": 19,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        }
+      ]
+    },
+    "thresholds": [
+      {
+        "threshold": 36,
+        "peak": 41,
+        "mean": 18,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "threshold": 36,
+        "peak": 41,
+        "mean": 19,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      }
+    ]
+  },
+  {
+    "eventType": "THERMAL2",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-03T06:05:01.134Z",
+    "details": {
+      "event": "THERMAL2",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 2,
+      "type": "multi",
+      "subchannel_state_mask": "0x9",
+      "subchannel_changed_mask": "0x9",
+      "time": "2024-09-03T06:05:01.134Z",
+      "unixtime": 1725343501134,
+      "system_camera": 301,
+      "paramset": 1,
+      "THERMAL2": true,
+      "regions": [
+        {
+          "trigger": true,
+          "threshold": 36,
+          "peak": 41,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 0
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 0
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": true,
+          "threshold": 40,
+          "peak": 41,
+          "mean": 19,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 27,
+          "mean": 20,
+          "topleft": {
+            "x": 0,
+            "y": 25
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 24,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 25
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 25
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 33,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 25
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 49.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 22,
+          "mean": 20,
+          "topleft": {
+            "x": 0,
+            "y": 50
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 50
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 50
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 36,
+          "peak": 21,
+          "mean": 17,
+          "topleft": {
+            "x": 75,
+            "y": 50
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 23,
+          "mean": 19,
+          "topleft": {
+            "x": 0,
+            "y": 75
+          },
+          "botright": {
+            "x": 24.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 40,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 25,
+            "y": 75
+          },
+          "botright": {
+            "x": 49.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 38,
+          "peak": 22,
+          "mean": 19,
+          "topleft": {
+            "x": 50,
+            "y": 75
+          },
+          "botright": {
+            "x": 74.69,
+            "y": 99.58
+          }
+        },
+        {
+          "trigger": false,
+          "threshold": 38,
+          "peak": 21,
+          "mean": 17,
+          "topleft": {
+            "x": 75,
+            "y": 75
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 99.58
+          }
+        }
+      ],
+      "parentEvent": "GLOBAL_T2_ALARM",
+      "thresholds": [
+        {
+          "threshold": 36,
+          "peak": 41,
+          "mean": 18,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 74.58
+          }
+        },
+        {
+          "threshold": 40,
+          "peak": 41,
+          "mean": 19,
+          "topleft": {
+            "x": 75,
+            "y": 0
+          },
+          "botright": {
+            "x": 99.69,
+            "y": 24.58
+          }
+        }
+      ]
+    },
+    "thresholds": [
+      {
+        "threshold": 36,
+        "peak": 41,
+        "mean": 18,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 74.58
+        }
+      },
+      {
+        "threshold": 40,
+        "peak": 41,
+        "mean": 19,
+        "topleft": {
+          "x": 75,
+          "y": 0
+        },
+        "botright": {
+          "x": 99.69,
+          "y": 24.58
+        }
+      }
+    ]
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-03T06:05:01.347Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x8888",
+      "subchannel_changed_mask": "0x8888",
+      "time": "2024-09-03T06:05:01.347Z",
+      "unixtime": 1725343501347,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x8888",
+    "subchannel_changed_mask": "0x8888",
+    "time": "2024-09-03T06:05:01.347Z",
+    "unixtime": 1725343501347,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
+  },
+  {
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-04T13:13:14.126Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x3",
+      "subchannel_changed_mask": "0x3",
+      "time": "2024-09-04T13:13:14.126Z",
+      "unixtime": 1725455594126,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_M_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x3",
+    "subchannel_changed_mask": "0x3",
+    "time": "2024-09-04T13:13:14.126Z",
+    "unixtime": 1725455594126,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_M_ALARM"
   }
 ]

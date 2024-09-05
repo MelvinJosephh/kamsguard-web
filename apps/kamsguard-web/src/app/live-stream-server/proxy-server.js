@@ -3,7 +3,7 @@ const httpProxy = require('http-proxy');
 const cors = require('cors');
 const app = express();
 const port = 5000;
-ws: true;
+// ws: true;
 
 // Enable CORS for requests from Angular app
 app.use(cors({

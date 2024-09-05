@@ -51,10 +51,9 @@ export interface CameraConfig {
   }
 
 export interface ConnectedDevice {
-  siteId: string;
-  localIp: string;
-  responseArea: string;
-  systemCamera: string;
+  site: string;
+  device: string;
+  lastActivity: string;
 }
 
 export interface CamFailEvent {
@@ -62,4 +61,17 @@ export interface CamFailEvent {
   event: string;
   channel: number;
   time: string;
+}
+export interface Device {
+  site: string;
+  device: string;
+  lastActivity: string;
+}
+export interface Site {
+  siteName: string;
+  devices: Device[];
+}
+export interface Company {
+  companyName: string;
+  sites: Site[];
 }

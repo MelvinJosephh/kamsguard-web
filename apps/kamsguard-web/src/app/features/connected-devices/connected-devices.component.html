@@ -1,66 +1,29 @@
-<!-- connected-devices.component.html -->
-<div class="connected-devices">
-  <mat-card class="overview-card">
-    <mat-card-header>
-      <mat-card-title>Connected Detectors</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <table mat-table [dataSource]="connectedDevices">
-        <ng-container matColumnDef="siteId">
-          <th mat-header-cell *matHeaderCellDef> Site ID </th>
-          <td mat-cell *matCellDef="let device"> {{device.siteId}} </td>
+<!-- company-overview.component.html -->
+
+<mat-card *ngFor="let company of companies">
+  <mat-card-header>
+    <mat-card-title>{{ company.companyName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let site of company.sites">
+      <h3>{{ site.siteName }}</h3>
+      <table mat-table [dataSource]="site.devices" class="mat-elevation-z8">
+
+        <!-- Device Column -->
+        <ng-container matColumnDef="device">
+          <th mat-header-cell *matHeaderCellDef> Device </th>
+          <td mat-cell *matCellDef="let device"> {{ device.device }} </td>
         </ng-container>
 
-        <ng-container matColumnDef="localIp">
-          <th mat-header-cell *matHeaderCellDef> Local IP </th>
-          <td mat-cell *matCellDef="let device"> {{device.localIp}} </td>
+        <!-- Last Activity Column -->
+        <ng-container matColumnDef="lastActivity">
+          <th mat-header-cell *matHeaderCellDef> Last Activity </th>
+          <td mat-cell *matCellDef="let device"> {{ device.lastActivity | date:'short' }} </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="responseArea">
-          <th mat-header-cell *matHeaderCellDef> Response Message </th>
-          <td mat-cell *matCellDef="let device"> {{device.responseArea}} </td>
-        </ng-container> -->
-
-        <ng-container matColumnDef="systemCamera">
-          <th mat-header-cell *matHeaderCellDef> System Camera </th>
-          <td mat-cell *matCellDef="let device"> {{device.systemCamera}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="['siteId', 'localIp', 'systemCamera']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['siteId', 'localIp', 'systemCamera'];"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </mat-card-content>
-  </mat-card>
-
-  <!-- <mat-card class="camfail-card">
-    <mat-card-header>
-      <mat-card-title>Detector reset history</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <table mat-table [dataSource]="camFailEvents">
-       
-        <ng-container matColumnDef="siteId">
-          <th mat-header-cell *matHeaderCellDef> Site ID </th>
-          <td mat-cell *matCellDef="let event"> {{event.site_id}} </td>
-        </ng-container>
-  
-      
-        <ng-container matColumnDef="channel">
-          <th mat-header-cell *matHeaderCellDef> Channel </th>
-          <td mat-cell *matCellDef="let event"> {{event.channel}} </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="time">
-          <th mat-header-cell *matHeaderCellDef> Time </th>
-          <td mat-cell *matCellDef="let event"> {{ event.time | date:'short' }} </td>
-        </ng-container>
-  
-      
-        <tr mat-header-row *matHeaderRowDef="['siteId', 'channel', 'time']"></tr>
-      
-        <tr mat-row *matRowDef="let row; columns: ['siteId', 'channel', 'time'];"></tr>
-      </table>
-    </mat-card-content>
-  </mat-card> -->
-  
-</div>
+    </div>
+  </mat-card-content>
+</mat-card>

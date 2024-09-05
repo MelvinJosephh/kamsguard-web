@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MqttService as NgxMqttService, IMqttMessage } from 'ngx-mqtt';
-import { CamFailEvent, ConnectedDevice } from '../../models/detector.model';
+import { CamFailEvent, Device } from '../../models/detector.model';
+// import { CamFailEvent, ConnectedDevice } from '../../models/detector.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ import { CamFailEvent, ConnectedDevice } from '../../models/detector.model';
 export class DetectorService {
 
   private camFailSubject = new Subject<CamFailEvent>();
-  private reportSubject = new Subject<ConnectedDevice>();
+  private connectedDevicesSubject = new Subject<Device[]>();
 
   camFail$ = this.camFailSubject.asObservable();
-  report$ = this.reportSubject.asObservable();
-  private connectedDevices: ConnectedDevice[] = [];
+  connectedDevices$ = this.connectedDevicesSubject.asObservable();
+
+  private connectedDevices: { site: string, device: string, lastActivity: string }[] = [];
 
   constructor(private mqttService: NgxMqttService, private httpClient: HttpClient) {
     this.initializeMqtt();
@@ -29,71 +31,73 @@ export class DetectorService {
   }
 
   private subscribeToTopics() {
-    this.mqttService.observe('NetVu/Kamsware-FV3/event/W_camFail_01').subscribe((message: IMqttMessage) => {
-      this.processCamFailMessage(message.payload.toString());
+    this.mqttService.observe('NetVu/#').subscribe((message: IMqttMessage) => {
+      this.processDeviceMessage(message.payload.toString());
       console.log(message.payload.toString());
     });
-
-    this.mqttService.observe('NetVu/Kamsware-FV3//report').subscribe((message: IMqttMessage) => {
-      this.processReportMessage(message.payload.toString());
-    });
   }
 
-  private processCamFailMessage(payload: string) {
+  // private processDeviceMessage(payload: string) {
+  //   try {
+  //     const data = JSON.parse(payload);
+  //     if (data.extended && data.extended.length) {
+  //       const extended = data.extended[0];
+  //       const site = extended.site_id;
+  //       const device = extended.channel; 
+  //       const lastActivity = extended.time;
+
+  //       // Update or add new device entry
+  //       this.updateConnectedDevices(site, device, lastActivity);
+  //     }
+  //   } catch (e) {
+  //     console.error('Failed to parse device message:', e);
+  //   }
+  // }
+
+  private processDeviceMessage(payload: string) {
     try {
       const data = JSON.parse(payload);
-      console.log('Parsed CAMFAIL data:', data);
-      const event: CamFailEvent = data.extended[0];
-      this.camFailSubject.next(event);
+      const devicesToUpdate: { site: string, device: string, lastActivity: string }[] = [];
+  
+      const extractDevices = (obj: any) => {
+        if (Array.isArray(obj)) {
+          obj.forEach(item => extractDevices(item));
+        } else if (obj && typeof obj === 'object') {
+          // Check if this object is part of the extended data
+          if (obj.site_id && obj.channel !== undefined) {
+            devicesToUpdate.push({
+              site: obj.site_id,
+              device: obj.channel,
+              lastActivity: obj.time
+            });
+          }
+  
+          // Recur for all properties in this object
+          Object.values(obj).forEach(value => extractDevices(value));
+        }
+      };
+  
+      extractDevices(data);
+  
+      // Update or add new device entries
+      devicesToUpdate.forEach(device => this.updateConnectedDevices(device.site, device.device, device.lastActivity));
     } catch (e) {
-      console.error('Failed to parse CAMFAIL message:', e);
+      console.error('Failed to parse device message:', e);
     }
   }
+  
 
-  private processReportMessage(payload: string) {
-    try {
-      const reportData = this.parseReportData(payload);
-      console.log('Parsed report data:', reportData);
-      this.updateConnectedDevices(reportData);
-    } catch (e) {
-      console.error('Failed to process report message:', e);
+
+
+  private updateConnectedDevices(site: string, device: string, lastActivity: string): void {
+    const existingDevice = this.connectedDevices.find(d => d.device === device);
+    if (existingDevice) {
+      existingDevice.lastActivity = lastActivity;
+    } else {
+      this.connectedDevices.push({ site, device, lastActivity });
     }
-  }
 
-  private parseReportData(data: string): ConnectedDevice {
-    const reportLines = data.split('\n');
-    const reportData: { [key: string]: string } = {};
-
-    reportLines.forEach(line => {
-      const [key, value] = line.split(':');
-      if (key && value) {
-        reportData[key.trim()] = value.trim();
-      }
-    });
-
-    return {
-      siteId: reportData['Site-Id'],
-      localIp: reportData['Local-IP'],
-      responseArea: reportData['Response-Area'],
-      systemCamera: reportData['System-Camera']
-    } as ConnectedDevice;
-  }
-
-  private saveDeviceData(device: ConnectedDevice) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.httpClient.post('http://localhost:3600/save-device', device, { headers })
-      .subscribe(response => {
-        console.log('Device saved:', response);
-      }, error => {
-        console.error('Failed to save device:', error);
-      });
-  }
-
-  private updateConnectedDevices(device: ConnectedDevice): void {
-    const existingDevice = this.connectedDevices.find(d => d.systemCamera === device.systemCamera);
-    if (!existingDevice) {
-      this.connectedDevices.push(device); // Use push instead of reassigning the array
-      this.saveDeviceData(device);
-    }
+    // Notify subscribers
+    this.connectedDevicesSubject.next(this.connectedDevices);
   }
 }
