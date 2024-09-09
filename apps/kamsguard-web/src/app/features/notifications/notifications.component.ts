@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -25,7 +25,7 @@ interface Notification {
   imports: [CommonModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatTableModule, MatChipsModule, MatInputModule, MatPaginatorModule],
   styleUrls: ['./notifications.component.scss'],
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsComponent implements OnInit, AfterViewInit {
   notifications: Notification[] = [];
   displayedColumns: string[] = ['timestamp', 'eventType', 'notificationType', 'status'];
   dataSource = new MatTableDataSource<Notification>(this.notifications);
