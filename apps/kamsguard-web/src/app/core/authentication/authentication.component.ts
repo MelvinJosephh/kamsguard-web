@@ -27,7 +27,6 @@ export class AuthComponent {
       subscribe: [false]
     });
 
-    // Initialize form validators based on initial mode
     this.updateValidators();
   }
 
@@ -38,16 +37,15 @@ export class AuthComponent {
 
   updateValidators() {
     if (this.isLoginMode) {
-      // Login mode: disable name and phone number fields
+     
       this.authForm.controls['name'].clearValidators();
       this.authForm.controls['phoneNumber'].clearValidators();
     } else {
-      // Sign up mode: enable name and phone number fields
+     
       this.authForm.controls['name'].setValidators([Validators.required]);
       this.authForm.controls['phoneNumber'].setValidators([Validators.required]);
     }
 
-    // Update form control validation
     this.authForm.controls['name'].updateValueAndValidity();
     this.authForm.controls['phoneNumber'].updateValueAndValidity();
   }

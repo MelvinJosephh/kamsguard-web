@@ -1,5 +1,5 @@
 <div class="home-container">
-  <section class="hero">
+  <!-- <section class="hero">
     <div class="hero-text">
       <h1>
         Protecting Property with Advanced <br />
@@ -13,9 +13,34 @@
       alt="Hero Image"
       class="hero-image"
     />
+  </section> -->
+
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <!-- Shapes and Design Elements -->
+      <div class="iot-design">
+        <!-- Example nodes and lines -->
+        <div class="node"></div>
+        <div class="line"></div>
+        <!-- Add more nodes and connections -->
+      </div>
+      <div class="hero-text">
+        <h1>
+          Protecting Property with Advanced <br />
+          Fire Detection
+        </h1>
+        <p>Discover how our technology keeps you safe.</p>
+        <button mat-raised-button color="primary" (click)="scrollToIndustrialSolutions()">Learn More</button>
+      </div>
+    </div>
   </section>
   
-  <section class="features">
+
+
+  
+  
+  <!-- <section class="features">
     <mat-card class="feature-card">
       <mat-icon>notifications</mat-icon>
       <mat-card-title>Real-time Alerts</mat-card-title>
@@ -39,8 +64,46 @@
         Review the recent activity of your fire detection system.
       </mat-card-content>
     </mat-card>
-  </section>
+  </section> -->
 
+
+  <section class="features">
+    <div class="features-header">
+      <h2 class="features-heading">Our Key Features</h2>
+    </div>
+  
+    <div class="features-cards">
+      <mat-card class="feature-card">
+        <mat-icon>notifications</mat-icon>
+        <mat-card-title>Real-time Alerts</mat-card-title>
+        <mat-card-content>
+          Get immediate notifications for any fire-related incidents.
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="feature-card">
+        <mat-icon class="icon">sensors</mat-icon>
+        <mat-card-title>Detector Status</mat-card-title>
+        <mat-card-content>
+          Monitor the status of all connected fire detectors.
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="feature-card">
+        <mat-icon>alarm</mat-icon>
+        <mat-card-title>Recent Activity</mat-card-title>
+        <mat-card-content>
+          Review the recent activity of your fire detection system.
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  
+
+
+
+
+  
   <section class="information">
     <img
       src="/Kamsware-Fire-Prevention-Systems.jpg"
@@ -75,10 +138,7 @@
     <div class="industrial-solutions-content slide-in-left">
       <h3>KamsGuard Fire Prevention System</h3>
 
-      <p>Don’t give fire a chance—act before it’s too late.</p>
-      <p>
-        Experience unparalleled protection with the KamsGuard Fire Prevention
-        System, your ultimate shield against the unexpected. Our cutting-edge
+      <p> Our cutting-edge
         technology ensures that you’re always a step ahead, detecting fires in
         their earliest stages to prevent disaster before it strikes.
       </p>

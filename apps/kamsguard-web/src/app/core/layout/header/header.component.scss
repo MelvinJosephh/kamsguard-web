@@ -1,29 +1,21 @@
+/* Define a mixin for common styles */
 @mixin menu-item {
-  color: #0E2b5c;
+  color: #21325D; 
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 10px;
   transition: all 0.3s;
 
   .menu-icon {
-    font-size: 20px;
-    margin-right: 8px;
+    font-size: 24px;
+    margin-right: 10px;
   }
 
-  .menu-text {
-    font-weight: bold;
-    font-size: 14px;
-  }
-}
-
-.brand-logo {
-  cursor: pointer;
-  color: #0E2B5C;
-  font-weight: bold;
-  font-size: 0.8em;
-  margin-left: 10px;
+  // .menu-text {
+  //   // Optional: font-weight, font-size adjustments
+  // }
 }
 
 .custom-toolbar {
@@ -32,7 +24,7 @@
   align-items: center;
   height: 56px;
   background-color: #FFFFFF;
-  border-bottom: 2px solid #627792;
+  border-bottom: 1px solid #E0E0E0; 
   padding: 0 16px;
   transition: top 0.3s ease-in-out;
   position: fixed;
@@ -40,58 +32,82 @@
   z-index: 10;
 
   &.hidden {
-    top: -56px; /* Hide the toolbar */
+    top: -56px; 
   }
 
-  .example-spacer {
-    flex: 1 1 auto;
+  .brand-logo {
+    color: #0E2B5C;
+    font-weight: 700; 
+    font-size: 0.9em; 
+    margin-left: 10px;
+    cursor: pointer;
   }
 
   button {
     @include menu-item;
-    background-color: #FFFFFF;
-    border: 1px solid #627792;
-    margin-right: 10px;
+    background-color: transparent; 
+    border: none; 
 
     &:hover {
-      background-color: #627792;
-      color: #FFFFFF;
+      background-color: #F0F0F0; 
+      color: #0E2B5C;
       cursor: pointer;
     }
+  }
 
-    &.active {
-      color: #FFFFFF;
-      background-color: #FC5546;
-      border: 1px solid #21325D;
+  .nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+
+    .nav-link {
+      @include menu-item;
+      cursor: pointer;
+      color: #0E2B5C;
+      font-size: 16px;
+
+      &:hover {
+        background-color: rgb(241, 241, 241); 
+        color: #FC5546; 
+      }
+
+      &.active {
+        color: #0E2B5C;
+        color: #FC5546; 
+      }
     }
+  }
 
-    &.active:hover {
-      color: #FFFFFF;
-      background-color: #FC5546;
-      border: 1px solid #21325D;
-      box-shadow: 4px 4px 6px #b9b9b9, -4px -4px 6px #ffffff;
+  .auth-links-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .auth-link {
+      @include menu-item;
+      color: #0E2B5C;
+      font-size: 16px;
+
+      &:hover {
+        background-color: rgb(241, 241, 241); 
+        color: #FC5546; 
+      }
+
+      &.active {
+        color: #0E2B5C;
+        color: #FC5546; 
+      }
     }
   }
 }
 
-.nav-links-container {
-  display: flex;
-  align-items: center;
-  padding-right: 80px;
-  
-  .nav-link {
-    cursor: pointer;
-    color: #0E2B5C;
-    font-size: 16px;
-    margin-left: 10px;
+@media (max-width: 768px) {
+  .custom-toolbar {
+    padding: 0 8px; 
   }
 
+  .nav-links-container, .auth-links-container {
+    flex-direction: column;
+    gap: 10px; 
+  }
 }
-
-
-
-
-.content {
-  padding: 16px;
-}
-

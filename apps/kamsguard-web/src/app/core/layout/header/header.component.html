@@ -1,21 +1,21 @@
 <mat-toolbar [ngClass]="{'hidden': !isHeaderVisible}" class="custom-toolbar">
   <button
     mat-icon-button
-    class="neumorphic-button"
     aria-label="Toggle Sidebar"
     (click)="toggleSidebar()"
   >
     <mat-icon>menu</mat-icon>
   </button>
-  &nbsp;
   <span class="brand-logo" routerLink="/">Kamsguard Slns</span>
   <span class="example-spacer"></span>
-  
-  <!-- Navigation links wrapped in a div -->
+
   <div class="nav-links-container">
-    <a class="nav-link" routerLink="/">Home</a>
-    <a class="nav-link" routerLink="/contact-us">Support</a>
-    <a class="nav-link" routerLink="/auth">My Account</a>
+    <a class="nav-link" routerLink="/industrial-solutions" routerLinkActive="active">Industrial Solutions</a>
+    <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+    <a class="nav-link" routerLink="/contact-us" routerLinkActive="active">About Us</a>
   </div>
-  
+  <div class="auth-links-container">
+    <a class="auth-link" routerLink="/auth" routerLinkActive="active">Login</a>
+    <a class="auth-link" routerLink="/register" routerLinkActive="active">Register</a>
+  </div>
 </mat-toolbar>
