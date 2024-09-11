@@ -1,54 +1,90 @@
-<mat-accordion class="event-accordion">
-  <mat-expansion-panel
-    *ngFor="let event of events"
-    [ngClass]="{ critical: event.isCritical }"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <span class="event-title">📧 New Event: {{ event.eventType }}</span>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="event-details">
-      <table>
-        <tr>
-          <td><strong>Site ID:</strong></td>
-          <td>{{ event.siteId }}</td>
-        </tr>
-        <tr>
-          <td><strong>Event Time:</strong></td>
-          <td>{{ event.timestamp | date : 'short' }}</td>
-        </tr>
-        <tr>
-          <td><strong>Event Type:</strong></td>
-          <td>{{ event.eventType }}</td>
-        </tr>
+<div class="event-container">
 
-      <tr
-      *ngIf="
-        (event.eventType === 'THERMAL1' ||
-          event.eventType === 'THERMAL2') &&
-        event.details.thresholds?.length
-      "
-    >
-      <td><strong>Thresholds:</strong></td>
-      <td>
-        <ul>
-          <li *ngFor="let threshold of event.details.thresholds">
-            <strong>Threshold:</strong> {{ threshold.threshold }} |
-            <strong>Peak:</strong> {{ threshold.peak }} |
-            <strong>Mean:</strong> {{ threshold.mean }} |
-            <strong>Top-left:</strong> X:{{ threshold.topleft.x }}, Y:{{ threshold.topleft.y }} |
-            <strong>Bottom-right:</strong> X:{{ threshold.botright.x }}, Y:{{ threshold.botright.y }}
-          </li>
-        </ul>
-      </td>
-    </tr>
-    
-
-      
-      </table>
+  <div class="filter-section">
+    <span class="filter-title">Search and Filter Events:</span>
+    <div class="filter-controls">
+      <input 
+        id="search" 
+        type="text" 
+        placeholder="Search by Site ID or Event Type" 
+        [(ngModel)]="filter.search" 
+        (ngModelChange)="filterEvents()"
+        class="search-input"
+      />
+      <button mat-raised-button color="primary" (click)="clearFilters()">Clear Filters</button>
     </div>
-  </mat-expansion-panel>
-</mat-accordion>
+    <div class="filter-tags">
+      <div *ngIf="filter.siteId" class="filter-tag">
+        <span>Site ID: {{ filter.siteId }}</span>
+        <button mat-icon-button (click)="removeFilter('siteId')">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="filter.timestamp" class="filter-tag">
+        <span>Event Time: {{ filter.timestamp | date : 'short' }}</span>
+        <button mat-icon-button (click)="removeFilter('timestamp')">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="filter.eventType" class="filter-tag">
+        <span>Event Type: {{ filter.eventType }}</span>
+        <button mat-icon-button (click)="removeFilter('eventType')">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="notification-list" *ngIf="!selectedEvent">
+    <div
+      class="notification-item"
+      *ngFor="let event of filteredEvents"
+      [ngClass]="{ 'critical': event.isCritical, 'thermal1': event.eventType === 'THERMAL1', 'thermal2': event.eventType === 'THERMAL2' }"
+      (click)="selectEvent(event)"
+    >
+      <div class="notification-summary">
+        <span class="event-title">{{ event.eventType }}</span>
+        <span class="event-time">{{ event.timestamp | date : 'short' }}</span>
+      </div>
+      <button class="delete-button" (click)="deleteEvent(event, $event)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+  </div>
 
-<div *ngIf="events.length === 0" class="no-events">No events to display.</div>
+  <div class="event-details" *ngIf="selectedEvent">
+    <button class="button back-button" (click)="deselectEvent()">
+      <mat-icon>arrow_back</mat-icon> Back to list
+    </button>
+    <table>
+      <tr>
+        <td><strong>Site ID:</strong></td>
+        <td>{{ selectedEvent.siteId }}</td>
+      </tr>
+      <tr>
+        <td><strong>Event Time:</strong></td>
+        <td>{{ selectedEvent.timestamp | date : 'short' }}</td>
+      </tr>
+      <tr>
+        <td><strong>Event Type:</strong></td>
+        <td>{{ selectedEvent.eventType }}</td>
+      </tr>
+      <tr *ngIf="(selectedEvent.eventType === 'THERMAL1' || selectedEvent.eventType === 'THERMAL2') && selectedEvent.details.thresholds?.length">
+        <td><strong>Thresholds:</strong></td>
+        <td>
+          <ul>
+            <li *ngFor="let threshold of selectedEvent.details.thresholds">
+              <strong>Threshold:</strong> {{ threshold.threshold }} |
+              <strong>Peak:</strong> {{ threshold.peak }} |
+              <strong>Mean:</strong> {{ threshold.mean }} |
+              <strong>Top-left:</strong> X:{{ threshold.topleft.x }}, Y:{{ threshold.topleft.y }} |
+              <strong>Bottom-right:</strong> X:{{ threshold.botright.x }}, Y:{{ threshold.botright.y }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="filteredEvents.length === 0" class="no-events">No events to display.</div>
+</div>

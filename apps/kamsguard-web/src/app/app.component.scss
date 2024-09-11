@@ -9,55 +9,52 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 
 
 
-/* General container setup */
+
 .container {
   display: flex;
-  flex-direction: column; /* Arrange children vertically */
-  min-height: 100vh; /* Ensure container takes full viewport height */
+  flex-direction: column; 
+  min-height: 100vh; 
 }
 
-/* Header setup */
+
 .app-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Ensure the header is above other content */
+  z-index: 1000; 
   height: 80px; 
 }
 
-/* Main content and sidebar setup */
 .main-content {
   display: flex;
   flex: 1; 
   margin-top: 40px; 
 }
 
-/* Sidebar setup */
 app-sidenav {
   width: 40px;
   position: relative;
-  z-index: 2; /* Ensure it's on top of the content */
+  z-index: 2; 
   transition: all 0.3s ease-in-out;
 }
 
-/* Content area */
 .content {
-  flex: 1; /* Make content fill the available space */
+  flex: 1; 
   overflow-y: auto;
-  transition: margin-left 0.3s ease; /* Smooth transition for sidebar toggle */
+  transition: margin-left 0.3s ease; 
   min-height: 100vh;
 }
 
-/* Adjust content when sidebar is hidden or shown */
+
 .content.with-sidebar {
-  margin-left: 250px; /* Adjust margin when sidebar is visible */
+  margin-left: 250px; 
   padding-left: 10px;
 
 }
 
 .content.without-sidebar {
-  margin-left: 0; /* No sidebar, no left margin */
+  margin-left: 0; 
   width: 100%;
 }
 

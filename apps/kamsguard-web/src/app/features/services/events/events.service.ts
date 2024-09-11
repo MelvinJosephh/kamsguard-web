@@ -3,53 +3,24 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { IClientSubscribeOptions } from 'mqtt/*';
 import { MqttService as NgxMqttService, IMqttMessage, MqttService } from 'ngx-mqtt';
+import { EventData } from '../../models/event.model';
 
-// export interface EventData {
-//   timestamp: string;
-//   eventType: string;
-//   siteId: string;
-//   details: string;
-//   isCritical?: boolean;
-//   threshold?: number;
-//   trigger?: boolean;
-//   thresholds: [];
-// }
-
-export interface EventData {
-  timestamp: string;
-  eventType: string;
-  siteId: string;
-  details: {
-    [key: string]: any; // Adjust if needed
-    thresholds?: Array<{
-      botright: { x: number; y: number };
-      topleft: { x: number; y: number };
-      mean: any;
-      peak: any; threshold: number
-    }>;
-  };
-  isCritical?: boolean;
-  threshold?: number; // If applicable
-  trigger?: boolean;
-  thresholds?: Array<{ threshold: number }>;
-}
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-
-  eventProcessed = new EventEmitter<EventData>(); // Use this name consistently
+  eventProcessed = new EventEmitter<EventData>(); 
 
   client: MqttService;
-  private apiUrl = 'http://localhost:3001/events'; // URL to the API
+  private apiUrl = 'http://localhost:3001/events'; 
 
   constructor(private mqttService: NgxMqttService, private http: HttpClient) {
     this.client = this.mqttService;
   }
 
-  private topic = 'NetVu/Kamsware-FV3/event/#'; // Change to the topic you want to subscribe to
+  private topic = 'NetVu/Kamsware-FV3/event/#'; 
 
   public createConnection() {
     try {
@@ -87,18 +58,14 @@ export class EventsService {
         extended.forEach((event: any) => {
           const { event: eventName, site_id, time, isCritical, regions, ...alarmDetails } = event;
 
-          // Check and process nested extended events
           for (const key in alarmDetails) {
             if (alarmDetails[key]?.extended) {
               alarmDetails[key].extended.forEach((nestedEvent: any) => {
                 const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-
-                // Initialize thresholds array
+                const eventId = `${nestedEvent.event}-${nestedEvent.site_id}-${nestedEvent.time}`;
                 let thresholds = [];
 
-                // Check if the event is a thermal event and has regions
                 if (nestedEvent.event === 'THERMAL1' || nestedEvent.event === 'THERMAL2') {
-                  // Capture the thresholds of triggered regions
                   if (nestedEvent.regions) {
                     thresholds = nestedEvent.regions
                       .filter((region: any) => region.trigger === true)
@@ -111,17 +78,17 @@ export class EventsService {
                       }));
                   }
 
-                  // Emit event with thresholds
                   this.eventProcessed.emit({
+                    id: eventId,
                     eventType: nestedEvent.event,
                     siteId: nestedEvent.site_id,
                     timestamp: nestedEvent.time,
                     details: { ...nestedDetails, thresholds },
-                    thresholds // Add threshold values
+                    thresholds 
                   });
                 } else {
-                  // Emit event normally if it's not a thermal event
                   this.eventProcessed.emit({
+                    id: eventId,
                     eventType: nestedEvent.event,
                     siteId: nestedEvent.site_id,
                     timestamp: nestedEvent.time,
@@ -139,7 +106,6 @@ export class EventsService {
     }
   }
 
-
   destroyConnection() {
     try {
       this.client.disconnect(true);
@@ -149,12 +115,10 @@ export class EventsService {
     }
   }
 
-  // Method to fetch existing events from the backend
   getEvents(): Observable<EventData[]> {
     return this.http.get<EventData[]>(this.apiUrl);
   }
 
-  // Method to save an event to the backend
   saveEvent(event: EventData): Observable<any> {
     return this.http.post(this.apiUrl, event).pipe(
       catchError((error: any) => {
@@ -164,4 +128,16 @@ export class EventsService {
     );
   }
 
+  deleteEvent(eventId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${eventId}`).pipe(
+      catchError((error: any) => {
+        console.error('Error deleting event:', error);
+        return throwError(() => new Error(error));
+      })
+    );
+  }
+  
+  
 }
+export { EventData };
+

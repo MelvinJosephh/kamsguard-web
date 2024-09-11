@@ -14,11 +14,10 @@ require('dotenv-mono').load();
 
 app.use(
   cors({
-    origin: 'http://localhost:4200', // Your Angular app's origin
+    origin: 'http://localhost:4200', 
   })
 );
 
-// Endpoint to get notifications
 app.get('/notifications', (req, res) => {
   try {
     const notifications = readNotificationsFromFile();
@@ -58,7 +57,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Helper function to get HTTP client
 function getHttpClient(ipAddress, userName, password) {
   return axios.create({
     baseURL: `http://${ipAddress}`,
@@ -66,7 +64,7 @@ function getHttpClient(ipAddress, userName, password) {
       username: userName,
       password: password,
     },
-    responseType: 'arraybuffer', // for binary data
+    responseType: 'arraybuffer', 
     headers: {
       'User-Agent':
         'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
@@ -148,7 +146,7 @@ app.post('/send-email', async (req, res) => {
 </table>`,
     };
 
-    // Send email
+   
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
@@ -158,7 +156,6 @@ app.post('/send-email', async (req, res) => {
       } else {
         console.log('Email sent:', info.response);
 
-        // Save notification to the JSON file
         const notifications = readNotificationsFromFile();
         notifications.push({
           subject,
@@ -181,7 +178,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Notification server running on port ${port}`);

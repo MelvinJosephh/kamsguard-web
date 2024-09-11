@@ -26,7 +26,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
-      // console.log(isVisible)
       this.isSidebarVisible = isVisible;
     });
   }

@@ -3,54 +3,67 @@ const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const { v4: uuidv4 } = require('uuid'); 
 const app = express();
-const port = 3001; // Correct port
+const port = 3001; 
 
 app.use(
   cors({
-    origin: 'http://localhost:4200', // Your Angular app's origin
+    origin: 'http://localhost:4200', 
   })
 );
 
-// Middleware to parse JSON bodies
+
 app.use(bodyParser.json());
 
-// Serve static files if needed
 app.use(express.static(path.join(__dirname, 'public')));
 
-// In-memory storage for events
+
 let events = [];
 
-// Load existing events from events.json if it exists
+
 const dbPath = path.join(__dirname, 'events.json');
 if (fs.existsSync(dbPath)) {
   events = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 }
 
-// Route to get all events
 app.get('/events', (req, res) => {
   res.json(events);
 });
 
-// Route to save an event
 app.post('/events', (req, res) => {
   try {
     const event = req.body;
 
-    // Validate the event object
     if (!event.timestamp || !event.eventType || !event.siteId) {
       return res.status(400).json({ error: 'Invalid event data' });
     }
 
-    // Add the new event to the array
+    event.id = uuidv4();
+
     events.push(event);
 
-    // Save to events.json file
     fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
 
-    res.status(201).json({ message: 'Event saved successfully' });
+    res.status(201).json({ message: 'Event saved successfully', event });
   } catch (error) {
     console.error('Error saving event:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.delete('/events/:id', (req, res) => {
+  try {
+    const eventId = req.params.id;
+
+    events = events.filter(event => event.id !== eventId);
+
+    fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
+
+    res.status(200).json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting event:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

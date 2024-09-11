@@ -57,69 +57,6 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   flex-direction: column;
   align-items: center;
 
-  // .hero {
-  //   position: relative;
-  //   width: 100%;
-  //   margin-bottom: 40px;
-  //   height: 100vh;
-
-  //   .hero-image {
-  //     width: 100%;
-  //     height: 100vh;
-  //     object-fit: cover;
-  //     // opacity: 0.9;
-  //   }
-
-  //   .hero-text h1 {
-  //     animation: fadeIn 1.2s ease-in-out forwards;
-  //   }
-
-  //   @keyframes fadeIn {
-  //     0% {
-  //       opacity: 0;
-  //       transform: translateY(20px);
-  //     }
-  //     100% {
-  //       opacity: 1;
-  //       transform: translateY(0);
-  //     }
-  //   }
-
-  //   .hero-text {
-  //     position: absolute;
-  //     top: 40%;
-  //     left: 20px; // Adjust this value as needed
-  //     transform: translateY(-50%);
-  //     color: $card-color;
-  //     padding: 20px;
-  //     max-width: 80%;
-
-  //     h1 {
-  //       font-size: 45px;
-  //       font-weight: 700;
-  //       margin: 0;
-  //     }
-
-  //     p {
-  //       margin: 10px 0;
-  //       font-size: 1.8em;
-  //     }
-
-  //     button {
-  //       margin-top: 15px;
-  //     }
-  //   }
-  // }
-
-  // .hero-text button {
-  //   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  // }
-
-  // .hero-text button:hover {
-  //   transform: scale(1.05);
-  //   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  // }
-
   .hero {
     position: relative;
     width: 100%;
@@ -151,7 +88,6 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       align-items: center;
       overflow: hidden;
 
-      // Nodes and lines styling
       .node {
         width: 20px;
         height: 20px;
@@ -178,7 +114,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       text-align: center;
 
       h1 {
-        font-size: 45px;
+        font-size: 55px;
         font-weight: 700;
         color: #0e2b5c;
         margin: 0;
@@ -186,13 +122,14 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       }
 
       p {
-        margin: 10px 0;
+        margin: 20px 0;
         font-size: 1.8em;
         color: #0e2b5c;
       }
 
       button {
         margin-top: 15px;
+        color: #0e2b5c;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         &:hover {

@@ -1,12 +1,10 @@
 <div class="device-management-container">
   <h2 class="h2">Device Management</h2>
   
-  <!-- Display a message when no devices are available -->
   <div *ngIf="devices.length === 0" class="no-devices">
     No devices to display.
   </div>
   
-  <!-- Display device cards -->
   <mat-card class="device-card" *ngFor="let device of devices">
     <mat-card-header class="card-header">
       <mat-card-title>{{ device.name }}</mat-card-title>
