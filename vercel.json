@@ -2,11 +2,14 @@
     "projects": [
       {
         "name": "kamsguard-web",
-        "rootDirectory": "apps/kamsguard-web"
+        "rootDirectory": "apps/kamsguard-web",
+        "buildCommand": "ng build",
+        "outputDirectory": "dist/kamsguard-web"
       },
       {
         "name": "server-app",
-        "rootDirectory": "apps/server-app"
+        "rootDirectory": "apps/server-app",
+        "startCommand": "npm start"
       }
     ]
   }
