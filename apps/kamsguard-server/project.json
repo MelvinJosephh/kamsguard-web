@@ -11,7 +11,7 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "api/api",
+        "outputPath": "api",
         "format": ["cjs"],
         "bundle": false,
         "main": "apps/kamsguard-server/src/main.js",
