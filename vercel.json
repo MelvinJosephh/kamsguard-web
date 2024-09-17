@@ -1,4 +1,4 @@
   {
     "name": "kamsguard-web",
-    "buildCommand": "nx build kamsguard-web"
+    "buildCommand": "nx serve kamsguard-web"
   }
