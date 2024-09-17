@@ -1,7 +1,0 @@
-  {
-    "name": "kamsguard-web",
-    "buildCommand": "nx build kamsguard-web",
-    "rewrites": [
-        {"source": "/(.*)", "destination": "/"}
-    ]
-  }
