@@ -1,4 +1,4 @@
   {
     "name": "kamsguard-web",
-    "buildCommand": "ng build"
+    "buildCommand": "nx build"
   }
