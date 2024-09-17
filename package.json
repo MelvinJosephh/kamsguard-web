@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "kamsguard-web:build": "nx build kamsguard-web --prod",
-    "kamsguard-server:serve": "nx serve kamsguard-server"
+    "kamsguard-server:serve": "nx serve kamsguard-server",
+     "kamsguard-server:build": "nx build kamsguard-server"
   },
   "private": true,
   "dependencies": {
