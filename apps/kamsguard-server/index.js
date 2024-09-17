@@ -29,6 +29,11 @@ if (fs.existsSync(dbPath)) {
   events = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 }
 
+app.get('/', (req, res) => {
+  res.json({message:"Api works"});
+});
+
+
 app.use('/notifications',notificationRoutes)
 
 app.get('/events', (req, res) => {
