@@ -2,7 +2,9 @@
   "name": "@kamsguard/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "kamsguard-web:build":"nx build kamsguard-web --prod"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.1.0",
