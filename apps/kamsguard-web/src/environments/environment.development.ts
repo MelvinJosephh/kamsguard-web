@@ -24,5 +24,15 @@ export const environment: any = {
   //   mqttPass: 'guest',
   //   protocol: 'ws',
   // },
+
+
+  // mqtt: {
+  //   hostname: 'toad.rmq.cloudamqp.com',
+  //   port: 443, // Use 5671 for TLS
+  //   path: '/ws/mqtt', // Typically empty for non-TLS
+  //   mqttUser: 'dbsrsbsa',
+  //   mqttPass: 'SktTcB-QNKfQEsftO9ufWR2hizC9HcV_',
+  //   protocol: 'wss',
+  // }
 };
 

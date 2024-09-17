@@ -109,6 +109,8 @@ app.post('/send-email', async (req, res) => {
 
     
     const formattedTimestamp = moment(timestamp).format('lll');
+
+    console.log('sender', process.env.EMAIL_USER);
     const mailOptions = {
       from: `Kamsguard Support: ${process.env.EMAIL_USER}`,
       to: 'melvin.njuguna@kamsware.com',

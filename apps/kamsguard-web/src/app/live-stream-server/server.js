@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid'); 
 const app = express();
 const port = 3001; 
+require('dotenv').config()
+const notificationRoutes = require('./routes/notifications');
 
 app.use(
   cors({
@@ -27,9 +29,14 @@ if (fs.existsSync(dbPath)) {
   events = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 }
 
+app.use('/notifications',notificationRoutes)
+
 app.get('/events', (req, res) => {
   res.json(events);
 });
+
+
+
 
 app.post('/events', (req, res) => {
   try {

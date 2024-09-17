@@ -45,7 +45,7 @@ export class MqttService {
       console.log('Connection failed', error);
     });
     this.mqttService.onMessage.subscribe((packet: IMqttMessage) => {
-      console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
+      // console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`);
       this.processMessage(packet.payload.toString());
     });
   }
@@ -139,7 +139,7 @@ export class MqttService {
       details: details // Include nested details if necessary
     };
 
-    this.http.post('http://localhost:3000/send-email', emailData, { responseType: 'text' })
+    this.http.post('http://localhost:3001/notifications/send-email', emailData, { responseType: 'text' })
       .subscribe({
         next: (response: any) => {
           // console.log('Email sent successfully:', response);

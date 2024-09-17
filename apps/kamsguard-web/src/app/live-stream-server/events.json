@@ -82,62 +82,6 @@
     "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
   },
   {
-    "id": "b2f8bed4-d17c-4dcb-9006-660f578e2a3a",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T11:41:36.669Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x6",
-      "subchannel_changed_mask": "0x6",
-      "time": "2024-09-11T11:41:36.669Z",
-      "unixtime": 1726054896669,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x6",
-    "subchannel_changed_mask": "0x6",
-    "time": "2024-09-11T11:41:36.669Z",
-    "unixtime": 1726054896669,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "a783d1be-ea9d-418a-aed8-31e89513028c",
-    "eventType": "LOW_LIGHT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T11:41:36.854Z",
-    "details": {
-      "event": "LOW_LIGHT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0xcee",
-      "subchannel_changed_mask": "0xcee",
-      "time": "2024-09-11T11:41:36.854Z",
-      "unixtime": 1726054896854,
-      "LOWLIGHT": true,
-      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-    },
-    "event": "LOW_LIGHT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0xcee",
-    "subchannel_changed_mask": "0xcee",
-    "time": "2024-09-11T11:41:36.854Z",
-    "unixtime": 1726054896854,
-    "LOWLIGHT": true,
-    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-  },
-  {
     "id": "ceb2f523-3ac4-4584-b159-b77b6759d935",
     "eventType": "HIGH_MOVEMENT",
     "siteId": "1-Kamsware-FV3",
@@ -162,118 +106,6 @@
     "subchannel_changed_mask": "0xffff",
     "time": "2024-09-11T11:45:48.647Z",
     "unixtime": 1726055148647,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "e6d7c4bc-a08b-49b3-8dbf-6b7fb84c9f24",
-    "eventType": "LOW_LIGHT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T11:45:49.421Z",
-    "details": {
-      "event": "LOW_LIGHT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0xffff",
-      "subchannel_changed_mask": "0xffff",
-      "time": "2024-09-11T11:45:49.421Z",
-      "unixtime": 1726055149421,
-      "LOWLIGHT": true,
-      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-    },
-    "event": "LOW_LIGHT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0xffff",
-    "subchannel_changed_mask": "0xffff",
-    "time": "2024-09-11T11:45:49.421Z",
-    "unixtime": 1726055149421,
-    "LOWLIGHT": true,
-    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-  },
-  {
-    "id": "b7820d8b-561e-40c4-911f-94c51710328e",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T12:06:01.522Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x1",
-      "subchannel_changed_mask": "0x1",
-      "time": "2024-09-11T12:06:01.522Z",
-      "unixtime": 1726056361522,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x1",
-    "subchannel_changed_mask": "0x1",
-    "time": "2024-09-11T12:06:01.522Z",
-    "unixtime": 1726056361522,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "840ade16-b0b9-4ca3-9fd2-9014996389fc",
-    "eventType": "LOW_LIGHT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T12:06:05.765Z",
-    "details": {
-      "event": "LOW_LIGHT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x66cc",
-      "subchannel_changed_mask": "0x2a04",
-      "time": "2024-09-11T12:06:05.765Z",
-      "unixtime": 1726056365765,
-      "LOWLIGHT": true,
-      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-    },
-    "event": "LOW_LIGHT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x66cc",
-    "subchannel_changed_mask": "0x2a04",
-    "time": "2024-09-11T12:06:05.765Z",
-    "unixtime": 1726056365765,
-    "LOWLIGHT": true,
-    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
-  },
-  {
-    "id": "51350ded-875a-46d5-accc-d8aa0aff6193",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T12:17:34.370Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x880",
-      "subchannel_changed_mask": "0x880",
-      "time": "2024-09-11T12:17:34.370Z",
-      "unixtime": 1726057054370,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x880",
-    "subchannel_changed_mask": "0x880",
-    "time": "2024-09-11T12:17:34.370Z",
-    "unixtime": 1726057054370,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
   },
@@ -664,286 +496,122 @@
     ]
   },
   {
-    "id": "f3d493e0-b59c-4af1-b809-cbca0cfd617e",
-    "eventType": "THERMAL2",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:06:28.041Z",
-    "details": {
-      "event": "THERMAL2",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 2,
-      "type": "multi",
-      "subchannel_state_mask": "0x1",
-      "subchannel_changed_mask": "0x1",
-      "time": "2024-09-11T13:06:28.041Z",
-      "unixtime": 1726059988041,
-      "system_camera": 301,
-      "paramset": 1,
-      "THERMAL2": true,
-      "regions": [
-        {
-          "trigger": true,
-          "threshold": 36,
-          "peak": 39,
-          "mean": 26,
-          "topleft": {
-            "x": 75,
-            "y": 0
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 74.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 26,
-          "mean": 23,
-          "topleft": {
-            "x": 25,
-            "y": 0
-          },
-          "botright": {
-            "x": 49.69,
-            "y": 24.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 31,
-          "mean": 24,
-          "topleft": {
-            "x": 50,
-            "y": 0
-          },
-          "botright": {
-            "x": 74.69,
-            "y": 24.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 39,
-          "mean": 28,
-          "topleft": {
-            "x": 75,
-            "y": 0
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 24.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 26,
-          "mean": 22,
-          "topleft": {
-            "x": 0,
-            "y": 25
-          },
-          "botright": {
-            "x": 24.69,
-            "y": 49.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 27,
-          "mean": 22,
-          "topleft": {
-            "x": 25,
-            "y": 25
-          },
-          "botright": {
-            "x": 49.69,
-            "y": 49.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 28,
-          "mean": 23,
-          "topleft": {
-            "x": 50,
-            "y": 25
-          },
-          "botright": {
-            "x": 74.69,
-            "y": 49.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 32,
-          "mean": 25,
-          "topleft": {
-            "x": 75,
-            "y": 25
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 49.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 26,
-          "mean": 22,
-          "topleft": {
-            "x": 0,
-            "y": 50
-          },
-          "botright": {
-            "x": 24.69,
-            "y": 74.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 25,
-          "mean": 22,
-          "topleft": {
-            "x": 25,
-            "y": 50
-          },
-          "botright": {
-            "x": 49.69,
-            "y": 74.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 27,
-          "mean": 23,
-          "topleft": {
-            "x": 50,
-            "y": 50
-          },
-          "botright": {
-            "x": 74.69,
-            "y": 74.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 36,
-          "peak": 29,
-          "mean": 25,
-          "topleft": {
-            "x": 75,
-            "y": 50
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 74.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 25,
-          "mean": 22,
-          "topleft": {
-            "x": 0,
-            "y": 75
-          },
-          "botright": {
-            "x": 24.69,
-            "y": 99.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 40,
-          "peak": 26,
-          "mean": 22,
-          "topleft": {
-            "x": 25,
-            "y": 75
-          },
-          "botright": {
-            "x": 49.69,
-            "y": 99.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 38,
-          "peak": 28,
-          "mean": 24,
-          "topleft": {
-            "x": 50,
-            "y": 75
-          },
-          "botright": {
-            "x": 74.69,
-            "y": 99.58
-          }
-        },
-        {
-          "trigger": false,
-          "threshold": 38,
-          "peak": 30,
-          "mean": 27,
-          "topleft": {
-            "x": 75,
-            "y": 75
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 99.58
-          }
-        }
-      ],
-      "parentEvent": "GLOBAL_THERMAL2_ALARM",
-      "thresholds": [
-        {
-          "threshold": 36,
-          "peak": 39,
-          "mean": 26,
-          "topleft": {
-            "x": 75,
-            "y": 0
-          },
-          "botright": {
-            "x": 99.69,
-            "y": 74.58
-          }
-        }
-      ]
-    },
-    "thresholds": [
-      {
-        "threshold": 36,
-        "peak": 39,
-        "mean": 26,
-        "topleft": {
-          "x": 75,
-          "y": 0
-        },
-        "botright": {
-          "x": 99.69,
-          "y": 74.58
-        }
-      }
-    ]
-  },
-  {
-    "id": "9d16f814-3484-4d2e-a04c-c305315bf2f2",
+    "id": "a84338af-dcb1-49f3-8cd8-90be326d360f",
     "eventType": "HIGH_MOVEMENT",
     "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:26:52.689Z",
+    "timestamp": "2024-09-12T11:55:15.743Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x4440",
+      "subchannel_changed_mask": "0x4440",
+      "time": "2024-09-12T11:55:15.743Z",
+      "unixtime": 1726142115743,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x4440",
+    "subchannel_changed_mask": "0x4440",
+    "time": "2024-09-12T11:55:15.743Z",
+    "unixtime": 1726142115743,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "d97d6e0e-264d-416b-8ca8-eecf696b933b",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T11:58:51.772Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-09-12T11:58:51.772Z",
+      "unixtime": 1726142331772,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-09-12T11:58:51.772Z",
+    "unixtime": 1726142331772,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "3d4004f5-ad96-4839-a441-bdd137d24691",
+    "eventType": "LOW_LIGHT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T11:58:51.967Z",
+    "details": {
+      "event": "LOW_LIGHT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xeeff",
+      "subchannel_changed_mask": "0xdfcc",
+      "time": "2024-09-12T11:58:51.967Z",
+      "unixtime": 1726142331967,
+      "LOWLIGHT": true,
+      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+    },
+    "event": "LOW_LIGHT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xeeff",
+    "subchannel_changed_mask": "0xdfcc",
+    "time": "2024-09-12T11:58:51.967Z",
+    "unixtime": 1726142331967,
+    "LOWLIGHT": true,
+    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
+  },
+  {
+    "id": "62e1b515-aab9-4135-9bd8-bc47ffe61bd0",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T12:04:51.225Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-09-12T12:04:51.225Z",
+      "unixtime": 1726142691225,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-09-12T12:04:51.225Z",
+    "unixtime": 1726142691225,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "13e9c535-0e69-424f-9da7-ba41e875bdd7",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T12:18:02.174Z",
     "details": {
       "event": "HIGH_MOVEMENT",
       "site_id": "1-Kamsware-FV3",
@@ -951,8 +619,8 @@
       "type": "multi",
       "subchannel_state_mask": "0x8000",
       "subchannel_changed_mask": "0x8000",
-      "time": "2024-09-11T13:26:52.689Z",
-      "unixtime": 1726061212689,
+      "time": "2024-09-12T12:18:02.174Z",
+      "unixtime": 1726143482174,
       "HIGHMOVEMENT": true,
       "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
     },
@@ -962,44 +630,44 @@
     "type": "multi",
     "subchannel_state_mask": "0x8000",
     "subchannel_changed_mask": "0x8000",
-    "time": "2024-09-11T13:26:52.689Z",
-    "unixtime": 1726061212689,
+    "time": "2024-09-12T12:18:02.174Z",
+    "unixtime": 1726143482174,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
   },
   {
-    "id": "0c3e2e5f-294e-4347-97cb-fef6d911b2c8",
-    "eventType": "HIGH_MOVEMENT",
+    "id": "97bf1f96-d17f-4f28-ab87-496a07bccbcb",
+    "eventType": "LOW_LIGHT",
     "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:26:52.689Z",
+    "timestamp": "2024-09-12T13:20:36.654Z",
     "details": {
-      "event": "HIGH_MOVEMENT",
+      "event": "LOW_LIGHT",
       "site_id": "1-Kamsware-FV3",
       "channel": 1,
       "type": "multi",
-      "subchannel_state_mask": "0x8000",
-      "subchannel_changed_mask": "0x8000",
-      "time": "2024-09-11T13:26:52.689Z",
-      "unixtime": 1726061212689,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+      "subchannel_state_mask": "0x3333",
+      "subchannel_changed_mask": "0x3333",
+      "time": "2024-09-12T13:20:36.654Z",
+      "unixtime": 1726147236654,
+      "LOWLIGHT": true,
+      "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
     },
-    "event": "HIGH_MOVEMENT",
+    "event": "LOW_LIGHT",
     "site_id": "1-Kamsware-FV3",
     "channel": 1,
     "type": "multi",
-    "subchannel_state_mask": "0x8000",
-    "subchannel_changed_mask": "0x8000",
-    "time": "2024-09-11T13:26:52.689Z",
-    "unixtime": 1726061212689,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    "subchannel_state_mask": "0x3333",
+    "subchannel_changed_mask": "0x3333",
+    "time": "2024-09-12T13:20:36.654Z",
+    "unixtime": 1726147236654,
+    "LOWLIGHT": true,
+    "parentEvent": "GLOBAL_LOW_LIGHT_ALARM"
   },
   {
-    "id": "a266775c-6556-4dfd-90c9-6f5a34c4e99a",
+    "id": "eb21d844-d769-48c4-83d1-e3cae4d157de",
     "eventType": "HIGH_MOVEMENT",
     "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:28:48.410Z",
+    "timestamp": "2024-09-12T13:22:56.176Z",
     "details": {
       "event": "HIGH_MOVEMENT",
       "site_id": "1-Kamsware-FV3",
@@ -1007,8 +675,8 @@
       "type": "multi",
       "subchannel_state_mask": "0x1",
       "subchannel_changed_mask": "0x1",
-      "time": "2024-09-11T13:28:48.410Z",
-      "unixtime": 1726061328410,
+      "time": "2024-09-12T13:22:56.176Z",
+      "unixtime": 1726147376176,
       "HIGHMOVEMENT": true,
       "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
     },
@@ -1018,16 +686,100 @@
     "type": "multi",
     "subchannel_state_mask": "0x1",
     "subchannel_changed_mask": "0x1",
-    "time": "2024-09-11T13:28:48.410Z",
-    "unixtime": 1726061328410,
+    "time": "2024-09-12T13:22:56.176Z",
+    "unixtime": 1726147376176,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
   },
   {
-    "id": "619b1cd6-54d2-42df-ad5a-afc1daf9495d",
+    "id": "089d23fd-c05b-4e31-8b30-96d005f3cc10",
     "eventType": "HIGH_MOVEMENT",
     "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:30:36.980Z",
+    "timestamp": "2024-09-12T13:38:16.187Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-09-12T13:38:16.187Z",
+      "unixtime": 1726148296187,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-09-12T13:38:16.187Z",
+    "unixtime": 1726148296187,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "8a65b7c0-0ed1-4582-ac10-5e6eb2cb8fea",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T13:40:34.138Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0x80",
+      "subchannel_changed_mask": "0x80",
+      "time": "2024-09-12T13:40:34.138Z",
+      "unixtime": 1726148434138,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0x80",
+    "subchannel_changed_mask": "0x80",
+    "time": "2024-09-12T13:40:34.138Z",
+    "unixtime": 1726148434138,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "51efb3cf-db14-4184-ad01-2b859782e51b",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-12T13:44:38.512Z",
+    "details": {
+      "event": "HIGH_MOVEMENT",
+      "site_id": "1-Kamsware-FV3",
+      "channel": 1,
+      "type": "multi",
+      "subchannel_state_mask": "0xffff",
+      "subchannel_changed_mask": "0xffff",
+      "time": "2024-09-12T13:44:38.512Z",
+      "unixtime": 1726148678512,
+      "HIGHMOVEMENT": true,
+      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+    },
+    "event": "HIGH_MOVEMENT",
+    "site_id": "1-Kamsware-FV3",
+    "channel": 1,
+    "type": "multi",
+    "subchannel_state_mask": "0xffff",
+    "subchannel_changed_mask": "0xffff",
+    "time": "2024-09-12T13:44:38.512Z",
+    "unixtime": 1726148678512,
+    "HIGHMOVEMENT": true,
+    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
+  },
+  {
+    "id": "35777751-1a40-4ddf-8ee4-bb50ec0c4f67",
+    "eventType": "HIGH_MOVEMENT",
+    "siteId": "1-Kamsware-FV3",
+    "timestamp": "2024-09-13T09:49:21.191Z",
     "details": {
       "event": "HIGH_MOVEMENT",
       "site_id": "1-Kamsware-FV3",
@@ -1035,8 +787,8 @@
       "type": "multi",
       "subchannel_state_mask": "0x1",
       "subchannel_changed_mask": "0x1",
-      "time": "2024-09-11T13:30:36.980Z",
-      "unixtime": 1726061436980,
+      "time": "2024-09-13T09:49:21.191Z",
+      "unixtime": 1726220961191,
       "HIGHMOVEMENT": true,
       "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
     },
@@ -1046,92 +798,8 @@
     "type": "multi",
     "subchannel_state_mask": "0x1",
     "subchannel_changed_mask": "0x1",
-    "time": "2024-09-11T13:30:36.980Z",
-    "unixtime": 1726061436980,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "7f69c827-c0b2-4e64-be4f-f2dc1cc1f741",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:30:36.980Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x1",
-      "subchannel_changed_mask": "0x1",
-      "time": "2024-09-11T13:30:36.980Z",
-      "unixtime": 1726061436980,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x1",
-    "subchannel_changed_mask": "0x1",
-    "time": "2024-09-11T13:30:36.980Z",
-    "unixtime": 1726061436980,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "72788ded-503e-44ba-85d3-0a8d9a85c1de",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:38:48.616Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x8880",
-      "subchannel_changed_mask": "0x8880",
-      "time": "2024-09-11T13:38:48.616Z",
-      "unixtime": 1726061928616,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x8880",
-    "subchannel_changed_mask": "0x8880",
-    "time": "2024-09-11T13:38:48.616Z",
-    "unixtime": 1726061928616,
-    "HIGHMOVEMENT": true,
-    "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-  },
-  {
-    "id": "b2096a71-c190-4769-a92a-2aad009c7657",
-    "eventType": "HIGH_MOVEMENT",
-    "siteId": "1-Kamsware-FV3",
-    "timestamp": "2024-09-11T13:38:48.616Z",
-    "details": {
-      "event": "HIGH_MOVEMENT",
-      "site_id": "1-Kamsware-FV3",
-      "channel": 1,
-      "type": "multi",
-      "subchannel_state_mask": "0x8880",
-      "subchannel_changed_mask": "0x8880",
-      "time": "2024-09-11T13:38:48.616Z",
-      "unixtime": 1726061928616,
-      "HIGHMOVEMENT": true,
-      "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
-    },
-    "event": "HIGH_MOVEMENT",
-    "site_id": "1-Kamsware-FV3",
-    "channel": 1,
-    "type": "multi",
-    "subchannel_state_mask": "0x8880",
-    "subchannel_changed_mask": "0x8880",
-    "time": "2024-09-11T13:38:48.616Z",
-    "unixtime": 1726061928616,
+    "time": "2024-09-13T09:49:21.191Z",
+    "unixtime": 1726220961191,
     "HIGHMOVEMENT": true,
     "parentEvent": "GLOBAL_HIGH_MOVEMENT_ALARM"
   }
