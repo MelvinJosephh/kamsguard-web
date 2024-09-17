@@ -5,7 +5,7 @@
   "scripts": {
     "kamsguard-web:build": "nx build kamsguard-web --prod",
     "kamsguard-server:serve": "nx serve kamsguard-server",
-     "kamsguard-server:build": "nx build kamsguard-server"
+    "kamsguard-server:build": "nx build kamsguard-server"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +41,7 @@
     "sharp": "^0.33.4",
     "tslib": "^2.3.0",
     "uuid": "^10.0.0",
+    "vercel": "^37.4.2",
     "ws": "^8.18.0",
     "zone.js": "~0.14.3"
   },
