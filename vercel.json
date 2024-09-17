@@ -1,6 +1,4 @@
   {
     "name": "kamsguard-web",
-    "rootDirectory": "apps/kamsguard-web",
-    "buildCommand": "ng build",
-    "outputDirectory": "dist/kamsguard-web"
+    "buildCommand": "ng build"
   }
