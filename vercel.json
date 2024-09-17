@@ -2,13 +2,6 @@
     "version": 2,
     "builds": [
       {
-        "src": "apps/kamsguard-web/src/main.ts",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "dist/apps/kamsguard-web/browser"
-        }
-      },
-      {
         "src": "apps/kamsguard-server/src/main.js",
         "use": "@vercel/node"
       }
