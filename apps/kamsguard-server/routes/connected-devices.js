@@ -1,17 +1,19 @@
 const express = require('express');
+
+const { Router } = require('express');
 const fs = require('fs');
 const app = express();
 const cors = require('cors');
-
+const route = Router();
 app.use(express.json());
 
-app.use(
+route.use(
     cors({
       origin: 'http://localhost:4200', 
     })
   );
 
-app.post('/save-device', (req, res) => {
+route.post('/save-device', (req, res) => {
     const newDevice = req.body;
 
     let devices = [];
@@ -29,6 +31,5 @@ app.post('/save-device', (req, res) => {
     return res.status(200).json({ message: 'Device already exists', devices });
 });
 
-app.listen(3600, () => {
-    console.log('Server running on http://localhost:3600');
-});
+
+module.exports = route;

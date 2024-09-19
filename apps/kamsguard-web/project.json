@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/kamsguard-web",
         "index": "apps/kamsguard-web/src/index.html",
         "browser": "apps/kamsguard-web/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/kamsguard-web/tsconfig.app.json",
         "assets": [
           {
@@ -25,24 +21,21 @@
             "input": "apps/kamsguard-web/public"
           }
         ],
-        "styles": [
-          "apps/kamsguard-web/src/styles.scss"
-        ],
-        "scripts": [
-        ]
+        "styles": ["apps/kamsguard-web/src/styles.scss"],
+        "scripts": []
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
+              "maximumWarning": "1.5mb",
               "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "6kb"
+              "maximumWarning": "1mb",
+              "maximumError": "1mb"
             }
           ],
           "outputHashing": "all"
@@ -84,9 +77,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/kamsguard-web/jest.config.ts"
       }

@@ -8,7 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
-import { MqttService } from '../services/mqtt/mqtt.service';
+import { NotificationService } from '../services/notifications.service';
+
 
 interface Notification {
   timestamp: string;
@@ -33,21 +34,21 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | null = null;
   @ViewChild(MatSort, { static: false }) sort: MatSort | null = null;
 
-  constructor(private mqttService: MqttService) {
-    this.mqttService.eventProcessed.subscribe(event => {
+  constructor(private notificationsService: NotificationService) {
+    this.notificationsService.eventProcessed.subscribe(event => {
       this.processEventInComponent(event.eventType, event.siteId, event.timestamp, event.status);
     });
   }
   
 
   ngOnInit(): void {
-    this.mqttService.createConnection();
+    // this.notificationsService.createConnection();
     this.loadNotifications();
   }
   
   
   loadNotifications(): void {
-    this.mqttService.getNotifications().subscribe({
+    this.notificationsService.getNotifications().subscribe({
       next: (notifications) => {
         this.notifications = notifications;
         this.updateDataSource();
@@ -79,31 +80,6 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
     console.log(this.notifications)
     this.updateDataSource();
   }
-  
-  // processEventInComponent(eventName: string, siteId: string, time: string, status: string) {
-  //   const existingNotification = this.notifications.find(
-  //     n => n.eventType === eventName && n.siteId === siteId && n.timestamp === time
-  //   );
-  
-  //   if (!existingNotification) {
-  //     const newNotification: Notification = {
-  //       timestamp: time,
-  //       eventType: eventName,
-  //       siteId: siteId,
-  //       notificationType: 'Email',
-  //       status: 'Pending', // Initially set to 'Pending'
-  //     };
-      
-  //     this.notifications.push(newNotification);
-  //     this.updateDataSource();
-  //   } else {
-  //     // Update existing notification status if needed
-  //     existingNotification.status = status;
-  //     this.updateDataSource();
-  //   }
-  // }
-  
-
 
   updateDataSource() {
     this.dataSource.data = [...this.notifications];

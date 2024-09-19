@@ -33,7 +33,7 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventsService.createConnection();
+    // this.eventsService.createConnection();
     this.loadEvents();
   }
 
@@ -46,12 +46,25 @@ export class EventsComponent implements OnInit {
     }
   }
 
+  // loadEvents() {
+  //   this.eventsService.getEvents().subscribe((events: EventData[]) => {
+  //     this.events = events;
+  //     this.filteredEvents = [...this.events];
+  //   });
+  // }
+
   loadEvents() {
-    this.eventsService.getEvents().subscribe((events: EventData[]) => {
-      this.events = events;
-      this.filteredEvents = [...this.events];
+    this.eventsService.getEvents().subscribe({
+      next: (events: EventData[]) => {
+        this.events = events;
+        this.filteredEvents = [...this.events];
+      },
+      error: (err) => {
+        console.error('Error loading events:', err);
+      }
     });
   }
+  
 
   saveEvent(event: EventData) {
     this.eventsService.saveEvent(event).subscribe(response => {

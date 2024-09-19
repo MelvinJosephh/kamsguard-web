@@ -1,9 +1,11 @@
 require('dotenv-mono').load(); 
-
+const { Router } = require('express');
 const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
 const { parse } = require('csv-parse');
+
+const route = Router();
 
 const app = express();
 const port = 3300;
@@ -14,8 +16,7 @@ app.use(
     })
 );
 
-
-app.get('/events', async (req, res) => {
+route.get('/events', async (req, res) => {
     try {
        
         const response = await fetch('http://192.168.1.70/events.cgi?format=csv&time=1724395308', {
@@ -76,3 +77,6 @@ app.get('/events', async (req, res) => {
 app.listen(port, () => {
     console.log(`Event API running at http://localhost:${port}`);
 });
+
+
+module.exports = route;

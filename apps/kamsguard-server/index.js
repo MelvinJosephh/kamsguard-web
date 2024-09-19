@@ -1,85 +1,71 @@
 const express = require('express');
-const path = require('path');
+const http = require('http');
+const WebSocket = require('ws');
+const mqttClient = require('./mqttClient'); // Import the MQTT client
+const configRoute = require('./routes/config');
 const cors = require('cors');
-const fs = require('fs');
-const bodyParser = require('body-parser');
-const { v4: uuidv4 } = require('uuid'); 
+
+
 const app = express();
-const port = 3001; 
-require('dotenv').config()
-const notificationRoutes = require('./routes/notifications');
+const port = 3001;
+
+// Import routes
+const notificationRoute = require('./routes/notifications');
+const eventsRoute = require('./routes/events');
+const connectedDevicesRoute = require('./routes/connected-devices');
+const filteredEventsRoute = require('./routes/filtered-events');
+
+//import route
+app.use('/api', configRoute);
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware to use routes
+app.use('/notifications', notificationRoute);
+app.use('/events', eventsRoute);
+app.use('/connected-devices', connectedDevicesRoute);
+app.use('/filtered-events', filteredEventsRoute);
 
 app.use(
   cors({
-    origin: 'http://localhost:4200', 
+    origin: 'http://localhost:4200',
   })
 );
 
+// Create HTTP server
+const server = http.createServer(app);
 
-app.use(bodyParser.json());
+// Create WebSocket server
+const wss = new WebSocket.Server({ server });
 
-app.use(express.static(path.join(__dirname, 'public')));
+wss.on('connection', (ws) => {
+  console.log('WebSocket connection established');
 
+  // Send a welcome message to the new client
+  ws.send(JSON.stringify({ message: 'Connected to WebSocket server' }));
 
-let events = [];
+  // Handle incoming WebSocket messages from clients
+  ws.on('message', (message) => {
+    console.log(`Received message from WebSocket client: ${message}`);
+    // Handle client messages (e.g., subscribe to MQTT topics or send commands)
+  });
 
+  // Forward MQTT messages to WebSocket clients
+  mqttClient.on('message', (topic, message) => {
+    ws.send(JSON.stringify({ topic, message: message.toString() }));
+  });
 
-const dbPath = path.join(__dirname, 'events.json');
-if (fs.existsSync(dbPath)) {
-  events = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-}
-
-app.get('/', (req, res) => {
-  res.json({message:"Api works"});
+  // Clean up when WebSocket connection closes
+  ws.on('close', () => {
+    console.log('WebSocket connection closed');
+  });
 });
 
-
-app.use('/notifications',notificationRoutes)
-
-app.get('/events', (req, res) => {
-  res.json(events);
-});
-
-
-
-
-app.post('/events', (req, res) => {
-  try {
-    const event = req.body;
-
-    if (!event.timestamp || !event.eventType || !event.siteId) {
-      return res.status(400).json({ error: 'Invalid event data' });
-    }
-
-    event.id = uuidv4();
-
-    events.push(event);
-
-    fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
-
-    res.status(201).json({ message: 'Event saved successfully', event });
-  } catch (error) {
-    console.error('Error saving event:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
-
-app.delete('/events/:id', (req, res) => {
-  try {
-    const eventId = req.params.id;
-
-    events = events.filter(event => event.id !== eventId);
-
-    fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
-
-    res.status(200).json({ message: 'Event deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting event:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
-app.listen(port, () => {
+// Start the HTTP and WebSocket server
+server.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
