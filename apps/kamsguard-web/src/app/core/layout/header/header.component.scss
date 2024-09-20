@@ -12,16 +12,12 @@
     font-size: 24px;
     margin-right: 10px;
   }
-
-  // .menu-text {
-  //   // Optional: font-weight, font-size adjustments
-  // }
 }
 
 .custom-toolbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   height: 56px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #E0E0E0; 
@@ -35,34 +31,69 @@
     top: -56px; 
   }
 
-  .brand-logo {
-    color: #0E2B5C;
-    font-weight: 700; 
-    font-size: 0.9em; 
-    margin-left: 10px;
-    cursor: pointer;
-  }
-
-  button {
-    @include menu-item;
-    background-color: transparent; 
-    border: none; 
-
-    &:hover {
-      background-color: #F0F0F0; 
+  .brand {
+    display: flex;
+    align-items: center; 
+    
+    .brand-logo {
       color: #0E2B5C;
+      font-weight: 700; 
+      font-size: 1.2em; 
+      margin-left: 10px;
+      margin-right: 20px; 
       cursor: pointer;
+
+      @media (max-width: 768px) {
+        font-size: 1em;
+        margin-left: 5px; 
+        margin-right: 10px; 
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        font-size: 1.1em; 
+      }
+    }
+
+    button {
+      @include menu-item;
+      background-color: transparent; 
+      border: none; 
+      margin-right: 20px;
+
+      &:hover {
+        background-color: #F0F0F0; 
+        color: #0E2B5C;
+        cursor: pointer;
+      }
     }
   }
 
-  .nav-links-container {
+  .navigation {
     display: flex;
     align-items: center;
-    gap: 20px; 
 
-    .nav-link {
+    .nav-links-container, .auth-links-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 10px; 
+        display: none; // Initially hidden on smaller screens
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        gap: 15px; // Adjust spacing for tablets
+      }
+    }
+
+    .nav-links-container.active, .auth-links-container.active {
+      display: flex; // Show on active toggle
+    }
+
+    .nav-link, .auth-link {
       @include menu-item;
-      cursor: pointer;
       color: #0E2B5C;
       font-size: 16px;
 
@@ -72,29 +103,6 @@
       }
 
       &.active {
-        color: #0E2B5C;
-        color: #FC5546; 
-      }
-    }
-  }
-
-  .auth-links-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    .auth-link {
-      @include menu-item;
-      color: #0E2B5C;
-      font-size: 16px;
-
-      &:hover {
-        background-color: rgb(241, 241, 241); 
-        color: #FC5546; 
-      }
-
-      &.active {
-        color: #0E2B5C;
         color: #FC5546; 
       }
     }
@@ -104,10 +112,35 @@
 @media (max-width: 768px) {
   .custom-toolbar {
     padding: 0 8px; 
+    height: auto; // Adjust height for smaller screens
+    flex-direction: column; // Stack elements vertically
   }
 
   .nav-links-container, .auth-links-container {
-    flex-direction: column;
-    gap: 10px; 
+    width: 100%; // Full width for mobile
+    justify-content: center; // Center links
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .custom-toolbar {
+    padding: 0 12px; // Adjust padding for tablet screens
+  }
+
+  .brand-logo {
+    font-size: 1.1em; // Slightly smaller for tablets
+  }
+
+  .nav-link, .auth-link {
+    font-size: 15px; // Adjust font size for tablets
+  }
+}
+
+/* Add a button to toggle the mobile menu */
+.toggle-menu {
+  display: none; // Hidden by default
+
+  @media (max-width: 768px) {
+    display: block; // Show toggle button on mobile
   }
 }

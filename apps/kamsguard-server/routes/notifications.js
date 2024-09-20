@@ -184,7 +184,7 @@ function writeNotificationsToFile(notifications) {
 
 // MQTT message handler
 mqttClient.on('message', (topic, message) => {
-  console.log(`Received message on topic ${topic}: ${message.toString()}`);
+  // console.log(`Received message on topic ${topic}: ${message.toString()}`);
   
   // Process the MQTT message
   const data = JSON.parse(message.toString());

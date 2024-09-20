@@ -11,11 +11,15 @@ import { LiveStreamComponent } from './features/live-stream/live-stream.componen
 import { NotificationsComponent } from './features/notifications/notifications.component';
 import { RealTimeComponent } from './features/real-time/real-time.component';
 import { UserManagementComponent } from './features/user-management/user-management.component';
+import { authGuard } from './features/services/auth-guard.service';
 
 
 export const appRoutes: Route[] = [
     { path: '', component: HomeComponent },
     // { path: 'dashboard', component: DashboardComponent, data: { showSidebar: true } },
+
+    { path: 'auth', component: AuthComponent },  // For Login
+  { path: 'register', component: AuthComponent },  // Use a different component if you have a separate registration component
     { path: 'notifications', component: NotificationsComponent, data: { showSidebar: true } },
     { path: 'device-management', component: DeviceManagementComponent, data: { showSidebar: true } },
     { path: 'real-time', component: RealTimeComponent, data: { showSidebar: true } },
@@ -23,9 +27,9 @@ export const appRoutes: Route[] = [
     // { path: 'support', component: SupportComponent, data: { showSidebar: true } },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'system-config', component: SystemConfigComponent },
-    { path: 'live-stream', component: LiveStreamComponent, data: { showSidebar: true } },
+    { path: 'live-stream', component: LiveStreamComponent, data: { showSidebar: true }},
     { path: 'events', component: EventsComponent, data: { showSidebar: true } },
-    { path: 'connected-devices', component: ConnectedDevicesComponent, data: { showSidebar: true } },
+    { path: 'connected-devices', component: ConnectedDevicesComponent, data: { showSidebar: true } , canActivate: [authGuard]},
     { path: 'clients', component: ClientsComponent },
-    { path: 'auth', component: AuthComponent },
+    // { path: 'auth', component: AuthComponent, canActivate: [authGuard] },
 ];

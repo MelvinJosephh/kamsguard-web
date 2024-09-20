@@ -1,14 +1,17 @@
 <mat-toolbar [ngClass]="{'hidden': !isHeaderVisible}" class="custom-toolbar">
+<div class="brand">
   <button
-    mat-icon-button
-    aria-label="Toggle Sidebar"
-    (click)="toggleSidebar()"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span class="brand-logo" routerLink="/">Kamsguard Solutions</span>
-  <span class="example-spacer"></span>
+  mat-icon-button
+  aria-label="Toggle Sidebar"
+  (click)="toggleSidebar()"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+<span class="brand-logo" routerLink="/">Kamsguard Solutions</span>
 
+</div>
+
+<div class="navigation">
   <div class="nav-links-container">
     <a class="nav-link" routerLink="/industrial-solutions" routerLinkActive="active">Industrial Solutions</a>
     <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
@@ -18,4 +21,5 @@
     <a class="auth-link" routerLink="/auth" routerLinkActive="active">Login</a>
     <a class="auth-link" routerLink="/register" routerLinkActive="active">Register</a>
   </div>
+</div>
 </mat-toolbar>

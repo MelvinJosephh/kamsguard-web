@@ -1,13 +1,27 @@
 const express = require('express');
 const http = require('http');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 const WebSocket = require('ws');
 const mqttClient = require('./mqttClient'); // Import the MQTT client
 const configRoute = require('./routes/config');
+
 const cors = require('cors');
+
+dotenv.config();
 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT
+const MONGO_URL = process.env.MONGOURL
+
+
+mongoose.connect(MONGO_URL).then (()=>{
+  console.log("Database connection established")
+  app.listen(port, ()=>{
+    console.log(`Server listening on ${port}`);
+  })
+}).catch((error)=> console.log(error));
 
 // Import routes
 const notificationRoute = require('./routes/notifications');
@@ -35,6 +49,8 @@ app.use(
     origin: 'http://localhost:4200',
   })
 );
+
+
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -66,6 +82,6 @@ wss.on('connection', (ws) => {
 });
 
 // Start the HTTP and WebSocket server
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// server.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });

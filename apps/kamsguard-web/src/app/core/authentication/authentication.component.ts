@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';  // Import Router
+import { AuthenticationService } from '../../features/services/authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -18,7 +20,7 @@ export class AuthComponent {
   authForm: FormGroup;
   isLoginMode = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {  // Inject Router
     this.authForm = this.fb.group({
       name: [''],
       email: ['', [Validators.required, Validators.email]],
@@ -31,17 +33,19 @@ export class AuthComponent {
   }
 
   onSwitchMode() {
-    this.isLoginMode = !this.isLoginMode;
+    if (!this.authService.isAuthenticated()) {  // Check if user is authenticated
+      this.isLoginMode = !this.isLoginMode;  // Toggle mode
+    } else {
+      this.router.navigate(['/auth']);  // Redirect to login if already logged in
+    }
     this.updateValidators();
   }
 
   updateValidators() {
     if (this.isLoginMode) {
-     
       this.authForm.controls['name'].clearValidators();
       this.authForm.controls['phoneNumber'].clearValidators();
     } else {
-     
       this.authForm.controls['name'].setValidators([Validators.required]);
       this.authForm.controls['phoneNumber'].setValidators([Validators.required]);
     }
@@ -56,9 +60,15 @@ export class AuthComponent {
     }
     const authData = this.authForm.value;
     if (this.isLoginMode) {
-      // Handle login
+      const success = this.authService.login(authData.email, authData.password);
+      if (success) {
+        this.router.navigate(['/dashboard']);  // Navigate to a dashboard or protected route
+      } else {
+        // Show login error
+      }
     } else {
-      // Handle signup
+      this.authService.register(authData);
+      this.router.navigate(['/auth']);  // Redirect to login after registration
     }
   }
 }
