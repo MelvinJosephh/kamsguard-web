@@ -9,6 +9,8 @@ const path = require('path');
 const route = Router();
 require('dotenv').config();
 const mqttClient = require('../mqttClient');
+const Notification = require('../models/notifications');
+
 
 
 route.use(
@@ -17,7 +19,36 @@ route.use(
   })
 );
 
-const notificationsFilePath = path.join(__dirname, '../database/db.json');
+const transporter = nodemailer.createTransport({
+  service: 'kamsware',
+  host: 'mail.kamsware.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+
+
+function getHttpClient(ipAddress, userName, password) {
+  return axios.create({
+    baseURL: `http://${ipAddress}`,
+    auth: {
+      username: userName,
+      password: password,
+    },
+    responseType: 'arraybuffer',
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
+      Authorization:
+        'Basic ' + Buffer.from(`${userName}:${password}`).toString('base64'),
+    },
+  });
+}
+
 
 
 route.post('/send-email', async (req, res) => {
@@ -87,106 +118,38 @@ route.post('/send-email', async (req, res) => {
   </tr>
   </table>`,
     };
+    await transporter.sendMail(mailOptions);
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res
-          .status(500)
-          .json({ status: 'error', message: 'Error sending notification' });
-      } else {
-        console.log('Email sent:', info.response);
-
-        const notifications = readNotificationsFromFile();
-        notifications.push({
-          subject,
-          eventType: eventType,
-          siteId: mappedSiteId,
-          timestamp: formattedTimestamp,
-          notificationType: 'Email',
-          status: 'Sent',
-        });
-        writeNotificationsToFile(notifications);
-
-        res
-          .status(200)
-          .json({ status: 'success', message: 'Notification sent' });
-      }
+    const newNotification = new Notification({
+      subject,
+      eventType: mappedEventType,
+      siteId: mappedSiteId,
+      timestamp: formattedTimestamp,
+      notificationType: 'Email',
+      status: 'Sent',
     });
+    await newNotification.save();
+
+    res.status(200).json({ status: 'success', message: 'Notification sent' });
   } catch (error) {
-    console.error('Error fetching the image:', error);
-    res.status(500).json({ status: 'error', message: 'Error fetching image' });
+    console.error('Error:', error);
+    res.status(500).json({ status: 'error', message: 'Error sending notification or fetching image' });
   }
 });
 
-
-route.get('/', (req, res) => {
+//Route to get all notifications from mongo
+route.get('/', async (req, res) => {
   try {
-    const notifications = readNotificationsFromFile();
+    const notifications = await Notification.find(); // Fetch from MongoDB
     res.status(200).json(notifications);
   } catch (error) {
     console.error('Error retrieving notifications:', error);
-    res
-      .status(500)
-      .json({ status: 'error', message: 'Error retrieving notifications' });
+    res.status(500).json({ status: 'error', message: 'Error retrieving notifications' });
   }
 });
-
-
-const transporter = nodemailer.createTransport({
-  service: 'kamsware',
-  host: 'mail.kamsware.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-
-function getHttpClient(ipAddress, userName, password) {
-  return axios.create({
-    baseURL: `http://${ipAddress}`,
-    auth: {
-      username: userName,
-      password: password,
-    },
-    responseType: 'arraybuffer',
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)',
-      Authorization:
-        'Basic ' + Buffer.from(`${userName}:${password}`).toString('base64'),
-    },
-  });
-}
-
-
-
-function readNotificationsFromFile() {
-  if (fs.existsSync(notificationsFilePath)) {
-    const data = fs.readFileSync(notificationsFilePath, 'utf8');
-    return JSON.parse(data);
-  }
-  return [];
-}
-
-
-function writeNotificationsToFile(notifications) {
-  fs.writeFileSync(
-    notificationsFilePath,
-    JSON.stringify(notifications, null, 2),
-    'utf8'
-  );
-}
-
 
 // MQTT message handler
 mqttClient.on('message', (topic, message) => {
-  // console.log(`Received message on topic ${topic}: ${message.toString()}`);
-  
-  // Process the MQTT message
   const data = JSON.parse(message.toString());
   const { value, extended } = data;
 
@@ -201,36 +164,31 @@ mqttClient.on('message', (topic, message) => {
           });
         }
       }
-      handleEvent(eventName, site_id, time, details);
+      // handleEvent(eventName, site_id, time, details);
     });
   }
 });
 
-// Handle event processing and email notifications
-function handleEvent(eventName, siteId, time, details) {
-  const eventIdentifier = `${eventName}-${siteId}-${time}`;
-  const existingNotification = readNotificationsFromFile().find(
-    (e) => e.eventType === eventName && e.siteId === siteId && e.timestamp === time
-  );
+function handleEvent(eventName, siteId, time, nestedEvent, nestedDetails) {
+  Notification.findOne({ eventType: eventName, siteId: siteId, timestamp: time })
+    .then(existingNotification => {
+      if (!existingNotification) {
+        const newNotification = new Notification({
+          timestamp: nestedEvent.time,
+          eventType: nestedEvent.event,
+          siteId: nestedEvent.site_id,
+          notificationType: 'Email',
+          status: 'Pending',
+        });
 
-  if (!existingNotification) {
-    const newNotification = {
-      timestamp: time,
-      eventType: eventName,
-      siteId: siteId,
-      notificationType: 'Email',
-      status: 'Pending',
-    };
-
-    // Save the notification to file
-    const notifications = readNotificationsFromFile();
-    notifications.push(newNotification);
-    writeNotificationsToFile(notifications);
-
-    // Send email notification
-    sendEmailNotification(newNotification, details);
-  }
+        newNotification.save().then(() => {
+          sendEmailNotification(newNotification, nestedDetails);
+        });
+      }
+    });
 }
+
+
 
 function sendEmailNotification(notification, details) {
   const emailData = {
@@ -244,27 +202,25 @@ function sendEmailNotification(notification, details) {
   axios.post('http://localhost:3001/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
-      // Update notification status in file
-      const notifications = readNotificationsFromFile();
-      const updatedNotifications = notifications.map((n) =>
-        n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
-          ? { ...n, status: 'Sent' }
-          : n
+      Notification.findOneAndUpdate(
+        { timestamp: notification.timestamp, eventType: notification.eventType, siteId: notification.siteId },
+        { status: 'Sent' },
+        { new: true }
       );
-      writeNotificationsToFile(updatedNotifications);
     })
     .catch((error) => {
       console.error('Error sending email:', error);
-      // Update notification status in file
-      const notifications = readNotificationsFromFile();
-      const updatedNotifications = notifications.map((n) =>
-        n.timestamp === notification.timestamp && n.eventType === notification.eventType && n.siteId === notification.siteId
-          ? { ...n, status: 'Failed' }
-          : n
+      Notification.findOneAndUpdate(
+        { timestamp: notification.timestamp, eventType: notification.eventType, siteId: notification.siteId },
+        { status: 'Failed' },
+        { new: true }
       );
-      writeNotificationsToFile(updatedNotifications);
     });
 }
+
+
+
+
 
 
 

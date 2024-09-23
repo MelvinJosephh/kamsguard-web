@@ -3,34 +3,34 @@ const http = require('http');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
-const mqttClient = require('./mqttClient'); // Import the MQTT client
+const mqttClient = require('./mqttClient'); 
 const configRoute = require('./routes/config');
-
 const cors = require('cors');
 
 dotenv.config();
 
-
 const app = express();
-const port = process.env.PORT
-const MONGO_URL = process.env.MONGOURL
+const port = process.env.PORT;
 
+// Function to connect to MongoDB
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.EVENTSMONGOURL);
+    console.log('MongoDB connected for events');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    process.exit(1); // Exit the process if connection fails
+  }
+};
 
-mongoose.connect(MONGO_URL).then (()=>{
-  console.log("Database connection established")
-  app.listen(port, ()=>{
-    console.log(`Server listening on ${port}`);
-  })
-}).catch((error)=> console.log(error));
+// Call connectDB before starting the server
+connectDB();
 
 // Import routes
 const notificationRoute = require('./routes/notifications');
 const eventsRoute = require('./routes/events');
 const connectedDevicesRoute = require('./routes/connected-devices');
 const filteredEventsRoute = require('./routes/filtered-events');
-
-//import route
-app.use('/api', configRoute);
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -39,18 +39,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware to use routes
+app.use('/api', configRoute);
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
-app.use(
-  cors({
-    origin: 'http://localhost:4200',
-  })
-);
-
-
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -58,30 +53,56 @@ const server = http.createServer(app);
 // Create WebSocket server
 const wss = new WebSocket.Server({ server });
 
+// WebSocket logic
 wss.on('connection', (ws) => {
-  console.log('WebSocket connection established');
+  console.log('New WebSocket client connected');
 
-  // Send a welcome message to the new client
-  ws.send(JSON.stringify({ message: 'Connected to WebSocket server' }));
+  // Send an initial message to the client
+  ws.send(JSON.stringify({ message: 'Welcome to the WebSocket server' }));
 
-  // Handle incoming WebSocket messages from clients
+  // Handle messages received from the client
   ws.on('message', (message) => {
-    console.log(`Received message from WebSocket client: ${message}`);
-    // Handle client messages (e.g., subscribe to MQTT topics or send commands)
+    console.log('Received message from client:', message);
+    
+    // Optionally, process the received message
+    // For now, we'll echo it back to the client
+    ws.send(`Server received: ${message}`);
   });
 
-  // Forward MQTT messages to WebSocket clients
-  mqttClient.on('message', (topic, message) => {
-    ws.send(JSON.stringify({ topic, message: message.toString() }));
-  });
-
-  // Clean up when WebSocket connection closes
+  // Handle client disconnection
   ws.on('close', () => {
-    console.log('WebSocket connection closed');
+    console.log('WebSocket client disconnected');
+  });
+
+  // Handle WebSocket errors
+  ws.on('error', (error) => {
+    console.error('WebSocket error:', error);
   });
 });
 
-// Start the HTTP and WebSocket server
-// server.listen(port, () => {
-//   console.log(`Server is running on http://localhost:${port}`);
-// });
+// Function to broadcast messages to all connected WebSocket clients
+const broadcast = (data) => {
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(data));
+    }
+  });
+};
+
+// MQTT logic to broadcast messages to WebSocket clients
+mqttClient.on('message', (topic, message) => {
+  try {
+    const eventData = JSON.parse(message.toString());
+    console.log('Received MQTT message:', eventData);
+
+    // You can customize the broadcast data structure as needed
+    broadcast({ type: 'MQTT_EVENT', event: eventData });
+  } catch (error) {
+    console.error('Error parsing MQTT message:', error);
+  }
+});
+
+// Start the HTTP server
+server.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

@@ -1,11 +1,9 @@
 const express = require('express');
 const { Router } = require('express');
-const fs = require('fs');
-const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
+const Event = require('../models/events');
 const mqttClient = require('../mqttClient'); 
 
 const route = Router();
@@ -18,45 +16,56 @@ route.use(
 
 route.use(bodyParser.json());
 
-let events = [];
-
-const dbPath = path.join(__dirname, '../database/events.json');
-if (fs.existsSync(dbPath)) {
-  events = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-}
-
-route.get('/', (req, res) => {
-  res.json(events);
+// GET route to fetch events from MongoDB
+route.get('/', async (req, res) => {
+  try {
+    const events = await Event.find(); // Fetch all events from MongoDB
+    res.json(events);
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
-route.post('/events', (req, res) => {
+// POST route to create a new event
+route.post('/events', async (req, res) => {
   try {
-    const event = req.body;
+    const { timestamp, eventType, siteId, details } = req.body;
 
-    if (!event.timestamp || !event.eventType || !event.siteId) {
+    if (!timestamp || !eventType || !siteId) {
       return res.status(400).json({ error: 'Invalid event data' });
     }
 
-    event.id = uuidv4();
+    const newEvent = new Event({
+      id: uuidv4(),  // If you want to retain custom id
+      timestamp,
+      eventType,
+      siteId,
+      details,
+    });
 
-    events.push(event);
+    await newEvent.save();  // Save event to MongoDB
 
-    fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
+    // WebSocket broadcast after event is saved
+    broadcast({ type: 'NEW_EVENT', event: newEvent });
 
-    res.status(201).json({ message: 'Event saved successfully', event });
+    res.status(201).json({ message: 'Event saved successfully', event: newEvent });
   } catch (error) {
     console.error('Error saving event:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-route.delete('/events/:id', (req, res) => {
+
+// DELETE route to remove an event by ID
+route.delete('/events/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
+    const deletedEvent = await Event.findOneAndDelete({ id: eventId }); // Delete event by ID from MongoDB
 
-    events = events.filter(event => event.id !== eventId);
-
-    fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
+    if (!deletedEvent) {
+      return res.status(404).json({ error: 'Event not found' });
+    }
 
     res.status(200).json({ message: 'Event deleted successfully' });
   } catch (error) {
@@ -75,18 +84,18 @@ mqttClient.on('connect', () => {
   });
 });
 
-mqttClient.on('message', (topic, message) => {
+mqttClient.on('message', async (topic, message) => {
   try {
     const data = JSON.parse(message.toString());
     const { value, extended } = data;
 
     if (value === 1 && extended && extended.length) {
-      extended.forEach((event) => {
+      extended.forEach(async (event) => {
         const { event: eventName, site_id, time, isCritical, regions, ...alarmDetails } = event;
 
         for (const key in alarmDetails) {
           if (alarmDetails[key]?.extended) {
-            alarmDetails[key].extended.forEach((nestedEvent) => {
+            alarmDetails[key].extended.forEach(async (nestedEvent) => {
               const nestedDetails = { ...nestedEvent, parentEvent: eventName };
               const eventId = `${nestedEvent.event}-${nestedEvent.site_id}-${nestedEvent.time}`;
               let thresholds = [];
@@ -103,29 +112,18 @@ mqttClient.on('message', (topic, message) => {
                       botright: region.botright,
                     }));
                 }
-
-                const eventData = {
-                  id: eventId,
-                  eventType: nestedEvent.event,
-                  siteId: nestedEvent.site_id,
-                  timestamp: nestedEvent.time,
-                  details: { ...nestedDetails, thresholds },
-                  thresholds,
-                };
-                events.push(eventData);
-                fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
-              } else {
-                const eventData = {
-                  id: eventId,
-                  eventType: nestedEvent.event,
-                  siteId: nestedEvent.site_id,
-                  timestamp: nestedEvent.time,
-                  details: nestedDetails,
-                  ...nestedDetails,
-                };
-                events.push(eventData);
-                fs.writeFileSync(dbPath, JSON.stringify(events, null, 2));
               }
+
+              const eventData = new Event({
+                id: eventId,
+                eventType: nestedEvent.event,
+                siteId: nestedEvent.site_id,
+                timestamp: nestedEvent.time,
+                details: { ...nestedDetails, thresholds },
+                thresholds,
+              });
+
+              await eventData.save(); // Save the event data directly to MongoDB
             });
           }
         }
