@@ -9,7 +9,7 @@ app.use(express.json());
 
 route.use(
     cors({
-      origin: 'http://localhost:4200', 
+      origin: 'https://kamsguard-web.vercel.app', 
     })
   );
 

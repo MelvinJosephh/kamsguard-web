@@ -45,7 +45,7 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: 'https://kamsguard-web.vercel.app' }));
 
 // Create HTTP server
 const server = http.createServer(app);

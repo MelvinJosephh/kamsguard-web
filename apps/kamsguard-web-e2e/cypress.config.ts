@@ -12,6 +12,6 @@ export default defineConfig({
       },
       ciWebServerCommand: 'nx run kamsguard-web:serve-static',
     }),
-    baseUrl: 'http://localhost:4200',
+    baseUrl: 'https://kamsguard-web.vercel.app',
   },
 });
