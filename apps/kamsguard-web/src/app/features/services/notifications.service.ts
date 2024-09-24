@@ -26,7 +26,7 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>('http://localhost:3001/notifications');
+    return this.http.get<Notification[]>('https://kamsguard-server.vercel.app/notifications');
   }
 
   private processMessage(message: string) {

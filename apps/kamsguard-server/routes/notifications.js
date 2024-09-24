@@ -15,7 +15,7 @@ const Notification = require('../models/notifications');
 
 route.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], 
+    origin: ['https://kamsguard-web.vercel.app'], 
   })
 );
 
@@ -199,7 +199,7 @@ function sendEmailNotification(notification, details) {
     details: details,
   };
 
-  axios.post('http://localhost:3001/notifications/send-email', emailData)
+  axios.post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
       Notification.findOneAndUpdate(
