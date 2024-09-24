@@ -11,11 +11,9 @@ require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
 
-
-
 route.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app'], 
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
 );
 
@@ -29,8 +27,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
-
-
 
 function getHttpClient(ipAddress, userName, password) {
   return axios.create({
@@ -48,8 +44,6 @@ function getHttpClient(ipAddress, userName, password) {
     },
   });
 }
-
-
 
 route.post('/send-email', async (req, res) => {
   const { subject, eventType, siteId, timestamp } = req.body;
@@ -133,7 +127,10 @@ route.post('/send-email', async (req, res) => {
     res.status(200).json({ status: 'success', message: 'Notification sent' });
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ status: 'error', message: 'Error sending notification or fetching image' });
+    res.status(500).json({
+      status: 'error',
+      message: 'Error sending notification or fetching image',
+    });
   }
 });
 
@@ -144,7 +141,9 @@ route.get('/', async (req, res) => {
     res.status(200).json(notifications);
   } catch (error) {
     console.error('Error retrieving notifications:', error);
-    res.status(500).json({ status: 'error', message: 'Error retrieving notifications' });
+    res
+      .status(500)
+      .json({ status: 'error', message: 'Error retrieving notifications' });
   }
 });
 
@@ -160,7 +159,12 @@ mqttClient.on('message', (topic, message) => {
         if (details[key]?.extended) {
           details[key].extended.forEach((nestedEvent) => {
             const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-            handleEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
+            handleEvent(
+              nestedEvent.event,
+              nestedEvent.site_id,
+              nestedEvent.time,
+              nestedDetails
+            );
           });
         }
       }
@@ -170,25 +174,26 @@ mqttClient.on('message', (topic, message) => {
 });
 
 function handleEvent(eventName, siteId, time, nestedEvent, nestedDetails) {
-  Notification.findOne({ eventType: eventName, siteId: siteId, timestamp: time })
-    .then(existingNotification => {
-      if (!existingNotification) {
-        const newNotification = new Notification({
-          timestamp: nestedEvent.time,
-          eventType: nestedEvent.event,
-          siteId: nestedEvent.site_id,
-          notificationType: 'Email',
-          status: 'Pending',
-        });
+  Notification.findOne({
+    eventType: eventName,
+    siteId: siteId,
+    timestamp: time,
+  }).then((existingNotification) => {
+    if (!existingNotification) {
+      const newNotification = new Notification({
+        timestamp: nestedEvent.time,
+        eventType: nestedEvent.event,
+        siteId: nestedEvent.site_id,
+        notificationType: 'Email',
+        status: 'Pending',
+      });
 
-        newNotification.save().then(() => {
-          sendEmailNotification(newNotification, nestedDetails);
-        });
-      }
-    });
+      newNotification.save().then(() => {
+        sendEmailNotification(newNotification, nestedDetails);
+      });
+    }
+  });
 }
-
-
 
 function sendEmailNotification(notification, details) {
   const emailData = {
@@ -199,11 +204,16 @@ function sendEmailNotification(notification, details) {
     details: details,
   };
 
-  axios.post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
+  axios
+    .post('https://localhost:3001/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
       Notification.findOneAndUpdate(
-        { timestamp: notification.timestamp, eventType: notification.eventType, siteId: notification.siteId },
+        {
+          timestamp: notification.timestamp,
+          eventType: notification.eventType,
+          siteId: notification.siteId,
+        },
         { status: 'Sent' },
         { new: true }
       );
@@ -211,20 +221,15 @@ function sendEmailNotification(notification, details) {
     .catch((error) => {
       console.error('Error sending email:', error);
       Notification.findOneAndUpdate(
-        { timestamp: notification.timestamp, eventType: notification.eventType, siteId: notification.siteId },
+        {
+          timestamp: notification.timestamp,
+          eventType: notification.eventType,
+          siteId: notification.siteId,
+        },
         { status: 'Failed' },
         { new: true }
       );
     });
 }
 
-
-
-
-
-
-
-
-
 module.exports = route;
-

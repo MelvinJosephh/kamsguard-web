@@ -3,7 +3,7 @@ const http = require('http');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
-const mqttClient = require('./mqttClient'); 
+const mqttClient = require('./mqttClient');
 const configRoute = require('./routes/config');
 const cors = require('cors');
 
@@ -43,11 +43,14 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
-app.use(cors({
-  origin: ['https://kamsguard-web.vercel.app'],
-  credentials: true, // Allow credentials if needed
-}));
-
+app.use(
+  cors({
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
+    credentials: true, // Allow credentials if needed
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+  })
+);
+// Create HTTP server
 const server = http.createServer(app);
 
 // Create WebSocket server
@@ -63,7 +66,7 @@ wss.on('connection', (ws) => {
   // Handle messages received from the client
   ws.on('message', (message) => {
     console.log('Received message from client:', message);
-    
+
     // Optionally, process the received message
     // For now, we'll echo it back to the client
     ws.send(`Server received: ${message}`);

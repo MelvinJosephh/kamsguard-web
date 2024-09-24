@@ -9,7 +9,7 @@ import { EventData } from '../../models/event.model';
 export class EventsService {
   eventProcessed = new EventEmitter<EventData>(); 
 
-  private apiUrl = 'https://kamsguard-server.vercel.app/events';
+  private apiUrl = 'http://localhost:3200/events';
 
   constructor(private http: HttpClient) {}
 
