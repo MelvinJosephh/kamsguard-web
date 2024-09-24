@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const corsConfig = {
-  origin: "*",
+  origin: "https://kamsguard-web.vercel.app",
   credential: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 }
