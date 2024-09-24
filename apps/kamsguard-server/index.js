@@ -30,7 +30,6 @@ connectDB();
 const notificationRoute = require('./routes/notifications');
 const eventsRoute = require('./routes/events');
 const connectedDevicesRoute = require('./routes/connected-devices');
-const filteredEventsRoute = require('./routes/filtered-events');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -41,7 +40,6 @@ app.use('/api', configRoute);
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
-app.use('/filtered-events', filteredEventsRoute);
 
 app.use(
   cors({

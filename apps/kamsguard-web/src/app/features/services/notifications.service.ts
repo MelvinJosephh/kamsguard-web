@@ -26,7 +26,7 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>('http://localhost:3200/notifications');
+    return this.http.get<Notification[]>('http://212.2.246.131/notifications');
   }
 
   private processMessage(message: string) {
@@ -41,13 +41,13 @@ export class NotificationService {
           for (const key in details) {
             if (details[key]?.extended) {
               details[key].extended.forEach((nestedEvent: any) => {
-                const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-                this.processEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
+                // const nestedDetails = { ...nestedEvent, parentEvent: eventName };
+                // this.processEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
               });
             }
           }
 
-          this.processEvent(eventName, site_id, time, details);
+          // this.processEvent(eventName, site_id, time, details);
         });
       }
     } catch (e) {
@@ -78,7 +78,7 @@ export class NotificationService {
       };
 
       this.notifications.push(newNotification);
-      // No longer needed: this.sendEmailNotification(newNotification, details);
+    
     }
   }
 

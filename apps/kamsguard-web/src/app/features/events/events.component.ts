@@ -77,16 +77,16 @@ export class EventsComponent implements OnInit {
   deleteEvent(eventToDelete: EventData, mouseEvent?: MouseEvent) {
     mouseEvent?.stopPropagation(); 
   
-    if (!eventToDelete.id) {
-      console.error('Event has no ID and cannot be deleted.');
+    if (!eventToDelete._id) {  // Ensure you're using the MongoDB _id
+      console.error('Event has no MongoDB _id and cannot be deleted.');
       return;
     }
   
-    this.eventsService.deleteEvent(eventToDelete.id).subscribe(
+    this.eventsService.deleteEvent(eventToDelete._id).subscribe(
       response => {
         console.log('Event deleted successfully:', response);
-        this.events = this.events.filter(e => e.id !== eventToDelete.id);
-        this.filteredEvents = this.filteredEvents.filter(e => e.id !== eventToDelete.id);
+        this.events = this.events.filter(e => e._id !== eventToDelete._id);
+        this.filteredEvents = this.filteredEvents.filter(e => e._id !== eventToDelete._id);
         this.selectedEvent = null; 
       },
       error => {
@@ -94,6 +94,7 @@ export class EventsComponent implements OnInit {
       }
     );
   }
+  
   
 
 

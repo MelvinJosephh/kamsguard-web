@@ -205,7 +205,7 @@ function sendEmailNotification(notification, details) {
   };
 
   axios
-    .post('https://localhost:3001/notifications/send-email', emailData)
+    .post('http://localhost:3200/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
       Notification.findOneAndUpdate(
