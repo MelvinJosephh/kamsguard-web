@@ -7,7 +7,7 @@ const mqttClient = require('./mqttClient');
 const configRoute = require('./routes/config');
 const cors = require('cors');
 const corsConfig = {
-  origin: "*",
+  origin: ['https://kamsguard-web.vercel.app', 'https://kamsguard-server.vercel.app/'], 
   credential: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 }
