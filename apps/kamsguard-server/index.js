@@ -44,11 +44,10 @@ app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
 app.use(cors({
-  origin: ['https://kamsguard-web.vercel.app'], // Allow requests from your web app
+  origin: ['https://kamsguard-web.vercel.app'],
   credentials: true, // Allow credentials if needed
-  methods: ["GET", "POST", "PUT", "DELETE"] // Specify allowed HTTP methods
 }));
-// Create HTTP server
+
 const server = http.createServer(app);
 
 // Create WebSocket server
