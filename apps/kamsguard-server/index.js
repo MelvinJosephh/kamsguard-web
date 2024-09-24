@@ -11,11 +11,6 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-const corsConfig = {
-  origin: "https://kamsguard-web.vercel.app",
-  credential: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}
 
 // Function to connect to MongoDB
 const connectDB = async () => {
@@ -50,8 +45,7 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
-app.use(cors(corsConfig));
-app.options("", cors(corsConfig));
+app.use(cors({ origin: 'https://kamsguard-web.vercel.app' }));
 
 // Create HTTP server
 const server = http.createServer(app);
