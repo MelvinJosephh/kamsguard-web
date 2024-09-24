@@ -6,11 +6,6 @@ const WebSocket = require('ws');
 const mqttClient = require('./mqttClient'); 
 const configRoute = require('./routes/config');
 const cors = require('cors');
-// const corsConfig = {
-//   credential: true,
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-// }
-
 
 dotenv.config();
 
@@ -39,8 +34,6 @@ const filteredEventsRoute = require('./routes/filtered-events');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
-// Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware to use routes
@@ -50,8 +43,11 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 app.use('/filtered-events', filteredEventsRoute);
 
-app.use(cors({ origin: ['https://kamsguard-web.vercel.app', 'https://kamsguard-server.vercel.app'] }));
-
+app.use(cors({
+  origin: ['https://kamsguard-web.vercel.app'], // Allow requests from your web app
+  credentials: true, // Allow credentials if needed
+  methods: ["GET", "POST", "PUT", "DELETE"] // Specify allowed HTTP methods
+}));
 // Create HTTP server
 const server = http.createServer(app);
 
