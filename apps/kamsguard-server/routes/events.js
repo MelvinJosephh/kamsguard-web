@@ -10,7 +10,7 @@ const route = Router();
 
 route.use(
   cors({
-    origin: 'https://kamsguard-web.vercel.app',
+    origin: ['https://kamsguard-web.vercel.app', 'https://kamsguard-server.vercel.app/'], 
   })
 );
 
