@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 interface Notification {
   timestamp: string;
@@ -30,7 +30,10 @@ export class NotificationService {
     // return this.http.get<Notification[]>('/proxy');
     const baseUrl = "http://212.2.246.131"
     const url = baseUrl + "/notifications"
-    return this.http.get<Notification[]>("/notifications");
+     this.http.get<Notification[]>("/notifications").subscribe((response)=>{
+      console.log("resp resp: " + JSON.stringify(response));
+    });
+    return of([])
   }
 
   private processMessage(message: string) {
