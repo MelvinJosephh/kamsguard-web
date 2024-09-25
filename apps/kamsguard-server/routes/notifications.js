@@ -14,7 +14,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 route.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://212.2.246.131'],
+    origin: ['http://212.2.246.131', 'http://localhost:4200'],
   })
 );
 
