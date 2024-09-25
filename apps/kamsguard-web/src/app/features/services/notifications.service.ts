@@ -41,8 +41,8 @@ export class NotificationService {
           for (const key in details) {
             if (details[key]?.extended) {
               details[key].extended.forEach((nestedEvent: any) => {
-                // const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-                // this.processEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
+                const nestedDetails = { ...nestedEvent, parentEvent: eventName };
+                this.processEvent(nestedEvent.event, nestedEvent.site_id, nestedEvent.time, nestedDetails);
               });
             }
           }

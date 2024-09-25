@@ -9,7 +9,7 @@ import { EventData } from '../../models/event.model';
 export class EventsService {
   eventProcessed = new EventEmitter<EventData>(); 
 
-  private apiUrl = 'http://localhost:3200/events';
+  private apiUrl = 'http://212.2.246.131/events';
 
   constructor(private http: HttpClient) {}
 
