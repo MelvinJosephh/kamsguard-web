@@ -19,7 +19,7 @@ route.use(bodyParser.json());
 
 // Proxy HTTP requests for events to the insecure endpoint
 route.use('/', createProxyMiddleware({
-  target: 'http://212.2.246.131', // Insecure HTTP endpoint for events
+  target: 'https://212.2.246.131', // Insecure HTTP endpoint for events
   changeOrigin: true,
   // pathRewrite: {
   //   '^/proxy/events': '/events', // Rewrite the URL
