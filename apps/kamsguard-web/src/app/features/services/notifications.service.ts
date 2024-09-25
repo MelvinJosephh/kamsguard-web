@@ -30,7 +30,7 @@ export class NotificationService {
     // return this.http.get<Notification[]>('/proxy');
     const baseUrl = "http://212.2.246.131"
     const url = baseUrl + "/notifications"
-    return this.http.get<Notification[]>(url);
+    return this.http.get<Notification[]>("/notifications");
   }
 
   private processMessage(message: string) {
