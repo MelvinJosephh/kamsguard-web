@@ -6,6 +6,7 @@ const WebSocket = require('ws');
 const mqttClient = require('./mqttClient');
 const configRoute = require('./routes/config');
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 dotenv.config();
 
@@ -43,11 +44,24 @@ app.use('/connected-devices', connectedDevicesRoute);
 
 app.use(
   cors({
-    origin: ['http://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
     credentials: true, // Allow credentials if needed
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
   })
 );
+
+// Proxy HTTP requests for notifications to the insecure endpoint
+app.use('/proxy/notifications', createProxyMiddleware({
+  target: 'http://212.2.246.131', // Insecure HTTP endpoint
+  changeOrigin: true,
+  pathRewrite: {
+    '^/proxy/notifications': '/notifications', // Rewrite the URL
+  },
+  secure: false, // Allow insecure connections (because the target is HTTP)
+}));
+
+
+
 // Create HTTP server
 const server = http.createServer(app);
 

@@ -7,7 +7,7 @@ const port = 5000;
 
 
 app.use(cors({
-  origin: 'http://kamsguard-web.vercel.app', 
+  origin: 'https://kamsguard-web.vercel.app', 
 }));
 
 const proxy = httpProxy.createProxyServer({
