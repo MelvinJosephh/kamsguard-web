@@ -26,7 +26,7 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>('/notifications');
+    return this.http.get<Notification[]>('/proxy');
   }
 
   private processMessage(message: string) {
