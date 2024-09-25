@@ -26,7 +26,7 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>('/proxy');
+    return this.http.get<Notification[]>('http://212.2.246.131/notifications');
   }
 
   private processMessage(message: string) {
