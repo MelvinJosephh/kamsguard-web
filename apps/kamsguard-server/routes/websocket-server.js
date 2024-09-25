@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 app.use(cors({
-  origin: 'https://kamsguard-web.vercel.app', 
+  origin: 'http://kamsguard-web.vercel.app', 
 }));
 app.use(express.static('public')); 
 

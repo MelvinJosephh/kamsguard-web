@@ -43,7 +43,7 @@ app.use('/connected-devices', connectedDevicesRoute);
 
 app.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
+    origin: ['http://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
     credentials: true, // Allow credentials if needed
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
   })

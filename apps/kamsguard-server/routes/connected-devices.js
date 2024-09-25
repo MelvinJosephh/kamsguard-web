@@ -9,7 +9,7 @@ app.use(express.json());
 
 route.use(
     cors({
-      origin: 'https://kamsguard-web.vercel.app', 
+      origin: 'http://kamsguard-web.vercel.app', 
     })
   );
 
