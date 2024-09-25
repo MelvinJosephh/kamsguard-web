@@ -9,7 +9,7 @@ import { EventData } from '../../models/event.model';
 export class EventsService {
   eventProcessed = new EventEmitter<EventData>(); 
 
-  private apiUrl = '/proxy';
+  private apiUrl = '/events';
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +17,7 @@ export class EventsService {
     return this.http.get<EventData[]>(this.apiUrl);
   }
 
-  saveEvent(event: EventData): Observable<any> {
+  saveEvent(event: EventData): Observable<unknown> {
     return this.http.post(this.apiUrl, event).pipe(
       catchError((error: any) => {
         console.error('Error saving event:', error);
