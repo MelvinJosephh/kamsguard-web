@@ -2,10 +2,6 @@
   "/proxy": {
     "target": "https://212.2.246.131", 
     "secure": false,
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/proxy/notifications": "/notifications",
-      "^/proxy/events": "/events"
-    }
+    "changeOrigin": true
   }
 }

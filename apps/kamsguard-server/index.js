@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const https = require('https');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
@@ -54,26 +55,26 @@ app.use('/connected-devices', connectedDevicesRoute);
 // Proxy for notifications
 app.use('/notifications', createProxyMiddleware({
   target: 'http://212.2.246.131', 
-  // changeOrigin: true,
+  changeOrigin: true,
   // pathRewrite: {
   //   '^/proxy/notifications': '/notifications', 
   // },
-  // secure: false, 
+  secure: false, 
 }));
 
 // Proxy for events
 app.use('/events', createProxyMiddleware({
-  target: 'https://212.2.246.131', 
-  // changeOrigin: true,
+  target: 'http://212.2.246.131', 
+  changeOrigin: true,
   // pathRewrite: {
   //   '^/proxy/events': '/events', 
   // },
-  // secure: false, 
+  secure: false, 
 }));
 
 
 // Create HTTP server
-const server = http.createServer(app);
+const server = https.createServer(app);
 
 // Create WebSocket server
 const wss = new WebSocket.Server({ server });

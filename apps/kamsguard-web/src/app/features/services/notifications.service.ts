@@ -28,7 +28,7 @@ export class NotificationService {
   getNotifications(): Observable<Notification[]> {
     //alert("empty");
     // return this.http.get<Notification[]>('/proxy');
-    const baseUrl = "//212.2.246.131"
+    const baseUrl = "http://212.2.246.131"
     const url = baseUrl + "/notifications"
     return this.http.get<Notification[]>(url);
   }
