@@ -54,21 +54,21 @@ app.use('/connected-devices', connectedDevicesRoute);
 // Proxy for notifications
 app.use('/notifications', createProxyMiddleware({
   target: 'http://212.2.246.131', 
-  changeOrigin: true,
-  pathRewrite: {
-    '^/proxy/notifications': '/notifications', 
-  },
-  secure: false, 
+  // changeOrigin: true,
+  // pathRewrite: {
+  //   '^/proxy/notifications': '/notifications', 
+  // },
+  // secure: false, 
 }));
 
 // Proxy for events
 app.use('/events', createProxyMiddleware({
   target: 'https://212.2.246.131', 
-  changeOrigin: true,
-  pathRewrite: {
-    '^/proxy/events': '/events', 
-  },
-  secure: false, 
+  // changeOrigin: true,
+  // pathRewrite: {
+  //   '^/proxy/events': '/events', 
+  // },
+  // secure: false, 
 }));
 
 
