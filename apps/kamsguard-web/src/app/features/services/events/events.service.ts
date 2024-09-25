@@ -9,7 +9,7 @@ import { EventData } from '../../models/event.model';
 export class EventsService {
   eventProcessed = new EventEmitter<EventData>(); 
 
-  private apiUrl = '/events';
+  private apiUrl = '/proxy';
 
   constructor(private http: HttpClient) {}
 
