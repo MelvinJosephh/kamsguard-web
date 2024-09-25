@@ -37,7 +37,7 @@ app.use(
   cors({
     origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], 
     credentials: true, 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
 );
 
@@ -52,7 +52,7 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
 // Proxy for notifications
-app.use('/proxy/notifications', createProxyMiddleware({
+app.use('/notifications', createProxyMiddleware({
   target: 'http://212.2.246.131', 
   changeOrigin: true,
   pathRewrite: {
@@ -62,7 +62,7 @@ app.use('/proxy/notifications', createProxyMiddleware({
 }));
 
 // Proxy for events
-app.use('/proxy/events', createProxyMiddleware({
+app.use('/events', createProxyMiddleware({
   target: 'https://212.2.246.131', 
   changeOrigin: true,
   pathRewrite: {

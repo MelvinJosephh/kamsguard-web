@@ -1,6 +1,6 @@
 {
   "/proxy": {
-    "target": "http://212.2.246.131", 
+    "target": "https://212.2.246.131", 
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
