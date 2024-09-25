@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const Event = require('../models/events');
 const mqttClient = require('../mqttClient'); 
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const route = Router();
 
@@ -15,6 +16,16 @@ route.use(
 );
 
 route.use(bodyParser.json());
+
+// Proxy HTTP requests for events to the insecure endpoint
+route.use('/events', createProxyMiddleware({
+  target: 'http://212.2.246.131', // Insecure HTTP endpoint for events
+  changeOrigin: true,
+  // pathRewrite: {
+  //   '^/proxy/events': '/events', // Rewrite the URL
+  // },
+  secure: false, // Allow insecure connections (because the target is HTTP)
+}));
 
 // GET route to fetch events from MongoDB
 route.get('/', async (req, res) => {

@@ -4,7 +4,8 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/proxy": "/notifications"
+      "^/proxy/notifications": "/notifications",
+      "^/proxy/events": "/events"
     }
   }
 }
