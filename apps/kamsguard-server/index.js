@@ -32,6 +32,15 @@ const notificationRoute = require('./routes/notifications');
 const eventsRoute = require('./routes/events');
 const connectedDevicesRoute = require('./routes/connected-devices');
 
+
+app.use(
+  cors({
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], 
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  })
+);
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,24 +51,25 @@ app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
-app.use(
-  cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], // Allow requests from your web app
-    credentials: true, // Allow credentials if needed
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-  })
-);
-
-// Proxy HTTP requests for notifications to the insecure endpoint
+// Proxy for notifications
 app.use('/proxy/notifications', createProxyMiddleware({
-  target: 'http://212.2.246.131', // Insecure HTTP endpoint
+  target: 'http://212.2.246.131', 
   changeOrigin: true,
   pathRewrite: {
-    '^/proxy/notifications': '/notifications', // Rewrite the URL
+    '^/proxy/notifications': '/notifications', 
   },
-  secure: false, // Allow insecure connections (because the target is HTTP)
+  secure: false, 
 }));
 
+// Proxy for events
+app.use('/proxy/events', createProxyMiddleware({
+  target: 'https://212.2.246.131', 
+  changeOrigin: true,
+  pathRewrite: {
+    '^/proxy/events': '/events', 
+  },
+  secure: false, 
+}));
 
 
 // Create HTTP server

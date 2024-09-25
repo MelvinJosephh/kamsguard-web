@@ -10,23 +10,11 @@ const route = Router();
 require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-
 route.use(
   cors({
     origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
 );
-
-// Proxy HTTP requests for events to the insecure endpoint
-route.use('/notifications', createProxyMiddleware({
-  target: 'https://212.2.246.131', // Insecure HTTP endpoint for events
-  changeOrigin: true,
-  pathRewrite: {
-    '^/proxy/notifications': '/notifications', // Rewrite the URL
-  },
-  secure: false, // Allow insecure connections (because the target is HTTP)
-}));
 
 const transporter = nodemailer.createTransport({
   service: 'kamsware',
