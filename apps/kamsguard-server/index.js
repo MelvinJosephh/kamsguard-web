@@ -35,7 +35,7 @@ const connectedDevicesRoute = require('./routes/connected-devices');
 
 app.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], 
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200','http://212.2.246.131'], 
     credentials: true, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
