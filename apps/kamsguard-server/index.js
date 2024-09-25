@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to use routes
 app.use('/api', configRoute);
-app.use('/notifications', notificationRoute);
+// app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
