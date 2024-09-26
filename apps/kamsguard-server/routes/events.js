@@ -10,14 +10,14 @@ const route = Router();
 
 route.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200', 'http://212.2.246.131'],
+    origin: ['http://kamsguard-web.vercel.app', 'http://localhost:4200', 'http://212.2.246.131'],
   })
 );
 
 route.use(bodyParser.json());
 
 // GET route to fetch events from MongoDB
-route.get('/events', async (req, res) => {
+route.get('/', async (req, res) => {
   try {
     const events = await Event.find(); // Fetch all events from MongoDB
     res.json(events);
