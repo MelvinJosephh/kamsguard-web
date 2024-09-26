@@ -5,16 +5,22 @@ const nodemailer = require('nodemailer');
 const axios = require('axios');
 const fs = require('fs');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const path = require('path');
 const route = Router();
 require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
+
+
+
 route.use(
   cors({
     origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
 );
+
+route.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
   service: 'kamsware',

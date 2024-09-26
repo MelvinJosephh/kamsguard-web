@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const WebSocket = require('ws');
 const mqttClient = require('./mqttClient');
 const configRoute = require('./routes/config');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
@@ -36,11 +37,14 @@ const connectedDevicesRoute = require('./routes/connected-devices');
 
 app.use(
   cors({
-    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200','http://212.2.246.131'], 
+    origin: ['https://kamsguard-web.vercel.app', 'http://localhost:4200'], 
     credentials: true, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
 );
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -48,33 +52,24 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to use routes
 app.use('/api', configRoute);
-// app.use('/notifications', notificationRoute);
+app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
-// Proxy for notifications
 app.use('/notifications', createProxyMiddleware({
-  target: 'http://212.2.246.131', 
+  target: 'http://212.2.246.131:80',
   changeOrigin: true,
-  // pathRewrite: {
-  //   '^/proxy/notifications': '/notifications', 
-  // },
-  secure: false, 
+  secure: false,
 }));
 
-// Proxy for events
 app.use('/events', createProxyMiddleware({
-  target: 'http://212.2.246.131', 
+  target: 'http://212.2.246.131:80',
   changeOrigin: true,
-  // pathRewrite: {
-  //   '^/proxy/events': '/events', 
-  // },
-  secure: false, 
+  secure: false,
 }));
-
 
 // Create HTTP server
-const server = https.createServer(app);
+const server = http.createServer(app);
 
 // Create WebSocket server
 const wss = new WebSocket.Server({ server });

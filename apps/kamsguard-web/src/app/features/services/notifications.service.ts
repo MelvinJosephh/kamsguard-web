@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 interface Notification {
   timestamp: string;
@@ -18,6 +18,7 @@ export class NotificationService {
   eventProcessed = new EventEmitter<Notification>();
   private notifications: Notification[] = [];
   private processedEvents: Set<string> = new Set();
+  private baseUrl = 'http://212.2.246.131'; 
 
   constructor(
     private http: HttpClient
@@ -26,14 +27,13 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<Notification[]> {
-    //alert("empty");
-    // return this.http.get<Notification[]>('/proxy');
-    const baseUrl = "http://212.2.246.131"
-    const url = baseUrl + "/notifications"
-     this.http.get<Notification[]>("/notifications").subscribe((response)=>{
-      console.log("resp resp: " + JSON.stringify(response));
-    });
-    return of([])
+    const url = `${this.baseUrl}/notifications`; // Use the base URL
+    return this.http.get<Notification[]>(url).pipe(
+      catchError((error) => {
+        console.error('Error fetching notifications:', error);
+        return of([]); // Return an empty array in case of an error
+      })
+    );
   }
 
   private processMessage(message: string) {
