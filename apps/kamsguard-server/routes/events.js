@@ -1,7 +1,6 @@
 const express = require('express');
 const { Router } = require('express');
 const { v4: uuidv4 } = require('uuid');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const Event = require('../models/events');
 const mqttClient = require('../mqttClient'); 
@@ -14,10 +13,9 @@ route.use(
   })
 );
 
-route.use(bodyParser.json());
 
 // GET route to fetch events from MongoDB
-route.get('/', async (req, res) => {
+route.get('/event', async (req, res) => {
   try {
     const events = await Event.find(); // Fetch all events from MongoDB
     res.json(events);

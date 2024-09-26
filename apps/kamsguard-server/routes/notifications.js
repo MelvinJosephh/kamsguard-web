@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 const axios = require('axios');
 const fs = require('fs');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const path = require('path');
 const route = Router();
 require('dotenv').config();
@@ -20,7 +19,6 @@ route.use(
   })
 );
 
-route.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
   service: 'kamsware',
@@ -140,7 +138,7 @@ route.post('/send-email', async (req, res) => {
 });
 
 //Route to get all notifications from mongo
-route.get('/', async (req, res) => {
+route.get('/notification', async (req, res) => {
   try {
     const notifications = await Notification.find(); // Fetch from MongoDB
     res.status(200).json(notifications);

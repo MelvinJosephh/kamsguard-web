@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const WebSocket = require('ws');
 const mqttClient = require('./mqttClient');
 const configRoute = require('./routes/config');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
@@ -43,26 +42,22 @@ app.use(
   })
 );
 
-app.use(bodyParser.urlencoded({ extended: false }))
-
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware to use routes
-app.use('/api', configRoute);
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
-app.use('/connected-devices', connectedDevicesRoute);
 
-app.use('/notifications', createProxyMiddleware({
+app.use('/proxied-notifications', createProxyMiddleware({
   target: 'http://212.2.246.131:80',
   changeOrigin: true,
   secure: false,
 }));
 
-app.use('/events', createProxyMiddleware({
+app.use('/proxied-events', createProxyMiddleware({
   target: 'http://212.2.246.131:80',
   changeOrigin: true,
   secure: false,
