@@ -57,13 +57,13 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
 app.use('/notifications', createProxyMiddleware({
-  target: 'https://212.2.246.131:80',
+  target: 'http://212.2.246.131:80',
   changeOrigin: true,
   secure: false,
 }));
 
 app.use('/events', createProxyMiddleware({
-  target: 'https://212.2.246.131:80',
+  target: 'http://212.2.246.131:80',
   changeOrigin: true,
   secure: false,
 }));
