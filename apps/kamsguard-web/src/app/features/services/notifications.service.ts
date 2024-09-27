@@ -18,7 +18,7 @@ export class NotificationService {
   eventProcessed = new EventEmitter<Notification>();
   private notifications: Notification[] = [];
   private processedEvents: Set<string> = new Set();
-  private baseUrl = 'http://212.2.246.131'; 
+  private baseUrl = 'https://212.2.246.131'; 
 
   constructor(
     private http: HttpClient
