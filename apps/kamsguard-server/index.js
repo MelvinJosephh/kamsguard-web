@@ -51,13 +51,13 @@ app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 
 app.use('/notifications', createProxyMiddleware({
-  target: 'http://localhost:3200',
+  target: 'https://kamsguard-server.vercel.app',
   changeOrigin: true,
   secure: false,
 }));
 
 app.use('/events', createProxyMiddleware({
-  target: 'http://localhost:3200',
+  target: 'https://kamsguard-server.vercel.app',
   changeOrigin: true,
   secure: false,
 }));

@@ -15,7 +15,7 @@ const Notification = require('../models/notifications');
 
 route.use(
   cors({
-    origin: ['http://kamsguard-web.vercel.app', 'http://localhost:4200', 'https://kamsguard-server.vercel.app'],
+    origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app'],
   })
 );
 
