@@ -51,13 +51,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 
-app.use('/proxied-notifications', createProxyMiddleware({
-  target: 'http://212.2.246.131:80',
+app.use('/api/notifications', createProxyMiddleware({
+  target: 'http://212.2.246.131',
   changeOrigin: true,
   secure: false,
 }));
 
-app.use('/proxied-events', createProxyMiddleware({
+app.use('/api/events', createProxyMiddleware({
   target: 'http://212.2.246.131:80',
   changeOrigin: true,
   secure: false,

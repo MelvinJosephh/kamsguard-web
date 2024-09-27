@@ -138,7 +138,7 @@ route.post('/send-email', async (req, res) => {
 });
 
 //Route to get all notifications from mongo
-route.get('/notification', async (req, res) => {
+route.get('/notifications', async (req, res) => {
   try {
     const notifications = await Notification.find(); // Fetch from MongoDB
     res.status(200).json(notifications);
