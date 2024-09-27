@@ -15,7 +15,7 @@ route.use(
 
 
 // GET route to fetch events from MongoDB
-route.get('/event', async (req, res) => {
+route.get('/', async (req, res) => {
   try {
     const events = await Event.find(); // Fetch all events from MongoDB
     res.json(events);
@@ -26,7 +26,7 @@ route.get('/event', async (req, res) => {
 });
 
 // POST route to create a new event
-route.post('/events', async (req, res) => {
+route.post('/', async (req, res) => {
   try {
     const { timestamp, eventType, siteId, details } = req.body;
 
@@ -56,7 +56,7 @@ route.post('/events', async (req, res) => {
 
 
 // DELETE route to remove an event by ID
-route.delete('/events/:id', async (req, res) => {
+route.delete('/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const deletedEvent = await Event.findOneAndDelete({ id: eventId }); // Delete event by ID from MongoDB

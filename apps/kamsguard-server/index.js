@@ -31,7 +31,6 @@ connectDB();
 // Import routes
 const notificationRoute = require('./routes/notifications');
 const eventsRoute = require('./routes/events');
-const connectedDevicesRoute = require('./routes/connected-devices');
 
 
 app.use(
@@ -52,13 +51,13 @@ app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 
 app.use('/notifications', createProxyMiddleware({
-  target: 'http://212.2.246.131',
+  target: 'http://localhost:3200',
   changeOrigin: true,
   secure: false,
 }));
 
 app.use('/events', createProxyMiddleware({
-  target: 'http://212.2.246.131',
+  target: 'http://localhost:3200',
   changeOrigin: true,
   secure: false,
 }));

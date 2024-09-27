@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://212.2.246.131",
+    "target": "http://localhost:3200",
     "secure": false,
     "port": 80,
     "changeOrigin": true,
