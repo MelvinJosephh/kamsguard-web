@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://212.2.246.131",
+    "secure": false,
+    "port": 80,
+    "changeOrigin": true,
+    "pathRewrite": {"^/api" : ""}
+  }
+}

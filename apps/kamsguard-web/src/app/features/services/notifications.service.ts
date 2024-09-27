@@ -18,7 +18,6 @@ export class NotificationService {
   eventProcessed = new EventEmitter<Notification>();
   private notifications: Notification[] = [];
   private processedEvents: Set<string> = new Set();
-  private baseUrl = 'https://212.2.246.131'; 
 
   constructor(
     private http: HttpClient
@@ -26,15 +25,27 @@ export class NotificationService {
     
   }
 
-  getNotifications(): Observable<Notification[]> {
-    const url = `${this.baseUrl}/api/notifications`; // Use the base URL
-    return this.http.get<Notification[]>(url).pipe(
-      catchError((error) => {
-        console.error('Error fetching notifications:', error);
-        return of([]); // Return an empty array in case of an error
-      })
-    );
-  }
+// getNotifications(): Observable<Notification[]> {
+//     const url = `/notifications`; // Use the relative URL
+//     return this.http.get<Notification[]>(url).pipe(
+//       catchError((error) => {
+//         console.error('Error fetching notifications:', error);
+//         return of([]); // Return an empty array in case of an error
+//       })
+//     );
+// }
+
+getNotifications(): Observable<Notification[]> {
+  const url = 'http://212.2.246.131/notifications'; // Use the external URL
+  return this.http.get<Notification[]>(url).pipe(
+    catchError((error) => {
+      console.error('Error fetching notifications:', error);
+      return of([]); // Return an empty array in case of an error
+    })
+  );
+}
+
+
 
   private processMessage(message: string) {
     try {

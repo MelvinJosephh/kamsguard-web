@@ -5,7 +5,8 @@
   "scripts": {
     "kamsguard-web:build": "nx build kamsguard-web --prod",
     "kamsguard-server:serve": "nx serve kamsguard-server",
-    "kamsguard-server:build": "nx build kamsguard-server"
+    "kamsguard-server:build": "nx build kamsguard-server",
+    "start": "nx serve kamsguard-web --proxy-config proxy.conf.json --inspect watch"
   },
   "private": true,
   "dependencies": {

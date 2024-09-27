@@ -36,7 +36,7 @@ const connectedDevicesRoute = require('./routes/connected-devices');
 
 app.use(
   cors({
-    origin: ['http://kamsguard-web.vercel.app', 'http://localhost:4200', 'http://212.2.246.131'], 
+    origin: ['http://localhost:4200', 'http://212.2.246.131', 'http://kamsguard-web.vercel.app'], 
     credentials: true, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
@@ -51,14 +51,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
 
-app.use('/api/notifications', createProxyMiddleware({
+app.use('/notifications', createProxyMiddleware({
   target: 'http://212.2.246.131',
   changeOrigin: true,
   secure: false,
 }));
 
-app.use('/api/events', createProxyMiddleware({
-  target: 'http://212.2.246.131:80',
+app.use('/events', createProxyMiddleware({
+  target: 'http://212.2.246.131',
   changeOrigin: true,
   secure: false,
 }));
