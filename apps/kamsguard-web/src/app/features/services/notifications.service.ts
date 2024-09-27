@@ -36,7 +36,7 @@ export class NotificationService {
 // }
 
 getNotifications(): Observable<Notification[]> {
-  const url = 'http://localhost:3200/notifications'; // Use the external URL
+  const url = 'https://kamsguard-server.vercel.app/notifications'; // Use the external URL
   return this.http.get<Notification[]>(url).pipe(
     catchError((error) => {
       console.error('Error fetching notifications:', error);
