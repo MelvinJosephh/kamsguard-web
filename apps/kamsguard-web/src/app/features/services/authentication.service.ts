@@ -1,40 +1,58 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of, from } from 'rxjs';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User as FirebaseUser } from '@angular/fire/auth';
+import { map, catchError } from 'rxjs/operators';
 
-interface User {
-  name?: string;
-  email: string;
-  phoneNumber?: string;
-  password: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private users: User[] = [];
-  private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+
+  private currentUserSubject: BehaviorSubject<FirebaseUser | null> = new BehaviorSubject<FirebaseUser | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  register(userData: User): void {
-    this.users.push(userData);
-    this.currentUserSubject.next(userData); // Set the newly registered user as the current user
+  constructor(private auth: Auth) {}
+
+  // Register new user with Firebase
+  register(email: string, password: string): Observable<void> {
+    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+      map((userCredential) => {
+        const user = userCredential.user;
+        this.currentUserSubject.next(user);
+      }),
+      catchError((error) => {
+        console.error('Registration error: ', error);
+        throw error;
+      })
+    );
   }
 
-  login(email: string, password: string): boolean {
-    const user = this.users.find(u => u.email === email && u.password === password);
-    if (user) {
-      this.currentUserSubject.next(user);
-      return true;
-    }
-    return false;
+  // Login using Firebase
+  login(email: string, password: string): Observable<boolean> {
+    return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
+      map((userCredential) => {
+        const user = userCredential.user;
+        this.currentUserSubject.next(user);
+        return true; // Login successful
+      }),
+      catchError((error) => {
+        console.error('Login error: ', error);
+        return of(false); // Login failed
+      })
+    );
   }
 
-  logout(): void {
-    this.currentUserSubject.next(null);
+  // Logout using Firebase
+  logout(): Observable<void> {
+    return from(signOut(this.auth)).pipe(
+      map(() => {
+        this.currentUserSubject.next(null);
+      })
+    );
   }
-
+  // Check if user is authenticated
   isAuthenticated(): boolean {
-    return this.currentUserSubject.value !== null;
+    return this.auth.currentUser !== null;
   }
 }

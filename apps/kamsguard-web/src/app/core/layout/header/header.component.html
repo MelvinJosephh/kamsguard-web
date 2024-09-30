@@ -1,12 +1,12 @@
 <mat-toolbar [ngClass]="{'hidden': !isHeaderVisible}" class="custom-toolbar">
 <div class="brand">
-  <button
+  <!-- <button
   mat-icon-button
   aria-label="Toggle Sidebar"
   (click)="toggleSidebar()"
 >
   <mat-icon>menu</mat-icon>
-</button>
+</button> -->
 <span class="brand-logo" routerLink="/">Kamsguard Solutions</span>
 
 </div>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="auth-links-container">
-    <a class="auth-link" routerLink="/auth" routerLinkActive="active">Login</a>
+    <a class="auth-link" routerLink="/login" routerLinkActive="active">Login</a>
     <a class="auth-link" routerLink="/register" routerLinkActive="active">Register</a>
 </div>
 

@@ -5,12 +5,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { provideHttpClient } from '@angular/common/http';
+import { firestoreProvider } from './shared/firestore.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideAnimationsAsync(),
+    ...firestoreProvider(),
     provideHttpClient(),
     importProvidersFrom(
       CommonModule,

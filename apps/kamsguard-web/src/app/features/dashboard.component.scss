@@ -1,0 +1,94 @@
+
+/* styles.scss */
+
+/* Define a mixin for common styles */
+@mixin menu-item {
+  color: #21325D;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s;
+
+  .menu-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .menu-text {
+    // font-weight: bold;
+    // font-size: 16px;
+  }
+}
+mat-icon {
+  justify-content: center;
+  padding-top: 4px;
+}
+.sidebar {
+  background-color: #FFFFFF;
+  // width: 300px;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  margin-top: 48px;
+  transition: transform 0.3s, opacity 0.3s;
+
+  &.showSidebar {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &.hideSidebar {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar li a {
+  @include menu-item;
+
+  &:hover {
+    background-color: rgb(241, 241, 241);
+    // color: #6c6c6c;
+    cursor: pointer;
+  }
+
+  &.active {
+    color: #FC5546;
+    background-color: rgb(241, 241, 241);
+  }
+
+  &.active:hover {
+    // Additional hover styles for active state
+  }
+}
+
+.sub-menu {
+  padding-left: 20px; /* Adjust the value to your desired padding */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    background-color: #FFFFFF; // Slightly transparent
+    opacity: 0.9; // Adjust transparency
+    z-index: 1000;
+  }
+
+  .content {
+    margin-left: 0; // Ensure main content is not pushed
+  }
+}

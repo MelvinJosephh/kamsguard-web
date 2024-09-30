@@ -4,7 +4,7 @@
   </div>
 
   <div class="main-content">
-    <app-sidenav *ngIf="isSidebarVisible"></app-sidenav>
+    <!-- <app-sidenav *ngIf="isSidebarVisible"></app-sidenav> -->
     <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
       <router-outlet></router-outlet>
     </div>
