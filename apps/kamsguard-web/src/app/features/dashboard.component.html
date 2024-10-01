@@ -1,101 +1,16 @@
-<div
-  class="sidebar"
+<div class="app-container">
+  <!-- Fixed Header -->
+  <div class="app-header">
+    <app-dashboard-header></app-dashboard-header>
+  </div>
 
-  [@fadeInOut]
->
-  <ul>
-       <li>
-      <a
-        routerLinkActive="active"
-        (click)="toggleDeviceManagementSubmenu()"
-      >
-        <span class="menu-icon material-icons">devices</span>
-        <span class="menu-text">Device Management</span>
-        <span
-          class="sub-menu-icon"
-          [ngClass]="{ 'sub-menu-open': isDeviceManagementSubmenuOpen }"
-        >
-          <mat-icon>{{
-            isDeviceManagementSubmenuOpen
-              ? 'keyboard_arrow_down'
-              : 'keyboard_arrow_right'
-          }}</mat-icon>
-        </span>
-      </a>
-      <!-- Sub-menu for Device management with left padding -->
-      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu">
-        <li>
-          <a
-            routerLink="/connected-devices"
-            routerLinkActive="active"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">cast_connected</span
-            ><span class="menu-text">Connected Detectors</span></a
-          >
-        </li>
-    
-      </ul>
-    </li>
-    <li>
-      <a
-        routerLink="/notifications"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">forward_to_inbox</span
-        ><span class="menu-text">Notifications</span></a
-      >
-    </li>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <app-sidenav></app-sidenav>
 
-    <li>
-      <a
-        routerLink="/events"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">notifications</span
-        ><span class="menu-text">Events</span></a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/real-time"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">alarm</span
-        ><span class="menu-text">Recent Activity</span></a
-      >
-    </li>
-
-    <li>
-      <a
-        routerLink="/clients"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">manage_accounts</span>
-        <span class="menu-text">Companies</span>
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="/support"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">support</span>
-        <span class="menu-text">Support and Documentation</span>
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="/contact-us"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">contact_emergency</span>
-        <span class="menu-text">Emergency Contacts</span>
-      </a>
-    </li>
-  </ul>
+    <!-- Main Content -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

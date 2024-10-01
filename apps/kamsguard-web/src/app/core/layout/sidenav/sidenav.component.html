@@ -1,14 +1,13 @@
-<div
+<!-- <div
   class="sidebar"
   [ngClass]="{ showSidebar: isSidebarVisible, hideSidebar: !isSidebarVisible }"
   [@fadeInOut]
->
+> -->
+
+<div class="sidebar" [ngClass]="{ 'hidden': !isSidebarVisible }">
   <ul>
-       <li>
-      <a
-        routerLinkActive="active"
-        (click)="toggleDeviceManagementSubmenu()"
-      >
+    <li>
+      <a routerLinkActive="active" routerLink="/dashboard/device-management" (click)="toggleDeviceManagementSubmenu()">
         <span class="menu-icon material-icons">devices</span>
         <span class="menu-text">Device Management</span>
         <span
@@ -23,72 +22,55 @@
         </span>
       </a>
       <!-- Sub-menu for Device management with left padding -->
-      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu">
+      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu open">
         <li>
           <a
-            routerLink="/connected-devices"
+            routerLink="/dashboard/connected-devices"
             routerLinkActive="active"
             (click)="handleLinkClick()"
             ><span class="menu-icon material-icons">cast_connected</span
             ><span class="menu-text">Connected Detectors</span></a
           >
         </li>
-    
       </ul>
     </li>
-    <!-- <li>
-      <a (click)="toggleDashboardSubmenu()">
-        <span class="menu-icon material-icons">dashboard</span>
-        <span class="menu-text">Dashboard</span>
-        <span
-          class="sub-menu-icon"
-          [ngClass]="{ 'sub-menu-open': isDashboardSubmenuOpen }"
+  
+<li>
+    <!-- <a (click)="toggleDashboardSubmenu()" routerLink="/dashboard">
+      <span class="menu-icon material-icons">dashboard</span>
+      <span class="menu-text" >Dashboard</span>
+      
+      <span
+        class="sub-menu-icon"
+        [ngClass]="{ 'sub-menu-open': isDashboardSubmenuOpen }"
+      >
+        <mat-icon>{{
+          isDashboardSubmenuOpen
+            ? 'keyboard_arrow_down'
+            : 'keyboard_arrow_right'
+        }}</mat-icon>
+      </span>
+    </a> -->
+   <!-- Sub-menu for Dashboard with left padding -->
+    <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu open">
+      <li>
+        <a
+          routerLink="/events"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="handleLinkClick()"
+          ><span class="menu-icon material-icons">notifications</span
+          ><span class="menu-text">Events</span></a
         >
-          <mat-icon>{{
-            isDashboardSubmenuOpen
-              ? 'keyboard_arrow_down'
-              : 'keyboard_arrow_right'
-          }}</mat-icon>
-        </span>
-      </a>
-      Sub-menu for Dashboard with left padding
-      <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu">
-        <li>
-          <a
-            routerLink="/events"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">notifications</span
-            ><span class="menu-text">Events</span></a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/device-management"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">sensors</span
-            ><span class="menu-text">Detector Status</span></a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/real-time"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">alarm</span
-            ><span class="menu-text">Recent Activity</span></a
-          >
-        </li>
-      </ul>
-    </li> -->
- 
+      </li>
+    </ul>
+
+  </li>
+
+
     <li>
       <a
-        routerLink="/notifications"
+        routerLink="/dashboard/notifications"
         routerLinkActive="active"
         (click)="handleLinkClick()"
         ><span class="menu-icon material-icons">forward_to_inbox</span
@@ -98,7 +80,7 @@
 
     <li>
       <a
-        routerLink="/events"
+        routerLink="/dashboard/events"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="handleLinkClick()"
@@ -108,7 +90,7 @@
     </li>
     <li>
       <a
-        routerLink="/real-time"
+        routerLink="/dashboard/real-time"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="handleLinkClick()"
@@ -117,10 +99,7 @@
       >
     </li>
 
-
-
-
-<!-- 
+    <!-- 
 
     <li>
       <a
@@ -144,7 +123,7 @@
     </li> -->
     <li>
       <a
-        routerLink="/clients"
+        routerLink="/dashboard/clients"
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >
@@ -154,7 +133,7 @@
     </li>
     <li>
       <a
-        routerLink="/support"
+
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >
@@ -164,7 +143,6 @@
     </li>
     <li>
       <a
-        routerLink="/contact-us"
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >

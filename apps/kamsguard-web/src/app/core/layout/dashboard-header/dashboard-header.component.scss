@@ -1,0 +1,133 @@
+@mixin menu-item {
+  color: #21325D;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 8px 14px; // Adjusted padding for a sleeker look
+  border-radius: 5px; // Slightly less radius for a modern feel
+  transition: background-color 0.3s, color 0.3s;
+
+  .menu-icon {
+    font-size: 20px; // Smaller icon for proportion
+    margin-right: 8px; // Reduced margin
+  }
+}
+
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px; // Reduced height for a more compact header
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0 16px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  .brand {
+    display: flex;
+    align-items: center;
+
+    .brand-logo {
+      color: #0E2B5C;
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-left: 8px;
+      margin-right: 16px;
+      cursor: pointer;
+
+      &:hover {
+        // text-decoration: underline; // Subtle hover effect
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.2em; // Responsive increase in size
+      }
+    }
+
+    button {
+      @include menu-item;
+      background-color: transparent;
+      border: none;
+      margin-right: 16px;
+
+      &:hover {
+        background-color: #F0F0F0;
+        color: #0E2B5C;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #0E2B5C;
+  }
+
+  .nav-link {
+    @include menu-item;
+    color: #0E2B5C;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #F1F1F1;
+      color: #FC5546;
+    }
+
+    &.active {
+      color: #FC5546;
+      font-weight: bold;
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    button {
+      mat-icon {
+        font-size: 18px; // Adjusted icon size for better fit in the header
+        color: #0E2B5C; // Set the same color as sidenav icons
+      }
+
+      &:hover {
+        background-color: #F0F0F0; // Subtle hover effect for icons
+      }
+    }
+  }
+
+  .auth-links-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #F0F0F0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-toolbar {
+    padding: 0 8px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .auth-links-container {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

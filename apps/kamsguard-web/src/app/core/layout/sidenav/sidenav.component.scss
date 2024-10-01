@@ -1,40 +1,39 @@
+$sidebar-bg-color: #FFFFFF; // Background color for sidebar
+$sidebar-text-color: #21325D; // Text color for sidebar items
+$sidebar-hover-bg-color: rgba(241, 241, 241, 0.8); // Hover background color for links
+$sidebar-active-color: #FC5546; // Color for active links
+$sidebar-shadow-color: rgba(0, 0, 0, 0.1); // Shadow for the sidebar
 
-/* styles.scss */
-
-/* Define a mixin for common styles */
+// Define a mixin for common styles
 @mixin menu-item {
-  color: #21325D;
+  color: $sidebar-text-color;
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  transition: all 0.3s;
+  padding: 10px 15px; // Adjusted padding for a balanced look
+  border-radius: 5px; // Reduced radius for a modern feel
+  transition: background-color 0.3s, color 0.3s;
 
   .menu-icon {
-    font-size: 24px;
+    font-size: 22px;
     margin-right: 10px;
   }
 
   .menu-text {
-    // font-weight: bold;
-    // font-size: 16px;
+    font-size: 14px;
   }
 }
-mat-icon {
-  justify-content: center;
-  padding-top: 4px;
-}
+
 .sidebar {
-  background-color: #FFFFFF;
-  // width: 300px;
-  padding: 20px;
+  background-color: $sidebar-bg-color;
   position: fixed;
-  height: 100%;
-  top: 0;
+  height: calc(100vh - 80px); 
+  top: 80px; 
   left: 0;
-  overflow-x: hidden;
-  margin-top: 48px;
+  z-index: 999;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px $sidebar-shadow-color; 
+  overflow-y: auto;
   transition: transform 0.3s, opacity 0.3s;
 
   &.showSidebar {
@@ -46,49 +45,53 @@ mat-icon {
     transform: translateX(-100%);
     opacity: 0;
   }
-}
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin-bottom: 10px;
-}
-
-.sidebar li a {
-  @include menu-item;
-
-  &:hover {
-    background-color: rgb(241, 241, 241);
-    // color: #6c6c6c;
-    cursor: pointer;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; 
   }
 
-  &.active {
-    color: #FC5546;
-    background-color: rgb(241, 241, 241);
+  li {
+    margin-bottom: 15px; 
   }
 
-  &.active:hover {
-    // Additional hover styles for active state
+  li a {
+    @include menu-item;
+
+    &:hover {
+      background-color: $sidebar-hover-bg-color; 
+      cursor: pointer;
+    }
+
+    &.active {
+      color: $sidebar-active-color; 
+      background-color: $sidebar-hover-bg-color; 
+    }
+
+    &.active:hover {
+      background-color: $sidebar-hover-bg-color; 
+    }
   }
-}
 
-.sub-menu {
-  padding-left: 20px; /* Adjust the value to your desired padding */
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    background-color: #FFFFFF; // Slightly transparent
-    opacity: 0.9; // Adjust transparency
-    z-index: 1000;
+  .sub-menu {
+    padding-left: 20px; 
+    display: none; 
+    &.open {
+      display: block; 
+    }
   }
 
-  .content {
-    margin-left: 0; // Ensure main content is not pushed
+  .menu-icon {
+    justify-content: center;
+    padding-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; 
+    height: calc(100vh - 64px); 
+    background-color: $sidebar-bg-color;
+    opacity: 0.9;
+    z-index: 1000; 
   }
 }

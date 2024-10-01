@@ -12,7 +12,15 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<FirebaseUser | null> = new BehaviorSubject<FirebaseUser | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.currentUserSubject.next(user);
+      } else {
+        this.currentUserSubject.next(null);
+      }
+    });
+  }
 
   // Register new user with Firebase
   register(email: string, password: string): Observable<void> {
@@ -48,6 +56,7 @@ export class AuthenticationService {
     return from(signOut(this.auth)).pipe(
       map(() => {
         this.currentUserSubject.next(null);
+        window.location.href = '/';
       })
     );
   }
