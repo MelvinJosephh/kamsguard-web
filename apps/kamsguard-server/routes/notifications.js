@@ -208,7 +208,7 @@ function sendEmailNotification(notification, details) {
   };
 
   axios
-    .post('http://localhost:3200/notifications/send-email', emailData)
+    .post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
       Notification.findOneAndUpdate(
