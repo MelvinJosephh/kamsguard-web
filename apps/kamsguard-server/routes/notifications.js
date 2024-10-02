@@ -74,7 +74,7 @@ route.post('/send-email', async (req, res) => {
     const url = `/cgi-bin/display_pic.cgi?cam=${cameraId}&fields=1&res=hi`;
 
     const response = await client.get(url);
-    const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
+    // const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
     const formattedTimestamp = moment(timestamp).format('lll');
 
@@ -92,7 +92,7 @@ route.post('/send-email', async (req, res) => {
            <p>Please take appropriate action if necessary.</p>
            </tr>
            <tr>
-              <td><img src="data:image/jpeg;base64,${imageBase64}"></td>  <!-- Embedded image -->
+              <td><img width="150" src="https://kamsware.com/wp-content/uploads/2024/04/Kamsware-Logo.png"></td>  <!-- Embedded image -->
            </tr>
         </table>
      </td>

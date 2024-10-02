@@ -7,6 +7,9 @@ const notificationSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now },
   notificationType: String,
   status: String,
+  recipientEmail: String,     
+  emailContent: String,        
+  imageUrl: String, 
 });
 
 module.exports = mongoose.model('Notification', notificationSchema);
