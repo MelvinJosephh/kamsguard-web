@@ -48,7 +48,7 @@ function getHttpClient(ipAddress, userName, password) {
   });
 }
 
-route.post('/notifications/send-email', async (req, res) => {
+route.post('/send-email', async (req, res) => {
   const { subject, eventType, siteId, timestamp } = req.body;
 
   const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
@@ -74,7 +74,7 @@ route.post('/notifications/send-email', async (req, res) => {
     const url = `/cgi-bin/display_pic.cgi?cam=${cameraId}&fields=1&res=hi`;
 
     const response = await client.get(url);
-    // const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
+    const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
     const formattedTimestamp = moment(timestamp).format('lll');
 
@@ -92,7 +92,7 @@ route.post('/notifications/send-email', async (req, res) => {
            <p>Please take appropriate action if necessary.</p>
            </tr>
            <tr>
-              <td><img width="150" src="https://kamsware.com/wp-content/uploads/2024/04/Kamsware-Logo.png"></td>  <!-- Embedded image -->
+              <td><img src="data:image/jpeg;base64,${imageBase64}"></td>  <!-- Embedded image -->
            </tr>
         </table>
      </td>
@@ -176,6 +176,65 @@ mqttClient.on('message', (topic, message) => {
   }
 });
 
+// function handleEvent(eventName, siteId, time, nestedEvent, nestedDetails) {
+//   Notification.findOne({
+//     eventType: eventName,
+//     siteId: siteId,
+//     timestamp: time,
+//   }).then((existingNotification) => {
+//     if (!existingNotification) {
+//       const newNotification = new Notification({
+//         timestamp: nestedEvent.time,
+//         eventType: nestedEvent.event,
+//         siteId: nestedEvent.site_id,
+//         notificationType: 'Email',
+//         status: 'Pending',
+//       });
+
+//       newNotification.save().then(() => {
+//         sendEmailNotification(newNotification, nestedDetails);
+//       });
+//     }
+//   });
+// }
+// function sendEmailNotification(notification, details) {
+//   const emailData = {
+//     subject: `Alarm Alert!`,
+//     eventType: notification.eventType,
+//     timestamp: notification.timestamp,
+//     siteId: notification.siteId,
+//     details: details,
+//   };
+
+//   axios
+//     .post('http://localhost:3200/notifications/send-email', emailData)
+//     .then((response) => {
+//       console.log('Email sent:', response.data);
+//       Notification.findOneAndUpdate(
+//         {
+//           timestamp: notification.timestamp,
+//           eventType: notification.eventType,
+//           siteId: notification.siteId,
+//         },
+//         { status: 'Sent' },
+//         { new: true }
+//       );
+//     })
+//     .catch((error) => {
+//       console.error('Error sending email:', error);
+//       Notification.findOneAndUpdate(
+//         {
+//           timestamp: notification.timestamp,
+//           eventType: notification.eventType,
+//           siteId: notification.siteId,
+//         },
+//         { status: 'Failed' },
+//         { new: true }
+//       );
+//     });
+// }
+
+
 function handleEvent(eventName, siteId, time, nestedEvent, nestedDetails) {
   Notification.findOne({
     eventType: eventName,
@@ -183,17 +242,17 @@ function handleEvent(eventName, siteId, time, nestedEvent, nestedDetails) {
     timestamp: time,
   }).then((existingNotification) => {
     if (!existingNotification) {
-      const newNotification = new Notification({
+      // No need to save here, we will do it after email is sent
+      const newNotification = {
         timestamp: nestedEvent.time,
         eventType: nestedEvent.event,
         siteId: nestedEvent.site_id,
         notificationType: 'Email',
-        status: 'Pending',
-      });
+        status: 'Pending', // Initially set status to Pending
+      };
 
-      newNotification.save().then(() => {
-        sendEmailNotification(newNotification, nestedDetails);
-      });
+      // Send email first, then save the notification
+      sendEmailNotification(newNotification, nestedDetails);
     }
   });
 }
@@ -208,31 +267,31 @@ function sendEmailNotification(notification, details) {
   };
 
   axios
-    .post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
+    .post('http://localhost:3200/notifications/send-email', emailData)
     .then((response) => {
       console.log('Email sent:', response.data);
-      Notification.findOneAndUpdate(
-        {
-          timestamp: notification.timestamp,
-          eventType: notification.eventType,
-          siteId: notification.siteId,
-        },
-        { status: 'Sent' },
-        { new: true }
-      );
+
+      // Now save the notification with status 'Sent' after the email is successfully sent
+      const notificationToSave = new Notification({
+        ...notification,
+        status: 'Sent', // Update status to Sent
+      });
+
+      notificationToSave.save();
     })
     .catch((error) => {
       console.error('Error sending email:', error);
-      Notification.findOneAndUpdate(
-        {
-          timestamp: notification.timestamp,
-          eventType: notification.eventType,
-          siteId: notification.siteId,
-        },
-        { status: 'Failed' },
-        { new: true }
-      );
+
+      // Save with status 'Failed' if the email sending fails
+      const notificationToSave = new Notification({
+        ...notification,
+        status: 'Failed', // Update status to Failed
+      });
+
+      notificationToSave.save();
     });
 }
+
+
 
 module.exports = route;

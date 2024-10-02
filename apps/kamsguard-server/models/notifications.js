@@ -6,10 +6,7 @@ const notificationSchema = new mongoose.Schema({
   siteId: String,
   timestamp: { type: Date, default: Date.now },
   notificationType: String,
-  status: String,
-  recipientEmail: String,     
-  emailContent: String,        
-  imageUrl: String, 
+  status: String
 });
 
 module.exports = mongoose.model('Notification', notificationSchema);
