@@ -48,7 +48,7 @@ function getHttpClient(ipAddress, userName, password) {
   });
 }
 
-route.post('/send-email', async (req, res) => {
+route.post('/notifications/send-email', async (req, res) => {
   const { subject, eventType, siteId, timestamp } = req.body;
 
   const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
