@@ -31,7 +31,7 @@ connectDB();
 // Import routes
 const notificationRoute = require('./routes/notifications');
 const eventsRoute = require('./routes/events');
-
+const connectedDevicesRoute = require('./routes/connected-devices');
 
 app.use(
   cors({
@@ -49,6 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middleware to use routes
 app.use('/notifications', notificationRoute);
 app.use('/events', eventsRoute);
+app.use('/connected-devices', connectedDevicesRoute);
 
 app.use('/notifications', createProxyMiddleware({
   target: 'https://kamsguard-server.vercel.app',
@@ -57,6 +58,12 @@ app.use('/notifications', createProxyMiddleware({
 }));
 
 app.use('/events', createProxyMiddleware({
+  target: 'https://kamsguard-server.vercel.app',
+  changeOrigin: true,
+  secure: false,
+}));
+
+app.use('/connected-devices', createProxyMiddleware({
   target: 'https://kamsguard-server.vercel.app',
   changeOrigin: true,
   secure: false,

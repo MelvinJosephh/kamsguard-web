@@ -42,7 +42,6 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   
 
   ngOnInit(): void {
-    // this.notificationsService.createConnection();
     this.loadNotifications();
   }
   
