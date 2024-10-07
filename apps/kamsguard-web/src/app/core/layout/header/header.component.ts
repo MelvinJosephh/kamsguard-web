@@ -17,13 +17,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class HeaderComponent {
 
+  isMenuOpen = false;
+  isHeaderVisible = true; 
   private lastScrollTop = 0;
-  public isHeaderVisible = true;
+  // public isHeaderVisible = true;
 
   constructor(private sidebarService: SidebarService) {}
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
+  }
+  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen; 
   }
 
   @HostListener('window:scroll', [])

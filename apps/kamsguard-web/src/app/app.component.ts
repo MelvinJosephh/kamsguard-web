@@ -4,10 +4,17 @@ import { HeaderComponent } from './core/layout/header/header.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from './features/services/authentication.service';
+import { ToastrComponent } from './shared/shared-toastr/toastr.component';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    CommonModule,
+    ToastrComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

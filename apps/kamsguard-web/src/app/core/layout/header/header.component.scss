@@ -1,4 +1,4 @@
-/* Define a mixin for common styles */
+/* Common styles for menu items */
 @mixin menu-item {
   color: #21325D; 
   text-decoration: none;
@@ -7,88 +7,84 @@
   padding: 10px;
   border-radius: 10px;
   transition: all 0.3s;
-
-  .menu-icon {
-    font-size: 24px;
-    margin-right: 10px;
-  }
 }
 
 .custom-toolbar {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  // align-items: center;
   height: 56px;
   background-color: #FFFFFF;
-  border-bottom: 1px solid #E0E0E0; 
-  padding: 0 16px;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0 120px; 
   transition: top 0.3s ease-in-out;
   position: fixed;
-  width: 100%;
+  // width: calc(100% - 64px); 
   z-index: 10;
 
+  @media (max-width: 768px) {
+    padding: 0 16px; 
+  }
+
   &.hidden {
-    top: -56px; 
+    top: -56px;
   }
 
   .brand {
     display: flex;
-    align-items: center; 
-    
+    align-items: center;
     .brand-logo {
       color: #0E2B5C;
-      font-weight: 700; 
-      font-size: 1.2em; 
-      margin-left: 10px;
-      margin-right: 20px; 
+      font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
-
-      @media (max-width: 768px) {
-        font-size: 1em;
-        margin-left: 5px; 
-        margin-right: 10px; 
-      }
-
-      @media (min-width: 769px) and (max-width: 1024px) {
-        font-size: 1.1em; 
-      }
-    }
-
-    button {
-      @include menu-item;
-      background-color: transparent; 
-      border: none; 
-      margin-right: 20px;
-
-      &:hover {
-        background-color: #F0F0F0; 
-        color: #0E2B5C;
-        cursor: pointer;
-      }
     }
   }
 
-  /* Styles for navigation links */
-  .nav-links-container, .auth-links-container {
+  /* Toggle button for mobile menu */
+  .toggle-menu {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  /* Navigation container */
+  .nav-container {
     display: flex;
     align-items: center;
+    
+    @media (max-width: 768px) {
+      display: none; 
+      position: absolute;
+      top: 56px;
+      right: 0;
+      background-color: white;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    &.show-menu {
+      display: flex; 
+    }
+  }
+
+  .nav-links-container, .auth-links-container {
+    display: flex;
     gap: 20px;
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 10px; 
-      display: none; // Initially hidden on smaller screens
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      gap: 15px; // Adjust spacing for tablets
+      gap: 10px;
     }
   }
 
   .nav-link, .auth-link {
     @include menu-item;
     color: #0E2B5C;
-    font-size: 16px;
+    font-size: 14px;
 
     &:hover {
       background-color: rgb(241, 241, 241); 
@@ -98,42 +94,5 @@
     &.active {
       color: #FC5546; 
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .custom-toolbar {
-    padding: 0 8px; 
-    height: auto; // Adjust height for smaller screens
-    flex-direction: column; // Stack elements vertically
-  }
-
-  .nav-links-container, .auth-links-container {
-    width: 100%; // Full width for mobile
-    justify-content: center; // Center links
-    display: flex; // Show links on mobile
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .custom-toolbar {
-    padding: 0 12px; // Adjust padding for tablet screens
-  }
-
-  .brand-logo {
-    font-size: 1.1em; // Slightly smaller for tablets
-  }
-
-  .nav-link, .auth-link {
-    font-size: 15px; // Adjust font size for tablets
-  }
-}
-
-/* Add a button to toggle the mobile menu */
-.toggle-menu {
-  display: none; // Hidden by default
-
-  @media (max-width: 768px) {
-    display: block; // Show toggle button on mobile
   }
 }

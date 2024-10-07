@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, from } from 'rxjs';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User as FirebaseUser } from '@angular/fire/auth';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  User as FirebaseUser,
+} from '@angular/fire/auth';
 import { map, catchError } from 'rxjs/operators';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
-  private currentUserSubject: BehaviorSubject<FirebaseUser | null> = new BehaviorSubject<FirebaseUser | null>(null);
+  private currentUserSubject: BehaviorSubject<FirebaseUser | null> =
+    new BehaviorSubject<FirebaseUser | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private auth: Auth) {
@@ -23,8 +28,16 @@ export class AuthenticationService {
   }
 
   // Register new user with Firebase
-  register(email: string, password: string): Observable<void> {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+  register(
+    email: string,
+    password: string,
+    name: any,
+    phoneNumber: any,
+    subscribe: any
+  ): Observable<void> {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
       map((userCredential) => {
         const user = userCredential.user;
         this.currentUserSubject.next(user);
