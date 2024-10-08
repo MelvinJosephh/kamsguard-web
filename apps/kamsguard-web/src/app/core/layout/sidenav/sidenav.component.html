@@ -6,7 +6,7 @@
 
 <div class="sidebar" [ngClass]="{ 'hidden': !isSidebarVisible }">
   <ul>
-    <li>
+    <!-- <li>
       <a routerLinkActive="active" routerLink="/dashboard/device-management" (click)="toggleDeviceManagementSubmenu()">
         <span class="menu-icon material-icons">devices</span>
         <span class="menu-text">Device Management</span>
@@ -21,7 +21,7 @@
           }}</mat-icon>
         </span>
       </a>
-      <!-- Sub-menu for Device management with left padding -->
+      
       <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu open">
         <li>
           <a
@@ -33,7 +33,7 @@
           >
         </li>
       </ul>
-    </li>
+    </li> -->
   
 <li>
     <!-- <a (click)="toggleDashboardSubmenu()" routerLink="/dashboard">
@@ -52,7 +52,7 @@
       </span>
     </a> -->
    <!-- Sub-menu for Dashboard with left padding -->
-    <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu open">
+    <!-- <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu open">
       <li>
         <a
           routerLink="/events"
@@ -63,10 +63,20 @@
           ><span class="menu-text">Events</span></a
         >
       </li>
-    </ul>
+    </ul> -->
 
   </li>
 
+
+  <li>
+    <a
+      routerLink="/dashboard/connected-devices"
+      routerLinkActive="active"
+      (click)="handleLinkClick()"
+      ><span class="menu-icon material-icons">cast_connected</span
+      ><span class="menu-text">Connected Detectors</span></a
+    >
+  </li>
 
     <li>
       <a
@@ -95,32 +105,32 @@
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="handleLinkClick()"
         ><span class="menu-icon material-icons">alarm</span
-        ><span class="menu-text">Recent Activity</span></a
+        ><span class="menu-text">Telemetries</span></a
       >
     </li>
+    
 
-    <!-- 
 
     <li>
       <a
-        routerLink="/live-stream"
+        routerLink="/dashboard/live-stream"
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >
         <span class="menu-icon material-icons">live_tv</span>
         <span class="menu-text">Live Viewer</span>
       </a>
-    </li> -->
-    <!-- <li>
+    </li> 
+    <li>
       <a
-        routerLink="/system-config"
+        routerLink="/dashboard/system-config"
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >
         <span class="menu-icon material-icons">dns</span>
         <span class="menu-text">System Configuration</span>
       </a>
-    </li> -->
+    </li>
     <li>
       <a
         routerLink="/dashboard/clients"
@@ -133,16 +143,7 @@
     </li>
     <li>
       <a
-
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">support</span>
-        <span class="menu-text">Support and Documentation</span>
-      </a>
-    </li>
-    <li>
-      <a
+      routerLink="/dashboard/contact-us"
         routerLinkActive="active"
         (click)="handleLinkClick()"
       >

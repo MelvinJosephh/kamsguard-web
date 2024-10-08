@@ -1,4 +1,4 @@
-/* company-overview.component.scss */
+/* src/app/components/connected-devices/connected-devices.component.scss */
 
 mat-card {
   margin-bottom: 20px;
@@ -61,11 +61,11 @@ mat-card {
         margin-right: 8px;
       }
 
-      .online {
+      .active {
         background-color: #4caf50;
       }
 
-      .offline {
+      .inactive {
         background-color: #f44336;
       }
 
@@ -73,11 +73,7 @@ mat-card {
         background-color: #f1f1f1;
       }
 
-      mat-paginator {
-        margin-top: 15px;
-        display: flex;
-        justify-content: flex-end;
-      }
+      /* Removed mat-paginator styling as it's not used */
     }
   }
 }

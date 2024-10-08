@@ -51,7 +51,7 @@ export class RealTimeComponent implements OnInit{
           cam: item['0'],
           alm: item['1'],
           index: item['2'],
-          ondisk: item['10800'] === '1',  // Example condition
+          ondisk: item['10800'] === '1',  
           duration: item['22834'],
           pre_alarm: item['1724397538'],
           archive: item['Flame [MDKFire]'],

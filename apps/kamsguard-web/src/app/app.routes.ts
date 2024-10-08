@@ -32,11 +32,14 @@ export const appRoutes: Route[] = [
       { path: 'events', component: EventsComponent, canActivate: [authGuard] },
       { path: 'connected-devices', component: ConnectedDevicesComponent, canActivate: [authGuard] },
       { path: 'clients', component: ClientsComponent, canActivate: [authGuard] },
+      { path: 'system-config', component: SystemConfigComponent,  canActivate: [authGuard]  },
+      { path: 'live-stream', component: LiveStreamComponent, canActivate: [authGuard] },
+      { path: 'contact-us', component: ContactUsComponent, canActivate: [authGuard] },
     ]
   },
 
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'system-config', component: SystemConfigComponent },
-  { path: 'live-stream', component: LiveStreamComponent, canActivate: [authGuard] },
+ 
+ 
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
