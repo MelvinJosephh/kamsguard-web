@@ -5,12 +5,12 @@ const cors = require('cors');
 const Event = require('../models/events');
 const mqttClient = require('../mqttClient'); 
 
-const route = Router();
+
 
 module.exports = (io) => {
   const router = express.Router();
 
-route.use(
+router.use(
   cors({
     origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
@@ -18,7 +18,7 @@ route.use(
 
 
 // GET route to fetch events from MongoDB
-route.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const events = await Event.find(); // Fetch all events from MongoDB
     res.json(events);
@@ -29,7 +29,7 @@ route.get('/', async (req, res) => {
 });
 
 // POST route to create a new event
-route.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { timestamp, eventType, siteId, details } = req.body;
 
@@ -59,7 +59,7 @@ route.post('/', async (req, res) => {
 
 
 // DELETE route to remove an event by ID
-route.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
     const deletedEvent = await Event.findOneAndDelete({ id: eventId }); // Delete event by ID from MongoDB

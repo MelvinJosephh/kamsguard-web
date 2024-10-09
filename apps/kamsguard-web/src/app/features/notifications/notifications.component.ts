@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { NotificationService } from '../services/notifications.service';
+import { SocketService } from '../services/socket/socket.service';
 
 
 interface Notification {
@@ -34,7 +35,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | null = null;
   @ViewChild(MatSort, { static: false }) sort: MatSort | null = null;
 
-  constructor(private notificationsService: NotificationService) {
+  constructor(private notificationsService: NotificationService, private socketService: SocketService ) {
     this.notificationsService.eventProcessed.subscribe(event => {
       this.processEventInComponent(event.eventType, event.siteId, event.timestamp, event.status);
     });

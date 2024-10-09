@@ -6,7 +6,7 @@ const axios = require('axios');
 const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
-const route = Router();
+// const route = Router();
 require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
@@ -15,7 +15,7 @@ module.exports = (io) => {
   const router = express.Router();
 
 
-route.use(
+router.use(
   cors({
     origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
@@ -50,7 +50,7 @@ function getHttpClient(ipAddress, userName, password) {
   });
 }
 
-route.post('/send-email', async (req, res) => {
+router.post('/send-email', async (req, res) => {
   const { subject, eventType, siteId, timestamp } = req.body;
 
   const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
@@ -140,7 +140,7 @@ route.post('/send-email', async (req, res) => {
 });
 
 //Route to get all notifications from mongo
-route.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const notifications = await Notification.find(); // Fetch from MongoDB
     res.status(200).json(notifications);
