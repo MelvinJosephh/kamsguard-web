@@ -7,6 +7,9 @@ const mqttClient = require('../mqttClient');
 
 const route = Router();
 
+module.exports = (io) => {
+  const router = express.Router();
+
 route.use(
   cors({
     origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app'],
@@ -132,4 +135,5 @@ mqttClient.on('message', async (topic, message) => {
   }
 });
 
-module.exports = route;
+return router;
+};

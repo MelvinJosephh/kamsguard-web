@@ -11,6 +11,8 @@ require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
 
+module.exports = (io) => {
+  const router = express.Router();
 
 
 route.use(
@@ -294,4 +296,5 @@ function sendEmailNotification(notification, details) {
 
 
 
-module.exports = route;
+return router;
+};

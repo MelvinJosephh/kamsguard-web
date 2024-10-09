@@ -49,6 +49,8 @@
     "nodemailer-express-handlebars": "^6.1.2",
     "rxjs": "~7.8.0",
     "sharp": "^0.33.4",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
     "tslib": "^2.3.0",
     "uuid": "^10.0.0",
     "vercel": "^32.3.0",

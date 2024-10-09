@@ -2,6 +2,8 @@
 
 mat-card {
   margin-bottom: 20px;
+  border: 1px solid #ddd; /* Optional border for card */
+  border-radius: 8px;
 
   .mat-card-header {
     background-color: #e3f2fd;
@@ -9,39 +11,36 @@ mat-card {
   }
 
   .mat-card-title {
-    font-size: 1.2rem;
-    color: #1e88e5;
+    font-size: 1.25rem; /* Reduced from 1.2rem */
+    color: #21325D; /* Brand color */
     font-weight: bold;
   }
 
-  .mat-card-subtitle {
-    font-size: 0.9rem;
-    color: #757575;
+  .site-name {
+    font-size: 1rem; /* Reduced from 1rem */
+    color: #424242;
+    font-weight: 500;
+    margin: 10px 0; /* Reduced margin */
   }
 
   mat-card-content {
     padding: 15px;
-
-    h3 {
-      margin: 12px 0;
-      font-size: 1rem;
-      color: #424242;
-      font-weight: 500;
-    }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
 
-      th, td {
-        padding: 12px 15px;
+      th,
+      td {
+        padding: 10px 12px; /* Reduced padding */
         text-align: left;
         border-bottom: 1px solid #e0e0e0;
+        font-size: 0.875rem; /* Font size for table cells */
       }
 
       th {
-        background-color: #1e88e5;
+        background-color: #21325D; /* Brand color for headers */
         color: white;
         text-transform: uppercase;
         font-weight: 500;
@@ -50,7 +49,6 @@ mat-card {
       td {
         background-color: white;
         color: #333;
-        font-size: 0.95rem;
       }
 
       .status-icon {
@@ -72,8 +70,6 @@ mat-card {
       tr:hover {
         background-color: #f1f1f1;
       }
-
-      /* Removed mat-paginator styling as it's not used */
     }
   }
 }
