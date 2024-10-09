@@ -40,6 +40,7 @@ app.use(
     origin: [
       'https://kamsguard-server.vercel.app',
       'https://kamsguard-web.vercel.app',
+      'http://localhost:4200'
     ],
     methods: ['GET', 'POST'],
   })
@@ -54,6 +55,7 @@ const io = new Server(server, {
     origin: [
       'https://kamsguard-server.vercel.app',
       'https://kamsguard-web.vercel.app',
+      'http://localhost:4200'
     ],
     methods: ['GET', 'POST'],
   },

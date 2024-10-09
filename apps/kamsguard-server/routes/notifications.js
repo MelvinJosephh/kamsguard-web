@@ -17,7 +17,7 @@ module.exports = (io) => {
 
 route.use(
   cors({
-    origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app'],
+    origin: ['https://kamsguard-server.vercel.app', 'https://kamsguard-web.vercel.app', 'http://localhost:4200'],
   })
 );
 
