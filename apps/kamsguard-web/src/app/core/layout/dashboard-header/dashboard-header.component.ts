@@ -18,19 +18,36 @@ import { SidebarService } from '../../../features/services/sidebar/sidebar.servi
   styleUrl: './dashboard-header.component.scss',
 })
 export class DashboardHeaderComponent {
-openChat() {
-throw new Error('Method not implemented.');
-}
-openFAQs() {
-throw new Error('Method not implemented.');
-}
-openNotifications() {
-throw new Error('Method not implemented.');
-}
-unreadNotifications: any;
-  constructor(private authService: AuthenticationService, private sidebarService: SidebarService) {}
+  isMenuOpen = false;
+  unreadNotifications: any;
+
+  constructor(
+    private authService: AuthenticationService,
+    private sidebarService: SidebarService
+  ) {}
+
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
+  openChat() {
+    // Implement your method
+  }
+
+  openFAQs() {
+    // Implement your method
+  }
+
+  openNotifications() {
+    // Implement your method
   }
 
   logout() {

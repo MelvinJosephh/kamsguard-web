@@ -16,30 +16,28 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [CommonModule, RouterModule, UserManagementComponent, MatIconModule, MatToolbarModule],
 })
 export class HeaderComponent {
-
   isMenuOpen = false;
-  isHeaderVisible = true; 
+  isHeaderVisible = true;
   private lastScrollTop = 0;
-  // public isHeaderVisible = true;
 
   constructor(private sidebarService: SidebarService) {}
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
-  
+
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen; 
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > this.lastScrollTop && scrollTop > 100) {
-      this.isHeaderVisible = false;
-    } else {
-      this.isHeaderVisible = true;
-    }
+    this.isHeaderVisible = scrollTop <= this.lastScrollTop || scrollTop <= 100;
     this.lastScrollTop = scrollTop;
   }
 }

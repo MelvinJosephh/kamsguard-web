@@ -1,21 +1,18 @@
-<mat-toolbar class="custom-toolbar">
+<mat-toolbar class="custom-toolbar" [ngClass]="{'mobile-menu-open': isMenuOpen}">
   <!-- Sidebar Toggle Button -->
   <button mat-icon-button aria-label="Toggle Sidebar" (click)="toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
-
   <!-- Brand logo -->
   <div class="brand">
     <span class="brand-logo" routerLink="/dashboard/notifications">Dashboard</span>
   </div>
-
   <!-- Navigation links for dashboard -->
-  <div class="nav-links-container">
-    <a class="nav-link">Telemetries</a>
-    <a class="nav-link">Analytics</a>
-    <a class="nav-link">Reports</a>
+  <div class="nav-links-container" [ngClass]="{'show-menu': isMenuOpen}">
+    <a class="nav-link" (click)="closeMenu()">Telemetries</a>
+    <a class="nav-link" (click)="closeMenu()">Analytics</a>
+    <a class="nav-link" (click)="closeMenu()">Reports</a>
   </div>
-
   <!-- Icons for FAQs, Notifications, and Help -->
   <div class="icon-container">
     <button mat-icon-button aria-label="FAQs" (click)="openFAQs()">
@@ -29,10 +26,9 @@
       <mat-icon>chat</mat-icon>
     </button>
   </div>
-
   <!-- Auth links and logout button -->
   <div class="auth-links-container" routerLink="/dashboard/user-management">
-    <button mat-icon-button aria-label="User Profile">
+    <button mat-icon-button aria-label="User Profile" (click)="closeMenu()">
       <mat-icon>person</mat-icon>
     </button>
     <button mat-button (click)="logout()">Logout</button>
