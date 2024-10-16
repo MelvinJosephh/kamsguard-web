@@ -1,61 +1,32 @@
-<!-- <div
+<div
   class="sidebar"
   [ngClass]="{ showSidebar: isSidebarVisible, hideSidebar: !isSidebarVisible }"
   [@fadeInOut]
-> -->
-
-<div class="sidebar" [ngClass]="{ 'hidden': !isSidebarVisible }">
-  <ul>
-    <!-- <li>
-      <a routerLinkActive="active" routerLink="/dashboard/device-management" (click)="toggleDeviceManagementSubmenu()">
-        <span class="menu-icon material-icons">devices</span>
-        <span class="menu-text">Device Management</span>
-        <span
-          class="sub-menu-icon"
-          [ngClass]="{ 'sub-menu-open': isDeviceManagementSubmenuOpen }"
-        >
-          <mat-icon>{{
-            isDeviceManagementSubmenuOpen
-              ? 'keyboard_arrow_down'
-              : 'keyboard_arrow_right'
-          }}</mat-icon>
-        </span>
-      </a>
-      
-      <ul *ngIf="isDeviceManagementSubmenuOpen" class="sub-menu open">
-        <li>
-          <a
-            routerLink="/dashboard/connected-devices"
-            routerLinkActive="active"
-            (click)="handleLinkClick()"
-            ><span class="menu-icon material-icons">cast_connected</span
-            ><span class="menu-text">Connected Detectors</span></a
-          >
-        </li>
-      </ul>
-    </li> -->
-  
-<li>
-    <!-- <a (click)="toggleDashboardSubmenu()" routerLink="/dashboard">
-      <span class="menu-icon material-icons">dashboard</span>
-      <span class="menu-text" >Dashboard</span>
-      
-      <span
-        class="sub-menu-icon"
-        [ngClass]="{ 'sub-menu-open': isDashboardSubmenuOpen }"
-      >
-        <mat-icon>{{
-          isDashboardSubmenuOpen
-            ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right'
-        }}</mat-icon>
-      </span>
-    </a> -->
-   <!-- Sub-menu for Dashboard with left padding -->
-    <!-- <ul *ngIf="isDashboardSubmenuOpen" class="sub-menu open">
+>
+    <ul>
       <li>
         <a
-          routerLink="/events"
+          routerLink="/dashboard/connected-devices"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+          ><span class="menu-icon material-icons">cast_connected</span
+          ><span class="menu-text">Connected Detectors</span></a
+        >
+      </li>
+
+      <li>
+        <a
+          routerLink="/dashboard/notifications"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+          ><span class="menu-icon material-icons">forward_to_inbox</span
+          ><span class="menu-text">Notifications</span></a
+        >
+      </li>
+
+      <li>
+        <a
+          routerLink="/dashboard/events"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           (click)="handleLinkClick()"
@@ -63,93 +34,56 @@
           ><span class="menu-text">Events</span></a
         >
       </li>
-    </ul> -->
+      <li>
+        <a
+          routerLink="/dashboard/real-time"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="handleLinkClick()"
+          ><span class="menu-icon material-icons">alarm</span
+          ><span class="menu-text">Telemetries</span></a
+        >
+      </li>
 
-  </li>
-
-
-  <li>
-    <a
-      routerLink="/dashboard/connected-devices"
-      routerLinkActive="active"
-      (click)="handleLinkClick()"
-      ><span class="menu-icon material-icons">cast_connected</span
-      ><span class="menu-text">Connected Detectors</span></a
-    >
-  </li>
-
-    <li>
-      <a
-        routerLink="/dashboard/notifications"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">forward_to_inbox</span
-        ><span class="menu-text">Notifications</span></a
-      >
-    </li>
-
-    <li>
-      <a
-        routerLink="/dashboard/events"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">notifications</span
-        ><span class="menu-text">Events</span></a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/dashboard/real-time"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="handleLinkClick()"
-        ><span class="menu-icon material-icons">alarm</span
-        ><span class="menu-text">Telemetries</span></a
-      >
-    </li>
-    
-
-
-    <li>
-      <a
-        routerLink="/dashboard/live-stream"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">live_tv</span>
-        <span class="menu-text">Live Viewer</span>
-      </a>
-    </li> 
-    <li>
-      <a
-        routerLink="/dashboard/system-config"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">dns</span>
-        <span class="menu-text">System Configuration</span>
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="/dashboard/clients"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">manage_accounts</span>
-        <span class="menu-text">Companies</span>
-      </a>
-    </li>
-    <li>
-      <a
-      routerLink="/dashboard/contact-us"
-        routerLinkActive="active"
-        (click)="handleLinkClick()"
-      >
-        <span class="menu-icon material-icons">contact_emergency</span>
-        <span class="menu-text">Emergency Contacts</span>
-      </a>
-    </li>
-  </ul>
+      <li>
+        <a
+          routerLink="/dashboard/live-stream"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+        >
+          <span class="menu-icon material-icons">live_tv</span>
+          <span class="menu-text">Live Viewer</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/system-config"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+        >
+          <span class="menu-icon material-icons">dns</span>
+          <span class="menu-text">System Configuration</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/clients"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+        >
+          <span class="menu-icon material-icons">manage_accounts</span>
+          <span class="menu-text">Companies</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/contact-us"
+          routerLinkActive="active"
+          (click)="handleLinkClick()"
+        >
+          <span class="menu-icon material-icons">contact_emergency</span>
+          <span class="menu-text">Emergency Contacts</span>
+        </a>
+      </li>
+    </ul>
 </div>

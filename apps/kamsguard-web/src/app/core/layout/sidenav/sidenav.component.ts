@@ -37,7 +37,7 @@ export class SidebarComponent implements OnInit {
 
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
-    this.sidebarService.toggleSidebar(); // Toggle sidebar state
+    this.sidebarService.toggleSidebar(); 
   }
 
   toggleSubmenu() {
@@ -47,14 +47,14 @@ export class SidebarComponent implements OnInit {
   toggleDashboardSubmenu() {
     this.isDashboardSubmenuOpen = !this.isDashboardSubmenuOpen;
     if (this.isDashboardSubmenuOpen) {
-      this.isDeviceManagementSubmenuOpen = false; // Close Device Management submenu if open
+      this.isDeviceManagementSubmenuOpen = false; 
     }
   }
 
   toggleDeviceManagementSubmenu() {
     this.isDeviceManagementSubmenuOpen = !this.isDeviceManagementSubmenuOpen;
     if (this.isDeviceManagementSubmenuOpen) {
-      this.isDashboardSubmenuOpen = false; // Close Dashboard submenu if open
+      this.isDashboardSubmenuOpen = false;
     }
   }
 
@@ -63,7 +63,7 @@ export class SidebarComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
     if (window.innerWidth > 768 && !this.isSidebarVisible) {
       this.isSidebarVisible = true;
     }

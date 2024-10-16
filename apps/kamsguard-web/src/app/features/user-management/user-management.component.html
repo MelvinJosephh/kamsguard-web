@@ -1,25 +1,23 @@
 <mat-card class="profile-card">
-    <mat-card-header>
-      <div mat-card-avatar class="profile-avatar">
-        <img [src]="profile.picture || 'assets/default-avatar.png'" alt="Profile Picture">
-      </div>
-      <mat-card-title>{{ profile.username }}</mat-card-title>
-      <mat-card-subtitle>{{ profile.role }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="profile-details">
-        <p><strong>Full Name:</strong> {{ profile.fullName }}</p>
-        <p><strong>Email:</strong> {{ profile.email }}</p>
-        <p><strong>Contact:</strong> {{ profile.contact }}</p>
-        <p><strong>Address:</strong> {{ profile.address }}</p>
-        <p><strong>Last Login:</strong> {{ profile.lastLogin | date:'short' }}</p>
-      </div>
-      <mat-divider></mat-divider>
-      <div class="profile-actions">
-        <button mat-raised-button color="primary" (click)="editProfile()">Edit Profile</button>
-        <button mat-raised-button color="accent" (click)="changePassword()">Change Password</button>
-        <button mat-raised-button color="warn" (click)="logout()">Logout</button>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>{{ profile.username }}</mat-card-title>
+    <mat-card-subtitle>{{ profile.role }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="profile-details">
+      <p><strong>Full Name:</strong> {{ profile.fullName }}</p>
+      <p><strong>Email:</strong> {{ profile.email }}</p>
+      <p><strong>Contact:</strong> {{ profile.contact }}</p>
+      <p><strong>Last Login:</strong> {{ profile.lastLogin | date:'short' }}</p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-actions">
+      <button mat-raised-button color="primary" (click)="editProfile()">Edit Profile</button>
+      <button mat-raised-button color="accent" (click)="changePassword()">Change Password</button>
+      <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+    </div>
+  </mat-card-content>
+</mat-card>

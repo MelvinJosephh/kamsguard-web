@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-user-management',
@@ -14,18 +15,17 @@ import { MatButtonModule } from '@angular/material/button';
 export class UserManagementComponent {
   profile = {
     picture: 'assets/default-avatar.png',
-    username: 'Benny Kamsguard',
+    username: 'Melvin',
     role: 'Admin',
-    fullName: 'Alex Dev',
-    email: 'alex@gmail.com',
+    fullName: 'Melvin Njuguna',
+    email: 'collinsme.2000@gmail.com',
     contact: '+254712345890',
-    address: 'Kenyatta Road, Kenyatta Road',
     lastLogin: new Date()
   };
 
-  // constructor() { }
-
-  // ngOnInit(): void { }
+  constructor(
+    private authService: AuthenticationService,
+  ) {}
 
   editProfile() {
     // Implement profile editing logic here
@@ -38,8 +38,7 @@ export class UserManagementComponent {
   }
 
   logout() {
-    // Implement logout logic here
-    console.log('Logout clicked');
+    this.authService.logout(); 
   }
 
 }

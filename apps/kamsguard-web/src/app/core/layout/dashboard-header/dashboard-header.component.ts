@@ -50,7 +50,4 @@ export class DashboardHeaderComponent {
     // Implement your method
   }
 
-  logout() {
-    this.authService.logout(); // Call your logout method
-  }
 }

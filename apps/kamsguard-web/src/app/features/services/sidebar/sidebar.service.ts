@@ -12,4 +12,5 @@ export class SidebarService {
   toggleSidebar() {
     this.sidebarVisibilitySubject.next(!this.sidebarVisibilitySubject.value);
   }
+
 }
