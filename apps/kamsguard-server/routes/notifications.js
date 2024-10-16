@@ -2,8 +2,8 @@ const express = require('express');
 const { Router } = require('express');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
-const axios = require('axios'); // You can remove this if it's no longer used elsewhere
-const fs = require('fs');       // You can remove this if it's no longer used elsewhere
+const axios = require('axios'); 
+const fs = require('fs');      
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
