@@ -24,7 +24,7 @@ module.exports = (io) => {
   );
 
   const transporter = nodemailer.createTransport({
-    service: 'kamsware',
+    // service: 'kamsware',
     host: 'mail.kamsware.com',
     port: 465,
     secure: true,
