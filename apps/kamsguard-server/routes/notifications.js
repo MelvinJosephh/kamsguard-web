@@ -33,7 +33,7 @@ module.exports = (io) => {
     },
   });
 
-  router.post('/', async (req, res) => {
+  router.post('/send-email', async (req, res) => {
     const { subject, eventType, siteId, timestamp } = req.body;
 
     const mappedSiteId = siteId.replace('1-Kamsware-FV3', 'Kamsware');
@@ -193,7 +193,7 @@ module.exports = (io) => {
 
     axios
       .post(
-        'https://kamsguard-server.vercel.app/notifications/',
+        'https://kamsguard-server.vercel.app/notifications/send-email',
         emailData
       )
       .then((response) => {
