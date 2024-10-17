@@ -2,8 +2,8 @@ const express = require('express');
 const { Router } = require('express');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
-const axios = require('axios'); 
-const fs = require('fs');      
+const axios = require('axios');
+const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
@@ -112,7 +112,6 @@ module.exports = (io) => {
       };
       await transporter.sendMail(mailOptions);
 
-
       res.status(200).json({ status: 'success', message: 'Notification sent' });
     } catch (error) {
       console.error('Error:', error);
@@ -130,7 +129,9 @@ module.exports = (io) => {
       res.status(200).json(notifications);
     } catch (error) {
       console.error('Error retrieving notifications:', error);
-      res.status(500).json({ status: 'error', message: 'Error retrieving notifications' });
+      res
+        .status(500)
+        .json({ status: 'error', message: 'Error retrieving notifications' });
     }
   });
 
@@ -191,14 +192,17 @@ module.exports = (io) => {
     };
 
     axios
-      .post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
+      .post(
+        'https://kamsguard-server.vercel.app/notifications',
+        emailData
+      )
       .then((response) => {
         console.log('Email sent:', response.data);
 
         // Now save the notification with status 'Sent' after the email is successfully sent
         const notificationToSave = new Notification({
           ...notification,
-          status: 'Sent', 
+          status: 'Sent',
         });
 
         notificationToSave.save();
@@ -209,7 +213,7 @@ module.exports = (io) => {
         // Save with status 'Failed' if the email sending fails
         const notificationToSave = new Notification({
           ...notification,
-          status: 'Failed', 
+          status: 'Failed',
         });
 
         notificationToSave.save();
