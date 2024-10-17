@@ -1,6 +1,6 @@
 const express = require('express');
 const { Router } = require('express');
-const moment = require('moment');
+const moment = require('moment-timezone');
 const nodemailer = require('nodemailer');
 const axios = require('axios'); 
 const fs = require('fs');      
@@ -66,7 +66,8 @@ module.exports = (io) => {
       */
 
       // const formattedTimestamp = moment(timestamp).format('lll');
-      const formattedTimestamp = moment.utc(timestamp).local().format('lll');
+      const formattedTimestamp = moment.utc(timestamp).tz('Africa/Nairobi').format('lll');
+
 
 
       console.log('sender', process.env.EMAIL_USER);
