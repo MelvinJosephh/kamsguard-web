@@ -1,6 +1,6 @@
 const express = require('express');
 const { Router } = require('express');
-const moment = require('moment-timezone');
+const moment = require('moment');
 const nodemailer = require('nodemailer');
 const axios = require('axios'); 
 const fs = require('fs');      
@@ -65,10 +65,7 @@ module.exports = (io) => {
       const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
       */
 
-      // const formattedTimestamp = moment(timestamp).format('lll');
-      const formattedTimestamp = moment.utc(timestamp).tz('Africa/Nairobi').format('lll');
-
-
+      const formattedTimestamp = moment(timestamp).format('lll');
 
       console.log('sender', process.env.EMAIL_USER);
       const mailOptions = {
