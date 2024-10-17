@@ -112,15 +112,6 @@ module.exports = (io) => {
       };
       await transporter.sendMail(mailOptions);
 
-      const newNotification = new Notification({
-        subject,
-        eventType: mappedEventType,
-        siteId: mappedSiteId,
-        timestamp: formattedTimestamp,
-        notificationType: 'Email',
-        status: 'Sent',
-      });
-      await newNotification.save();
 
       res.status(200).json({ status: 'success', message: 'Notification sent' });
     } catch (error) {
