@@ -112,6 +112,16 @@ module.exports = (io) => {
       };
       await transporter.sendMail(mailOptions);
 
+      const newNotification = new Notification({
+        subject,
+        eventType: mappedEventType,
+        siteId: mappedSiteId,
+        timestamp: formattedTimestamp,
+        notificationType: 'Email',
+        status: 'Sent',
+      });
+      await newNotification.save();
+
       res.status(200).json({ status: 'success', message: 'Notification sent' });
     } catch (error) {
       console.error('Error:', error);
@@ -133,87 +143,6 @@ module.exports = (io) => {
     }
   });
 
-  // MQTT message handler
-  mqttClient.on('message', (topic, message) => {
-    const data = JSON.parse(message.toString());
-    const { value, extended } = data;
-
-    if (value === 1 && extended && extended.length) {
-      extended.forEach((event) => {
-        const { event: eventName, site_id, time, ...details } = event;
-        for (const key in details) {
-          if (details[key]?.extended) {
-            details[key].extended.forEach((nestedEvent) => {
-              const nestedDetails = { ...nestedEvent, parentEvent: eventName };
-              handleEvent(
-                nestedEvent.event,
-                nestedEvent.site_id,
-                nestedEvent.time,
-                nestedDetails
-              );
-            });
-          }
-        }
-        // handleEvent(eventName, site_id, time, details);
-      });
-    }
-  });
-
-  function handleEvent(eventName, siteId, time, nestedDetails) {
-    Notification.findOne({
-      eventType: eventName,
-      siteId: siteId,
-      timestamp: time,
-    }).then((existingNotification) => {
-      if (!existingNotification) {
-        // No need to save here, we will do it after email is sent
-        const newNotification = {
-          timestamp: nestedDetails.time,
-          eventType: nestedDetails.event,
-          siteId: nestedDetails.site_id,
-          notificationType: 'Email',
-          status: 'Pending', // Initially set status to Pending
-        };
-
-        // Send email first, then save the notification
-        sendEmailNotification(newNotification, nestedDetails);
-      }
-    });
-  }
-
-  function sendEmailNotification(notification, details) {
-    const emailData = {
-      subject: `Alarm Alert!`,
-      eventType: notification.eventType,
-      timestamp: notification.timestamp,
-      siteId: notification.siteId,
-    };
-
-    axios
-      .post('https://kamsguard-server.vercel.app/notifications/send-email', emailData)
-      .then((response) => {
-        console.log('Email sent:', response.data);
-
-        // Now save the notification with status 'Sent' after the email is successfully sent
-        const notificationToSave = new Notification({
-          ...notification,
-          status: 'Sent', 
-        });
-
-        notificationToSave.save();
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-
-        // Save with status 'Failed' if the email sending fails
-        const notificationToSave = new Notification({
-          ...notification,
-          status: 'Failed', 
-        });
-
-        notificationToSave.save();
-      });
-  }
 
   return router;
 };
