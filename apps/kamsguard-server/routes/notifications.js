@@ -65,7 +65,9 @@ module.exports = (io) => {
       const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
       */
 
-      const formattedTimestamp = moment(timestamp).format('lll');
+      // const formattedTimestamp = moment(timestamp).format('lll');
+      const formattedTimestamp = moment.utc(timestamp).local().format('lll');
+
 
       console.log('sender', process.env.EMAIL_USER);
       const mailOptions = {
