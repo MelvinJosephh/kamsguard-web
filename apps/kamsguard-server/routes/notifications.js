@@ -112,16 +112,6 @@ module.exports = (io) => {
       };
       await transporter.sendMail(mailOptions);
 
-      const newNotification = new Notification({
-        subject,
-        eventType: mappedEventType,
-        siteId: mappedSiteId,
-        timestamp: formattedTimestamp,
-        notificationType: 'Email',
-        status: 'Sent',
-      });
-      await newNotification.save();
-
       res.status(200).json({ status: 'success', message: 'Notification sent' });
     } catch (error) {
       console.error('Error:', error);
@@ -197,7 +187,6 @@ module.exports = (io) => {
       eventType: notification.eventType,
       timestamp: notification.timestamp,
       siteId: notification.siteId,
-      // Removed 'details' as it's not used in the updated '/send-email' route
     };
 
     axios
