@@ -10,12 +10,6 @@ require('dotenv').config();
 const mqttClient = require('../mqttClient');
 const Notification = require('../models/notifications');
 
-const timeZoneMap = {
-  'Kamsware-Africa': 'Africa/Nairobi',
-  'Kamsware-Europe': 'Europe/Berlin',
-  'Kamsware-Asia': 'Asia/Tokyo',
-}
-
 module.exports = (io) => {
   const router = express.Router();
 
@@ -54,9 +48,7 @@ module.exports = (io) => {
     };
 
     const mappedEventType = eventMapping[eventType] || eventType;
-    const timeZone = timeZoneMap[mappedSiteId] || 'UTC';
-    const formattedTimestamp = moment(timestamp).tz(timeZone).format('lll');
-      
+
     // Removed image-related variables
     // const cameraId = 1;
     // const ipAddress = '192.168.1.70';
@@ -73,6 +65,9 @@ module.exports = (io) => {
       const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
       */
 
+      const formattedTimestamp = moment(timestamp).format('lll');
+
+      console.log('sender', process.env.EMAIL_USER);
       const mailOptions = {
         from: `Kamsguard Support: ${process.env.EMAIL_USER}`,
         to: 'melvin.njuguna@kamsware.com',
