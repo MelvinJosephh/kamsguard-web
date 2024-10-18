@@ -168,7 +168,6 @@ module.exports = (io) => {
       timestamp: time,
     }).then((existingNotification) => {
       if (!existingNotification) {
-        // No need to save here, we will do it after email is sent
         const newNotification = {
           timestamp: nestedDetails.time,
           eventType: nestedDetails.event,
