@@ -98,17 +98,17 @@ app.use('/notifications', createProxyMiddleware({
   secure: false,
 }));
 
-app.use('/events', createProxyMiddleware({
-  target: 'https://kamsguard-server.vercel.app',
-  changeOrigin: true,
-  secure: false,
-}));
+// app.use('/events', createProxyMiddleware({
+//   target: 'https://kamsguard-server.vercel.app',
+//   changeOrigin: true,
+//   secure: false,
+// }));
 
-app.use('/connected-devices', createProxyMiddleware({
-  target: 'https://kamsguard-server.vercel.app',
-  changeOrigin: true,
-  secure: false,
-}));
+// app.use('/connected-devices', createProxyMiddleware({
+//   target: 'https://kamsguard-server.vercel.app',
+//   changeOrigin: true,
+//   secure: false,
+// }));
 
 // MQTT logic to emit events via Socket.io
 mqttClient.on('message', (topic, message) => {
