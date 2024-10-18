@@ -35,23 +35,6 @@ export class UserManagementComponent implements OnInit {
 
   constructor(private authService: AuthenticationService) {}
 
-  // ngOnInit() {
-  //   this.authService.currentUser$.subscribe((user: User | null) => {
-  //     if (user) {
-  //       // Assuming FirebaseUser provides 'displayName' and 'email'
-  //       this.profile.fullName = user.displayName || 'No name provided';
-  //       this.profile.email = user.email || 'No email provided';
-  //       this.profile.username = user.displayName || 'No username'; 
-  //       this.profile.phoneNumber = user.phoneNumber || 'No phone number'; 
-  //       this.profile.lastLogin = user.metadata.lastSignInTime
-  //         ? new Date(user.metadata.lastSignInTime)
-  //         : null;
-  //     } else {
-  //       console.log('No user is currently logged in.');
-  //     }
-  //   });
-  // }
-
   ngOnInit() {
     this.authService.currentUser$.subscribe((user: User | null) => {
       if (user) {
