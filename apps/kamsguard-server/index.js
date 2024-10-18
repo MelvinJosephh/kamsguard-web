@@ -92,11 +92,11 @@ app.use('/events', eventsRoute);
 app.use('/connected-devices', connectedDevicesRoute);
 
 // Proxy middleware configurations
-app.use('/notifications', createProxyMiddleware({
-  target: 'https://kamsguard-server.vercel.app',
-  changeOrigin: true,
-  secure: false,
-}));
+// app.use('/notifications', createProxyMiddleware({
+//   target: 'https://kamsguard-server.vercel.app',
+//   changeOrigin: true,
+//   secure: false,
+// }));
 
 // app.use('/events', createProxyMiddleware({
 //   target: 'https://kamsguard-server.vercel.app',
