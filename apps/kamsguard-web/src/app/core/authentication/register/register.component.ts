@@ -9,7 +9,8 @@ import { RouterModule, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthenticationService } from '../../../features/services/authentication.service';
-import { ToastrService } from '../../../services/toastr.service';
+import { ToastrService } from '../../../features/services/toastr.service';
+import { LoadingService } from '../../../features/services/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,8 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private authService: AuthenticationService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private loadingService: LoadingService
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -50,19 +52,23 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    
     if (!this.registerForm.valid) {
       this.toastrService.error('Error', 'Please correct the errors in the form before submitting.');
       return;
     }
 
+    this.  loadingService.loading();
     const { email, password, name, phoneNumber, subscribe } = this.registerForm.value;
     this.authService.register(email, password, name, phoneNumber, subscribe).subscribe({
       next: () => {
         // Handle successful registration
         this.toastrService.success('Success', 'Registration successful! Please log in.');
-        this.router.navigate(['/login']); // Redirect to login page
+        this.router.navigate(['/login']); 
+        this.loadingService.idle();  
       },
       error: (err) => {
+        this.  loadingService.idle();
         // Handle registration error
         console.error('Registration error:', err);
         this.toastrService.error('Error', 'An error occurred during registration. Please confirm your details.');

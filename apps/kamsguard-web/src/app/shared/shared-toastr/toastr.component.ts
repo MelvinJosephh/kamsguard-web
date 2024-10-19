@@ -2,7 +2,7 @@ import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { NgClass } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Toast, ToastrService } from '../../services/toastr.service';
+import { Toast, ToastrService } from '../../features/services/toastr.service';
 import { Subscription } from 'rxjs';
 
 @Component({

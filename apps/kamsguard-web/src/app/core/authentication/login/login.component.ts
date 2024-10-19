@@ -14,7 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MatCheckboxModule } from '@angular/material/checkbox'; // Included if needed
 import { AuthenticationService } from '../../../features/services/authentication.service';
-import { ToastrService } from '../../../services/toastr.service';
+import { ToastrService } from '../../../features/services/toastr.service';
+import { LoadingService } from '../../../features/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,11 @@ import { ToastrService } from '../../../services/toastr.service';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatCheckboxModule, // Included if using checkboxes
+    MatCheckboxModule, 
     RouterModule,
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['../auth-shared.styles.scss'], // Reusing shared styles
+  styleUrls: ['../auth-shared.styles.scss'], 
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -39,7 +40,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthenticationService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private loadingService: LoadingService,
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -51,21 +53,26 @@ export class LoginComponent {
     if (!this.loginForm.valid) {
       return;
     }
+    this.  loadingService.loading();
     const { email, password } = this.loginForm.value;
     this.authService.login(email, password).subscribe({
       next: async (success) => {
         if (success) {
-          await this.router.navigate(['/dashboard']);
-          this.toastrService.success('Success', 'Login successful!');
+          // this.toastrService.success('Success', 'Login successful!');
+          setTimeout(async () => {
+            await this.router.navigate(['/dashboard']);
+            this.loadingService.idle(); 
+          }, 1000);  
         } else {
           this.toastrService.error(
             'Error',
             'Login failed. Please check your credentials.'
           );
+          this.loadingService.idle(); 
         }
-      },
+      },      
       error: (err) => {
-        // Handle error (e.g., network issues)
+        this.loadingService.idle();
         console.error('Login error:', err);
         this.toastrService.error(
           'Error',

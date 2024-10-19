@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 @use '@angular/material' as mat;
 @include mat.core();
+@import 'node_modules/ngx-spinner/animations/ball-scale-ripple-multiple.css';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 

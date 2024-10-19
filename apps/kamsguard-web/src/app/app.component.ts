@@ -5,6 +5,7 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from './features/services/authentication.service';
 import { ToastrComponent } from './shared/shared-toastr/toastr.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @Component({
   standalone: true,
@@ -14,6 +15,7 @@ import { ToastrComponent } from './shared/shared-toastr/toastr.component';
     FooterComponent,
     CommonModule,
     ToastrComponent,
+    NgxSpinnerModule,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
