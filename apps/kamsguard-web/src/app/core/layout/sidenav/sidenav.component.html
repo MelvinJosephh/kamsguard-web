@@ -3,87 +3,55 @@
   [ngClass]="{ showSidebar: isSidebarVisible, hideSidebar: !isSidebarVisible }"
   [@fadeInOut]
 >
-    <ul>
-      <li>
-        <a
-          routerLink="/dashboard/connected-devices"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-          ><span class="menu-icon material-icons">cast_connected</span
-          ><span class="menu-text">Connected Detectors</span></a
-        >
-      </li>
-
-      <li>
-        <a
-          routerLink="/dashboard/notifications"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-          ><span class="menu-icon material-icons">forward_to_inbox</span
-          ><span class="menu-text">Notifications</span></a
-        >
-      </li>
-
-      <li>
-        <a
-          routerLink="/dashboard/events"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="handleLinkClick()"
-          ><span class="menu-icon material-icons">notifications</span
-          ><span class="menu-text">Events</span></a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/real-time"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="handleLinkClick()"
-          ><span class="menu-icon material-icons">alarm</span
-          ><span class="menu-text">Telemetries</span></a
-        >
-      </li>
-
-      <li>
-        <a
-          routerLink="/dashboard/live-stream"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-        >
-          <span class="menu-icon material-icons">live_tv</span>
-          <span class="menu-text">Live Viewer</span>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/system-config"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-        >
-          <span class="menu-icon material-icons">dns</span>
-          <span class="menu-text">System Configuration</span>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/clients"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-        >
-          <span class="menu-icon material-icons">manage_accounts</span>
-          <span class="menu-text">Companies</span>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/contact-us"
-          routerLinkActive="active"
-          (click)="handleLinkClick()"
-        >
-          <span class="menu-icon material-icons">contact_emergency</span>
-          <span class="menu-text">Emergency Contacts</span>
-        </a>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <a routerLink="/dashboard/connected-devices" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">cast_connected</span>
+        <!-- Text is controlled by isSidebarVisible -->
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Connected Detectors</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/notifications" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">forward_to_inbox</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Notifications</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/events" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">notifications</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Events</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/real-time" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">alarm</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Telemetries</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/live-stream" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">live_tv</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Live Viewer</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/system-config" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">dns</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">System Configuration</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/clients" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">manage_accounts</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Companies</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard/contact-us" routerLinkActive="active" (click)="handleLinkClick()">
+        <span class="menu-icon material-icons">contact_emergency</span>
+        <span class="menu-text" [ngClass]="{ 'hide-text': !isSidebarVisible }">Emergency Contacts</span>
+      </a>
+    </li>
+  </ul>
 </div>

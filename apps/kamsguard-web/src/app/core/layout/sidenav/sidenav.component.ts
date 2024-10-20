@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
   constructor(private sidebarService: SidebarService) {}
 
   ngOnInit() {
+
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
       this.isSidebarVisible = isVisible;
     });

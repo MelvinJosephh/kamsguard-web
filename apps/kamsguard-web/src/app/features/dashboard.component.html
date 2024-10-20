@@ -1,15 +1,14 @@
 <div class="app-container">
-  <!-- Fixed Header -->
   <div class="app-header">
-    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-header
+      (toggleSidebar)="toggleSidebar()"
+    ></app-dashboard-header>
   </div>
 
   <div class="dashboard-container">
-    <!-- Sidebar -->
-    <app-sidenav></app-sidenav>
+    <app-sidenav [class.hidden]="!isSidebarVisible"></app-sidenav>
 
-    <!-- Main Content -->
-    <div class="content">
+    <div class="content" [ngClass]="{ collapsed: !isSidebarVisible }">
       <router-outlet></router-outlet>
     </div>
   </div>

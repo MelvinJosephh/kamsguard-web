@@ -1,10 +1,10 @@
-$primary-color: #21325D;
+$primary-color: #21325d;
 $secondary-color: #627792;
-$card-color: #FFFFFF;
-$text-color: #21325D;
+$card-color: #ffffff;
+$text-color: #21325d;
 $header-color: #627792;
-$highlight-color: #FC5546;
-$background-color: #FFFFFF;
+$highlight-color: #fc5546;
+$background-color: #ffffff;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
 .app-container {
@@ -15,7 +15,6 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 .app-header {
-  // background-color: $header-color;
   display: flex;
   align-items: center;
   padding: 0 px;
@@ -30,13 +29,13 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 .dashboard-container {
   display: flex;
   flex: 1;
-  margin-top: 80px; 
+  margin-top: 80px;
 }
 
 app-sidenav {
-  height: calc(100vh - 80px); 
+  height: calc(100vh - 80px);
   position: fixed;
-  top: 80px; /* Below the fixed header */
+  top: 80px;
   left: 0;
   z-index: 999;
   padding-top: 20px;
@@ -44,15 +43,15 @@ app-sidenav {
 }
 
 .content {
-  margin-left: 250px; /* Leave space for the sidebar */
+  margin-left: 250px;
   padding: 20px;
   background-color: $card-color;
   flex: 1;
   overflow-y: auto;
-  min-height: calc(100vh - 80px); /* Full height minus the header */
+  min-height: calc(100vh - 80px);
   box-shadow: inset 0 0 10px $shadow-color;
 
   @media (max-width: 768px) {
-    margin-left: 0; /* Adjust content margin for mobile view */
+    margin-left: 0;
   }
 }
