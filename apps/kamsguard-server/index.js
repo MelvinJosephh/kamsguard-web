@@ -7,6 +7,7 @@ const mqttClient = require('./mqttClient');
 const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { Server } = require('socket.io');
+const admin = require('firebase-admin');
 
 dotenv.config();
 

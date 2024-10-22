@@ -77,6 +77,7 @@ export class AuthenticationService {
             const userRef = doc(this.firestore, `users/${user.uid}`);
             return from(
               setDoc(userRef, {
+                email:email,
                 phoneNumber: phoneNumber, // Store phone number in Firestore
                 subscribe: subscribe, // Store subscription status
               })
